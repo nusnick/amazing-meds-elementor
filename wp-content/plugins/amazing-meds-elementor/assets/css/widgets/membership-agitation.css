@@ -1,0 +1,42 @@
+.who-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: var(--sub-to-content);
+}
+
+.who-card {
+    text-align: center;
+    padding: 32px 24px;
+    background: var(--am-card-white);
+    border-radius: var(--radius-standard);
+    box-shadow: var(--shadow-soft);
+    transition: transform 0.3s ease;
+}
+
+.who-card:hover {
+    transform: translateY(-5px);
+}
+
+.who-card .who-emoji {
+    font-size: 32px;
+    margin-bottom: 12px;
+}
+
+.who-card h3 {
+    font-size: 20px;
+    margin-bottom: 8px;
+    color: var(--am-charcoal);
+}
+
+.who-card p {
+    font-size: 14px;
+    color: var(--am-muted);
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .who-grid {
+        grid-template-columns: 1fr;
+    }
+}

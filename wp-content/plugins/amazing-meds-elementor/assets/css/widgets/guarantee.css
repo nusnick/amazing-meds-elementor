@@ -1,0 +1,42 @@
+/* ============================================================
+   AMAZING MEDS — GUARANTEE WIDGET SPECIFIC STYLES
+   ============================================================ */
+
+.am-guarantee-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--card-gap);
+    max-width: 860px;
+    margin: 0 auto;
+}
+
+.am-guarantee-card .am-icon-circle {
+    margin-bottom: 22px;
+}
+
+.am-guarantee-card h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.am-guarantee-card p {
+    font-size: 15px;
+    color: var(--am-muted);
+    line-height: 1.65;
+}
+
+.am-guarantee-note {
+    text-align: center;
+    margin-top: 32px;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--am-muted);
+}
+
+@media (max-width: 768px) {
+    .am-guarantee-grid {
+        grid-template-columns: 1fr;
+    }
+}

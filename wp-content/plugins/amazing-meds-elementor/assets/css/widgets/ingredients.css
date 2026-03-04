@@ -1,0 +1,209 @@
+/* ============================================================
+   AMAZING MEDS — INGREDIENTS WIDGET SPECIFIC STYLES
+   ============================================================ */
+
+.am-phase-pills {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+}
+
+.am-phase-pill {
+    background: var(--am-card-offwhite);
+    border-radius: var(--radius-pill);
+    padding: 10px 24px;
+    text-align: center;
+    border: 2px solid transparent;
+}
+
+.am-phase-pill .phase-label {
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--am-muted);
+    margin-bottom: 2px;
+}
+
+.am-phase-pill .phase-doses {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--am-charcoal);
+}
+
+/* --- BOTANICAL VISUAL --- */
+.am-botanical {
+    margin: 48px auto;
+    max-width: 900px;
+    border-radius: var(--radius-feature);
+    overflow: hidden;
+    position: relative;
+    background: linear-gradient(145deg, #f5f0e8 0%, #ebe3d5 50%, #e2d9c8 100%);
+    padding: 56px 48px;
+    box-shadow: var(--shadow-soft);
+}
+
+
+
+.am-botanical-inner {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.am-botanical-center {
+    text-align: center;
+}
+
+.am-botanical-capsule {
+    width: 64px;
+    height: 160px;
+    border-radius: 50px;
+    overflow: hidden;
+    margin: 0 auto 16px;
+    box-shadow: 0 12px 32px rgba(36, 33, 25, 0.12);
+    transform: rotate(-5deg);
+}
+
+.am-botanical-capsule .bt {
+    height: 50%;
+    background: linear-gradient(180deg, #C4AD73, #B39D5F);
+}
+
+.am-botanical-capsule .bb {
+    height: 50%;
+    background: linear-gradient(180deg, #FAF6EE, #F0E8D8);
+}
+
+.am-botanical-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--am-muted);
+    text-transform: uppercase;
+    line-height: 1.4;
+}
+
+.am-botanical-ingredient {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.am-botanical-orb {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1.5px solid var(--am-divider);
+    background: var(--am-white);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    position: relative;
+    overflow: hidden;
+    /* Added to contain image */
+}
+
+.am-botanical-orb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.ing-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--am-charcoal);
+}
+
+.ing-role {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--am-gold);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+/* Ingredient Cards */
+.am-ingredients-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+}
+
+.am-ingredient-card .dose {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--am-gold);
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.am-callout {
+    background: var(--am-card-offwhite);
+    border-radius: var(--radius-standard);
+    padding: 32px;
+    border-left: 4px solid var(--am-gold);
+    margin-top: 48px;
+}
+
+.am-callout .callout-title {
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.am-callout p {
+    font-size: 15px;
+    color: var(--am-muted);
+    line-height: 1.6;
+}
+
+@media (max-width: 1024px) {
+    .am-ingredients-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .am-botanical-inner {
+        gap: 24px;
+    }
+
+    .am-botanical-ingredient {
+        width: 140px;
+    }
+
+    .am-botanical-orb {
+        width: 90px;
+        height: 90px;
+    }
+}
+
+@media (max-width: 768px) {
+    .am-ingredients-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .am-botanical {
+        padding: 36px 24px;
+    }
+
+    .am-botanical-inner {
+        flex-direction: column;
+        gap: 28px;
+    }
+
+    .am-botanical::before,
+    .am-botanical::after {
+        display: none;
+    }
+
+    .am-phase-pills {
+        flex-direction: column;
+        align-items: center;
+    }
+}

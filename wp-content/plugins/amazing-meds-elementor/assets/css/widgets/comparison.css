@@ -1,0 +1,81 @@
+/* ============================================================
+   AMAZING MEDS — COMPARISON GRID WIDGET SPECIFIC STYLES
+   ============================================================ */
+
+.am-compare-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--card-gap);
+}
+
+.am-compare-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.am-compare-card .card-label {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.am-compare-card h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 14px;
+}
+
+.am-compare-card p {
+    font-size: 15px;
+    line-height: 1.65;
+}
+
+.am-compare-card.am-card p {
+    color: var(--am-muted);
+}
+
+/* Featured Card Styles */
+.am-compare-card.am-card--featured h3 {
+    color: var(--am-white);
+}
+
+.am-compare-card.am-card--featured p {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.am-compare-card.am-card--featured .card-label {
+    color: var(--am-gold);
+}
+
+.am-compare-card .card-label .label-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.am-compare-card.am-card .card-label .label-dot {
+    background: var(--am-muted);
+}
+
+.am-compare-card.am-card--featured .card-label .label-dot {
+    background: var(--am-gold);
+}
+
+@media (max-width: 1024px) {
+    .am-compare-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .am-compare-grid {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,82 @@
+/* ============================================================
+   AMAZING MEDS — FAQ WIDGET SPECIFIC STYLES
+   ============================================================ */
+
+.am-faq-container {
+    max-width: 780px;
+    margin: 0 auto;
+}
+
+.am-faq-item {
+    background: var(--am-card-offwhite);
+    border-radius: var(--radius-standard);
+    padding: 22px 24px;
+    margin-bottom: 16px;
+    cursor: pointer;
+    transition: box-shadow 0.2s;
+}
+
+.am-faq-item:hover {
+    box-shadow: var(--shadow-soft);
+}
+
+.am-faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+}
+
+.am-faq-question span {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1.4;
+    color: var(--am-charcoal);
+}
+
+.am-faq-question .chevron {
+    color: var(--am-gold);
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+}
+
+.am-faq-question .chevron svg {
+    width: 20px;
+    height: 20px;
+}
+
+.am-faq-item.open .am-faq-question .chevron {
+    transform: rotate(180deg);
+}
+
+.am-faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+}
+
+.am-faq-item.open .am-faq-answer {
+    max-height: 500px;
+    padding-top: 16px;
+}
+
+.am-faq-answer p {
+    color: var(--am-muted);
+    line-height: 1.65;
+    font-size: 15px;
+    margin: 0;
+}
+
+.am-faq-footer {
+    text-align: center;
+    margin-top: 32px;
+    font-size: 15px;
+    color: var(--am-muted);
+}
+
+.am-faq-footer a {
+    color: var(--am-charcoal);
+    font-weight: 500;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}

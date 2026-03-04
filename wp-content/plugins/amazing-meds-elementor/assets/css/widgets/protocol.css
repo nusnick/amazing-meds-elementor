@@ -1,0 +1,116 @@
+/* ============================================================
+   AMAZING MEDS — PROTOCOL WIDGET SPECIFIC STYLES
+   ============================================================ */
+
+.am-protocol-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 32px;
+    align-items: start;
+}
+
+.am-protocol-card {
+    background: var(--am-dark);
+    border-radius: var(--radius-standard);
+    padding: 36px 32px;
+    box-shadow: var(--shadow-lift);
+}
+
+.am-protocol-card .phase-badge {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--am-gold);
+    margin-bottom: 12px;
+}
+
+.am-protocol-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    color: var(--am-white);
+    margin-bottom: 6px;
+}
+
+.am-protocol-card .phase-sub {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+.am-protocol-card p.desc {
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.65);
+    line-height: 1.65;
+}
+
+.am-protocol-card--accent {
+    border-top: 3px solid var(--am-gold);
+}
+
+.am-timeline {
+    margin-top: 24px;
+}
+
+.am-timeline-item {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+    align-items: flex-start;
+}
+
+.am-timeline-item:last-child {
+    margin-bottom: 0;
+}
+
+.am-timeline-dot {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(188, 163, 103, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.am-timeline-dot svg {
+    width: 14px;
+    height: 14px;
+    color: var(--am-gold);
+}
+
+.am-timeline-item .timeline-months {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--am-gold);
+    margin-bottom: 4px;
+}
+
+.am-timeline-item .timeline-desc {
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.65);
+    line-height: 1.55;
+}
+
+.am-callout--dark {
+    background: rgba(188, 163, 103, 0.08);
+    border-radius: var(--radius-standard);
+    padding: 28px 32px;
+    border-left: 4px solid var(--am-gold);
+    margin-top: 48px;
+}
+
+.am-callout--dark p {
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.65;
+}
+
+@media (max-width: 1024px) {
+    .am-protocol-grid {
+        grid-template-columns: 1fr;
+    }
+}
