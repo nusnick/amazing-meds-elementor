@@ -66,62 +66,66 @@ class AM_Membership_Agitation_Widget extends \Elementor\Widget_Base
             ]
         );
 
+        $item_repeater = new \Elementor\Repeater();
+
+        $item_repeater->add_control(
+            'image',
+            [
+                'label' => esc_html__('Image', 'amazing-meds-elementor'),
+                'type' => \Elementor\Controls_Manager::MEDIA,
+                'default' => [
+                    'url' => \Elementor\Utils::get_placeholder_image_src(),
+                ],
+            ]
+        );
+
+        $item_repeater->add_control(
+            'title',
+            [
+                'label' => esc_html__('Title', 'amazing-meds-elementor'),
+                'type' => \Elementor\Controls_Manager::TEXT,
+                'default' => esc_html__('Still Tired on HRT', 'amazing-meds-elementor'),
+                'label_block' => true,
+            ]
+        );
+
+        $item_repeater->add_control(
+            'description',
+            [
+                'label' => esc_html__('Description', 'amazing-meds-elementor'),
+                'type' => \Elementor\Controls_Manager::TEXTAREA,
+                'default' => esc_html__('Hormones are up, but you\'re still exhausted and gaining weight. No one checked your thyroid or insulin.', 'amazing-meds-elementor'),
+            ]
+        );
+
         $this->add_control(
             'items',
             [
                 'label' => esc_html__('Agitation Items', 'amazing-meds-elementor'),
                 'type' => \Elementor\Controls_Manager::REPEATER,
-                'fields' => [
-                    [
-                        'name' => 'image',
-                        'label' => esc_html__('Image', 'amazing-meds-elementor'),
-                        'type' => \Elementor\Controls_Manager::MEDIA,
-                        'default' => [
-                            'url' => \Elementor\Utils::get_placeholder_image_src(),
-                        ],
-                    ],
-                    [
-                        'name' => 'title',
-                        'label' => esc_html__('Title', 'amazing-meds-elementor'),
-                        'type' => \Elementor\Controls_Manager::TEXT,
-                        'default' => esc_html__('Still Tired on HRT', 'amazing-meds-elementor'),
-                        'label_block' => true,
-                    ],
-                    [
-                        'name' => 'description',
-                        'label' => esc_html__('Description', 'amazing-meds-elementor'),
-                        'type' => \Elementor\Controls_Manager::TEXTAREA,
-                        'default' => esc_html__('Hormones are up, but you\'re still exhausted and gaining weight. No one checked your thyroid or insulin.', 'amazing-meds-elementor'),
-                    ],
-                ],
+                'fields' => $item_repeater->get_controls(),
                 'default' => [
                     [
-                        'emoji' => '❌',
                         'title' => 'Still Tired on HRT',
                         'description' => 'Hormones are up, but you\'re still exhausted and gaining weight. No one checked your thyroid or insulin.',
                     ],
                     [
-                        'emoji' => '❌',
                         'title' => '"Your Labs Look Fine"',
                         'description' => 'Your doctor checked one number and dismissed how you actually feel.',
                     ],
                     [
-                        'emoji' => '❌',
                         'title' => 'Paying Out of Pocket',
                         'description' => 'Dropping $200-$400/month elsewhere because they don\'t help with insurance.',
                     ],
                     [
-                        'emoji' => '❌',
                         'title' => 'Insurance Runaround',
                         'description' => 'Prior authorizations denied, pharmacy won\'t fill, nobody returns your calls.',
                     ],
                     [
-                        'emoji' => '❌',
                         'title' => '5-Minute Visits',
                         'description' => 'Your provider spends 5 minutes, writes a script, and says "see you in 6 months." No adjustments.',
                     ],
                     [
-                        'emoji' => '❌',
                         'title' => 'Starting Fresh',
                         'description' => 'You want to do HRT, TRT, or weight loss right from the start, not piecemeal.',
                     ],
@@ -157,7 +161,7 @@ class AM_Membership_Agitation_Widget extends \Elementor\Widget_Base
                             <div class="who-card">
                                 <div class="who-image">
                                     <?php if (!empty($item['image']['url'])): ?>
-                                        <?php echo \Elementor\Group_Control_Image_Size::get_attachment_image_html($item, 'image', 'image'); ?>
+                                        <?php echo \Elementor\Group_Control_Image_Size::get_attachment_image_html($item, 'image'); ?>
                                     <?php endif; ?>
                                 </div>
                                 <h3>

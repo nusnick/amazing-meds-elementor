@@ -1,5 +1,5 @@
 jQuery(window).on('elementor/frontend/init', function () {
-    elementorFrontend.hooks.addAction('frontend/element_ready/am_hero.default', function ($scope) {
+    elementorFrontend.hooks.addAction('frontend/element_ready/am_hair_hero.default', function ($scope) {
         const $main = $scope.find('.am-hero-main-slider');
         const $thumbs = $scope.find('.am-hero-thumbs-slider');
 

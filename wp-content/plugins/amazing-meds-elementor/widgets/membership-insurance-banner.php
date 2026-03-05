@@ -57,20 +57,30 @@ class AM_Membership_Insurance_Banner_Widget extends \Elementor\Widget_Base
             ]
         );
 
+        $logo_repeater = new \Elementor\Repeater();
+        $logo_repeater->add_control(
+            'name',
+            [
+                'label' => esc_html__('Name', 'amazing-meds-elementor'),
+                'type' => \Elementor\Controls_Manager::TEXT,
+                'default' => esc_html__('Cigna', 'amazing-meds-elementor'),
+                'label_block' => true,
+            ]
+        );
+        $logo_repeater->add_control(
+            'image',
+            [
+                'label' => esc_html__('Logo Image', 'amazing-meds-elementor'),
+                'type' => \Elementor\Controls_Manager::MEDIA,
+            ]
+        );
+
         $this->add_control(
             'logos',
             [
-                'label' => esc_html__('Insurance Logos (Names)', 'amazing-meds-elementor'),
+                'label' => esc_html__('Insurance Logos', 'amazing-meds-elementor'),
                 'type' => \Elementor\Controls_Manager::REPEATER,
-                'fields' => [
-                    [
-                        'name' => 'name',
-                        'label' => esc_html__('Name', 'amazing-meds-elementor'),
-                        'type' => \Elementor\Controls_Manager::TEXT,
-                        'default' => esc_html__('Cigna', 'amazing-meds-elementor'),
-                        'label_block' => true,
-                    ],
-                ],
+                'fields' => $logo_repeater->get_controls(),
                 'default' => [
                     ['name' => 'Cigna'],
                     ['name' => 'United Healthcare'],
@@ -146,7 +156,13 @@ class AM_Membership_Insurance_Banner_Widget extends \Elementor\Widget_Base
                         <div class="trust-logos">
                             <?php foreach ($settings['logos'] as $logo): ?>
                                 <span class="trust-logo-item">
-                                    <?php echo esc_html($logo['name']); ?>
+                                    <?php if (!empty($logo['image']['url'])): ?>
+                                        <img src="<?php echo esc_url($logo['image']['url']); ?>"
+                                            alt="<?php echo esc_attr($logo['name']); ?>"
+                                            style="max-height: 24px; width: auto; opacity: 0.7;">
+                                    <?php else: ?>
+                                        <?php echo esc_html($logo['name']); ?>
+                                    <?php endif; ?>
                                 </span>
                             <?php endforeach; ?>
                         </div>
