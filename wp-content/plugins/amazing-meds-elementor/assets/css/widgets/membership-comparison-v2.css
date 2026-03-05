@@ -1,28 +1,13 @@
-.am-section--compare {
-    background: var(--am-charcoal);
-    padding: var(--section-pad-desktop) 0;
-}
-
-.am-section--compare .am-heading-stack h2 {
-    color: var(--am-white);
-}
-
-.am-section--compare .am-heading-stack p {
-    color: rgba(255, 255, 255, 0.55);
-}
-
-.am-section--compare .am-label {
-    color: var(--am-gold);
-}
-
-.compare-tabs {
+/* ────────────── SECTION: COMPARISON (SOP v2) ────────────── */
+.compare-tabs-nav {
     display: flex;
     justify-content: center;
-    gap: 8px;
+    gap: 12px;
     margin-bottom: 40px;
+    flex-wrap: wrap;
 }
 
-.compare-tab {
+.compare-tab-btn {
     font-family: var(--font-sans);
     font-size: 14px;
     font-weight: 600;
@@ -35,41 +20,73 @@
     transition: all 0.25s;
 }
 
-.compare-tab:hover {
+.compare-tab-btn:hover {
     border-color: rgba(255, 255, 255, 0.3);
     color: rgba(255, 255, 255, 0.8);
 }
 
-.compare-tab.active {
+.compare-tab-btn.active {
     background: var(--am-gold);
     border-color: var(--am-gold);
     color: var(--am-white);
+    box-shadow: 0 4px 12px rgba(188, 163, 103, 0.3);
 }
 
-.compare-panel {
+.compare-tab-panel {
     display: none;
 }
 
-.compare-panel.active {
+.compare-tab-panel.active {
     display: block;
+    animation: fadeIn 0.4s ease;
 }
 
-.compare-table-wrapper {
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* COMPARISON */
+.am-membership-global.am-section--compare {
+    background: var(--am-charcoal, #242119);
+    padding: var(--section-pad-desktop) 0;
+}
+
+.am-membership-global.am-section--compare .am-heading-stack h2 {
+    color: var(--am-white, #FFFFFF);
+}
+
+.am-membership-global.am-section--compare .am-heading-stack p {
+    color: rgba(255, 255, 255, 0.55);
+}
+
+.am-membership-global.am-section--compare .am-label {
+    color: var(--am-gold, #BCA367);
+}
+
+.am-membership-global .compare-table-wrapper {
     overflow-x: auto;
-    border-radius: var(--radius-standard);
+    border-radius: var(--radius-standard, 16px);
     -webkit-overflow-scrolling: touch;
 }
 
-.compare-table {
+.am-membership-global .compare-table {
     width: 100%;
     border-collapse: separate;
     border-spacing: 0;
-    font-family: var(--font-sans);
+    font-family: var(--font-sans, sans-serif);
     font-size: 14px;
     min-width: 700px;
 }
 
-.compare-table thead th {
+.am-membership-global .compare-table thead th {
     padding: 18px 16px;
     text-align: center;
     font-weight: 600;
@@ -79,7 +96,7 @@
     white-space: nowrap;
 }
 
-.compare-table thead th:first-child {
+.am-membership-global .compare-table thead th:first-child {
     text-align: left;
     color: rgba(255, 255, 255, 0.4);
     font-size: 12px;
@@ -87,12 +104,12 @@
     letter-spacing: 1px;
 }
 
-.compare-table thead th.am-col {
-    color: var(--am-gold);
+.am-membership-global .compare-table thead th.am-col {
+    color: var(--am-gold, #BCA367);
     font-size: 14px;
 }
 
-.compare-table tbody td {
+.am-membership-global .compare-table tbody td {
     padding: 16px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.06);
     text-align: center;
@@ -100,34 +117,34 @@
     vertical-align: top;
 }
 
-.compare-table tbody td:first-child {
+.am-membership-global .compare-table tbody td:first-child {
     text-align: left;
-    color: var(--am-white);
+    color: var(--am-white, #FFFFFF);
     font-weight: 500;
     padding-right: 20px;
 }
 
-.compare-table tbody td:first-child .system-label {
+.am-membership-global .compare-table tbody td:first-child .system-label {
     display: block;
     font-size: 13px;
     font-weight: 600;
-    color: var(--am-white);
+    color: var(--am-white, #FFFFFF);
     margin-bottom: 2px;
 }
 
-.compare-table tbody td:first-child .system-desc {
+.am-membership-global .compare-table tbody td:first-child .system-desc {
     font-size: 12px;
     color: rgba(255, 255, 255, 0.4);
     font-weight: 400;
     line-height: 1.4;
 }
 
-.compare-table td.am-col,
-.compare-table th.am-col {
+.am-membership-global .compare-table td.am-col,
+.am-membership-global .compare-table th.am-col {
     background: rgba(188, 163, 103, 0.08);
 }
 
-.compare-table tfoot td {
+.am-membership-global .compare-table tfoot td {
     padding: 18px 16px;
     border-top: 2px solid rgba(255, 255, 255, 0.1);
     font-weight: 700;
@@ -136,80 +153,81 @@
     color: rgba(255, 255, 255, 0.5);
 }
 
-.compare-table tfoot td:first-child {
+.am-membership-global .compare-table tfoot td:first-child {
     text-align: left;
-    color: var(--am-white);
-    font-family: var(--font-serif);
+    color: var(--am-white, #FFFFFF);
+    font-family: var(--font-serif, serif);
     font-size: 18px;
     font-weight: 500;
 }
 
-.compare-table tfoot td.am-col {
-    color: var(--am-gold);
+.am-membership-global .compare-table tfoot td.am-col {
+    color: var(--am-gold, #BCA367);
     font-size: 20px;
 }
 
-.ck {
-    color: var(--am-gold);
+.am-membership-global .ck {
+    color: var(--am-gold, #BCA367);
     font-size: 18px;
 }
 
-.xk {
+.am-membership-global .xk {
     color: rgba(255, 255, 255, 0.2);
     font-size: 16px;
 }
 
-.pk {
+.am-membership-global .pk {
     color: rgba(255, 255, 255, 0.35);
     font-size: 13px;
 }
 
-.compare-tagline {
+.am-membership-global .compare-tagline {
     text-align: center;
     margin-top: 40px;
-    font-family: var(--font-serif);
+    font-family: var(--font-serif, serif);
     font-size: 20px;
-    color: var(--am-white);
+    color: var(--am-white, #FFFFFF);
     font-weight: 500;
     line-height: 1.5;
 }
 
-.compare-tagline em {
-    color: var(--am-gold);
+.am-membership-global .compare-tagline em {
+    color: var(--am-gold, #BCA367);
     font-style: italic;
 }
 
-.compare-callouts {
+.am-membership-global .compare-callouts {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
     margin-top: 48px;
 }
 
-.compare-callout-card {
-    background: var(--am-charcoal-dark);
-    border-radius: var(--radius-standard);
+.am-membership-global .compare-callout-card {
+    background: var(--am-charcoal-dark, #312C21);
+    border-radius: var(--radius-standard, 16px);
     padding: 24px;
-    border-left: 3px solid var(--am-gold);
+    border-left: 3px solid var(--am-gold, #BCA367);
+    text-align: left;
 }
 
-.compare-callout-card .callout-flag {
+.am-membership-global .compare-callout-card .callout-flag {
     font-size: 12px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
-    color: var(--am-gold);
+    color: var(--am-gold, #BCA367);
     margin-bottom: 8px;
 }
 
-.compare-callout-card p {
+.am-membership-global .compare-callout-card p {
     color: rgba(255, 255, 255, 0.7);
     font-size: 14px;
     line-height: 1.55;
 }
 
-.compare-callout-card .callout-answer {
-    color: var(--am-white);
+.am-membership-global .compare-callout-card .callout-answer {
+    color: var(--am-white, #FFFFFF);
     font-weight: 600;
     font-size: 13px;
     margin-top: 10px;
@@ -218,18 +236,18 @@
     gap: 6px;
 }
 
-.compare-callout-card .callout-answer::before {
+.am-membership-global .compare-callout-card .callout-answer::before {
     content: '→';
-    color: var(--am-gold);
+    color: var(--am-gold, #BCA367);
 }
 
 @media (max-width: 768px) {
-    .compare-table {
-        min-width: 600px;
-        font-size: 13px;
+    .am-membership-global .compare-callouts {
+        grid-template-columns: 1fr;
     }
 
-    .compare-callouts {
-        grid-template-columns: 1fr;
+    .am-membership-global .compare-table {
+        min-width: 600px;
+        font-size: 13px;
     }
 }

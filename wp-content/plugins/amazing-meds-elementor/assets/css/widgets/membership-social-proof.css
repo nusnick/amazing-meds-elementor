@@ -1,9 +1,6 @@
-.am-membership-social-proof {
-    background: var(--am-white);
-    border-bottom: 1px solid var(--am-divider);
-}
-
-.social-proof-bar {
+/* ────────────── SECTION: SOCIAL PROOF BAR ────────────── */
+/* SOCIAL PROOF BAR */
+.am-membership-global .social-proof-bar {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -12,48 +9,38 @@
     flex-wrap: wrap;
 }
 
-.social-proof-stars {
+.am-membership-global .social-proof-stars {
     display: flex;
     align-items: center;
     gap: 8px;
     font-size: 14px;
     font-weight: 600;
-    color: var(--am-charcoal);
+    color: var(--am-charcoal, #242119);
 }
 
-.social-proof-stars .stars {
-    color: var(--am-gold);
+.am-membership-global .social-proof-stars .stars {
+    color: var(--am-gold, #BCA367);
     font-size: 16px;
     letter-spacing: 2px;
 }
 
-.social-proof-item {
+.am-membership-global .social-proof-item {
     display: flex;
     align-items: center;
     gap: 8px;
     font-size: 14px;
-    color: var(--am-muted);
+    color: var(--am-muted, #6D685D);
     font-weight: 500;
 }
 
-.social-proof-item svg {
-    color: var(--am-gold);
-    stroke: var(--am-gold);
-}
-
-.proof-separator {
+.am-membership-global .proof-separator {
     width: 1px;
     height: 24px;
-    background: var(--am-divider);
+    background: var(--am-divider, #D5C6B9);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
     .social-proof-bar {
         gap: 16px;
-        padding: 20px 0;
-    }
-
-    .proof-separator {
-        display: none;
     }
 }

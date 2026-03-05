@@ -1,0 +1,333 @@
+/* ========================================
+   AMAZING MEDS, MEMBERSHIP PAGE v2 GLOBAL
+   Strictly Namespaced to avoid affecting other pages
+   ======================================== */
+
+.am-membership-global {
+    --am-charcoal: #242119;
+    --am-charcoal-dark: #312C21;
+    --am-gold: #BCA367;
+    --am-gold-hover: #a8914f;
+    --am-beige: #E7DDCC;
+    --am-beige-accent: #D0BFA2;
+    --am-card-white: #F4F3F0;
+    --am-white: #FFFFFF;
+    --am-muted: #6D685D;
+    --am-divider: #D5C6B9;
+    --font-serif: 'Playfair Display', Georgia, serif;
+    --font-sans: 'Inter', -apple-system, sans-serif;
+    --radius-pill: 999px;
+    --radius-standard: 16px;
+    --radius-feature: 24px;
+    --radius-cap: 56px;
+    --shadow-soft: 0 2px 12px rgba(36, 33, 25, 0.06);
+    --shadow-lift: 0 8px 32px rgba(36, 33, 25, 0.12);
+    --section-pad-desktop: 96px;
+    --section-pad-mobile: 56px;
+    --card-padding: 28px;
+    --card-gap: 28px;
+    --heading-to-sub: 12px;
+    --sub-to-content: 48px;
+}
+
+.am-membership-global h1 {
+    font-family: var(--font-serif);
+    font-size: 60px;
+    font-weight: 500;
+    line-height: 1.12;
+    color: var(--am-charcoal);
+}
+
+.am-membership-global h2 {
+    font-family: var(--font-serif);
+    font-size: 44px;
+    font-weight: 500;
+    line-height: 1.18;
+    color: var(--am-charcoal);
+}
+
+.am-membership-global h3 {
+    font-family: var(--font-serif);
+    font-size: 28px;
+    font-weight: 500;
+    line-height: 1.3;
+    color: var(--am-charcoal);
+}
+
+.am-membership-global p,
+.am-membership-global li,
+.am-membership-global span,
+.am-membership-global a,
+.am-membership-global button {
+    font-family: var(--font-sans);
+}
+
+.am-membership-global .am-heading-stack {
+    text-align: center;
+}
+
+.am-membership-global .am-heading-stack h2 {
+    margin-bottom: var(--heading-to-sub);
+}
+
+.am-membership-global .am-heading-stack p {
+    font-size: 16px;
+    color: var(--am-muted);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.65;
+}
+
+.am-membership-global .am-heading-stack+* {
+    margin-top: var(--sub-to-content);
+}
+
+.am-membership-global .am-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-sans);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--am-gold);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+}
+
+/* ── Buttons ── */
+.am-membership-global .am-btn--primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--am-charcoal);
+    color: var(--am-white);
+    padding: 14px 28px;
+    border-radius: var(--radius-pill);
+    font-family: var(--font-sans);
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.am-membership-global .am-btn--primary:hover {
+    background: var(--am-charcoal-dark);
+    box-shadow: var(--shadow-lift);
+    transform: translateY(-2px);
+}
+
+.am-membership-global .am-btn--gold {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--am-gold);
+    color: var(--am-white);
+    padding: 14px 28px;
+    border-radius: var(--radius-pill);
+    font-family: var(--font-sans);
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.am-membership-global .am-btn--gold:hover {
+    background: var(--am-gold-hover);
+    box-shadow: var(--shadow-lift);
+    transform: translateY(-2px);
+}
+
+.am-membership-global .am-btn--secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: transparent;
+    color: var(--am-charcoal);
+    padding: 14px 28px;
+    border-radius: var(--radius-pill);
+    font-family: var(--font-sans);
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1.5px solid var(--am-charcoal);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.am-membership-global .am-btn--secondary:hover {
+    background: var(--am-charcoal);
+    color: var(--am-white);
+}
+
+.am-membership-global .am-btn--primary-on-dark {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--am-white);
+    color: var(--am-charcoal);
+    padding: 14px 28px;
+    border-radius: var(--radius-pill);
+    font-family: var(--font-sans);
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.am-membership-global .am-btn--primary-on-dark:hover {
+    background: var(--am-card-white);
+    box-shadow: var(--shadow-lift);
+    transform: translateY(-2px);
+}
+
+.am-membership-global .am-btn--secondary-on-dark {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: transparent;
+    color: var(--am-white);
+    padding: 14px 28px;
+    border-radius: var(--radius-pill);
+    font-family: var(--font-sans);
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1.5px solid rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.am-membership-global .am-btn--secondary-on-dark:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.am-membership-global .am-icon-circle {
+    width: 46px;
+    height: 46px;
+    background: var(--am-beige-accent);
+    border-radius: var(--radius-pill);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.am-membership-global .am-icon-circle svg {
+    width: 20px;
+    height: 20px;
+    color: var(--am-charcoal);
+    stroke: var(--am-charcoal);
+}
+
+.am-membership-global .am-icon-circle--gold {
+    background: var(--am-gold);
+}
+
+.am-membership-global .am-icon-circle--gold svg {
+    color: var(--am-white);
+    stroke: var(--am-white);
+}
+
+.am-membership-global .am-badge {
+    display: inline-block;
+    font-family: var(--font-sans);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: var(--radius-pill);
+    background: var(--am-beige-accent);
+    color: var(--am-charcoal);
+}
+
+.am-membership-global .am-badge--gold {
+    background: var(--am-gold);
+    color: var(--am-white);
+}
+
+.am-membership-global .am-card {
+    background: var(--am-card-white);
+    border-radius: var(--radius-standard);
+    padding: var(--card-padding);
+    box-shadow: var(--shadow-soft);
+}
+
+.am-membership-global .am-card--dark {
+    background: var(--am-charcoal-dark);
+    color: var(--am-white);
+    border-radius: var(--radius-standard);
+    padding: var(--card-padding);
+    box-shadow: var(--shadow-lift);
+}
+
+.am-membership-global .am-image-placeholder {
+    background: var(--am-beige);
+    border: 2px dashed var(--am-divider);
+    border-radius: var(--radius-feature);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--am-muted);
+    font-size: 13px;
+    gap: 10px;
+    padding: 32px;
+}
+
+.am-membership-global .am-image-placeholder .img-note {
+    font-size: 11px;
+    color: var(--am-beige-accent);
+    background: var(--am-charcoal);
+    padding: 4px 12px;
+    border-radius: var(--radius-pill);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+/* STICKY MOBILE CTA */
+.sticky-mobile-cta {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    background: #FFFFFF;
+    border-top: 1px solid #D5C6B9;
+    padding: 12px 16px;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.sticky-mobile-cta .sticky-inner {
+    display: flex;
+    gap: 10px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .am-membership-global h1 {
+        font-size: 42px;
+    }
+
+    .am-membership-global h2 {
+        font-size: 34px;
+    }
+
+    .am-membership-global h3 {
+        font-size: 24px;
+    }
+
+    /* Show sticky CTA on mobile */
+    .sticky-mobile-cta {
+        display: block;
+    }
+}

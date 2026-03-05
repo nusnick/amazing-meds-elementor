@@ -56,6 +56,7 @@ final class Amazing_Meds_Elementor
     public function register_frontend_styles()
     {
         wp_register_style('am-global', plugins_url('assets/css/global.css', __FILE__), [], self::VERSION);
+        wp_register_style('am-membership-global', plugins_url('assets/css/widgets/am-membership-global.css', __FILE__), [], self::VERSION);
         wp_enqueue_style('am-global');
 
         // Google Fonts

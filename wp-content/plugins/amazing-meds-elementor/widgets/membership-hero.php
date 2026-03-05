@@ -31,8 +31,9 @@ class AM_Membership_Hero_Widget extends \Elementor\Widget_Base
 
     public function get_style_depends()
     {
+        wp_register_style('am-membership-global', plugins_url('../assets/css/widgets/am-membership-global.css', __FILE__));
         wp_register_style('am-membership-hero', plugins_url('../assets/css/widgets/membership-hero.css', __FILE__));
-        return ['am-membership-hero'];
+        return ['am-membership-global', 'am-membership-hero'];
     }
 
     protected function register_controls()
@@ -191,14 +192,13 @@ class AM_Membership_Hero_Widget extends \Elementor\Widget_Base
     {
         $settings = $this->get_settings_for_display();
         ?>
-        <section class="am-membership-hero am-section--hero">
+        <section class="am-membership-global am-section--hero">
             <div class="am-container">
-                <div class="membership-hero-grid">
+                <div class="hero-grid">
                     <div class="hero-content">
                         <?php if (!empty($settings['label'])): ?>
                             <div class="am-label">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <path
                                         d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
                                 </svg>
@@ -253,8 +253,7 @@ class AM_Membership_Hero_Widget extends \Elementor\Widget_Base
                             </div>
                         <?php else: ?>
                             <div class="am-image-placeholder" style="aspect-ratio: 4/3.5;">
-                                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="1">
+                                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
                                     <rect x="3" y="3" width="18" height="18" rx="2" />
                                     <circle cx="8.5" cy="8.5" r="1.5" />
                                     <path d="M21 15l-5-5L5 21" />

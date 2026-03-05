@@ -31,8 +31,9 @@ class AM_Membership_System_5_Widget extends \Elementor\Widget_Base
 
     public function get_style_depends()
     {
+        wp_register_style('am-membership-global', plugins_url('../assets/css/widgets/am-membership-global.css', __FILE__));
         wp_register_style('am-membership-system-5', plugins_url('../assets/css/widgets/membership-system-5.css', __FILE__));
-        return ['am-membership-system-5'];
+        return ['am-membership-global', 'am-membership-system-5'];
     }
 
     protected function register_controls()
@@ -184,7 +185,7 @@ class AM_Membership_System_5_Widget extends \Elementor\Widget_Base
     {
         $settings = $this->get_settings_for_display();
         ?>
-        <section class="am-membership-system-5 am-section--system5">
+        <section class="am-membership-global am-section--system5">
             <div class="am-container">
                 <div class="am-heading-stack">
                     <?php if (!empty($settings['label'])): ?>

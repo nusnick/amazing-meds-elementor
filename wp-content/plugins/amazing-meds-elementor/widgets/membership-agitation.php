@@ -31,8 +31,9 @@ class AM_Membership_Agitation_Widget extends \Elementor\Widget_Base
 
     public function get_style_depends()
     {
+        wp_register_style('am-membership-global', plugins_url('../assets/css/widgets/am-membership-global.css', __FILE__));
         wp_register_style('am-membership-agitation', plugins_url('../assets/css/widgets/membership-agitation.css', __FILE__));
-        return ['am-membership-agitation'];
+        return ['am-membership-global', 'am-membership-agitation'];
     }
 
     protected function register_controls()
@@ -72,10 +73,12 @@ class AM_Membership_Agitation_Widget extends \Elementor\Widget_Base
                 'type' => \Elementor\Controls_Manager::REPEATER,
                 'fields' => [
                     [
-                        'name' => 'emoji',
-                        'label' => esc_html__('Emoji/Icon', 'amazing-meds-elementor'),
-                        'type' => \Elementor\Controls_Manager::TEXT,
-                        'default' => '❌',
+                        'name' => 'image',
+                        'label' => esc_html__('Image', 'amazing-meds-elementor'),
+                        'type' => \Elementor\Controls_Manager::MEDIA,
+                        'default' => [
+                            'url' => \Elementor\Utils::get_placeholder_image_src(),
+                        ],
                     ],
                     [
                         'name' => 'title',
@@ -135,7 +138,7 @@ class AM_Membership_Agitation_Widget extends \Elementor\Widget_Base
     {
         $settings = $this->get_settings_for_display();
         ?>
-        <section class="am-membership-agitation am-section--white">
+        <section class="am-membership-global am-section--agitation">
             <div class="am-container">
                 <div class="am-heading-stack">
                     <?php if (!empty($settings['label'])): ?>
@@ -152,8 +155,10 @@ class AM_Membership_Agitation_Widget extends \Elementor\Widget_Base
                     <div class="who-grid">
                         <?php foreach ($settings['items'] as $item): ?>
                             <div class="who-card">
-                                <div class="who-emoji">
-                                    <?php echo esc_html($item['emoji']); ?>
+                                <div class="who-image">
+                                    <?php if (!empty($item['image']['url'])): ?>
+                                        <?php echo \Elementor\Group_Control_Image_Size::get_attachment_image_html($item, 'image', 'image'); ?>
+                                    <?php endif; ?>
                                 </div>
                                 <h3>
                                     <?php echo esc_html($item['title']); ?>

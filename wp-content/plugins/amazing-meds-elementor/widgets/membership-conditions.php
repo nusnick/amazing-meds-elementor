@@ -31,8 +31,9 @@ class AM_Membership_Conditions_Widget extends \Elementor\Widget_Base
 
     public function get_style_depends()
     {
+        wp_register_style('am-membership-global', plugins_url('../assets/css/widgets/am-membership-global.css', __FILE__));
         wp_register_style('am-membership-conditions', plugins_url('../assets/css/widgets/membership-conditions.css', __FILE__));
-        return ['am-membership-conditions'];
+        return ['am-membership-global', 'am-membership-conditions'];
     }
 
     protected function register_controls()
@@ -115,7 +116,7 @@ class AM_Membership_Conditions_Widget extends \Elementor\Widget_Base
     {
         $settings = $this->get_settings_for_display();
         ?>
-        <section class="am-membership-conditions am-section--conditions">
+        <section class="am-membership-global am-section--conditions">
             <div class="am-container">
                 <div class="am-heading-stack">
                     <?php if (!empty($settings['label'])): ?>

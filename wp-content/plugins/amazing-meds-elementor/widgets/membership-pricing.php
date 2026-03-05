@@ -31,8 +31,9 @@ class AM_Membership_Pricing_Widget extends \Elementor\Widget_Base
 
     public function get_style_depends()
     {
+        wp_register_style('am-membership-global', plugins_url('../assets/css/widgets/am-membership-global.css', __FILE__));
         wp_register_style('am-membership-pricing', plugins_url('../assets/css/widgets/membership-pricing-v2.css', __FILE__));
-        return ['am-membership-pricing'];
+        return ['am-membership-global', 'am-membership-pricing'];
     }
 
     protected function register_controls()
@@ -146,7 +147,7 @@ class AM_Membership_Pricing_Widget extends \Elementor\Widget_Base
     {
         $settings = $this->get_settings_for_display();
         ?>
-        <section class="am-membership-pricing am-section--pricing" id="pricing">
+        <section class="am-membership-global am-section--pricing" id="pricing">
             <div class="am-container">
                 <div class="am-heading-stack">
                     <?php if (!empty($settings['label'])): ?>
@@ -167,7 +168,16 @@ class AM_Membership_Pricing_Widget extends \Elementor\Widget_Base
                 <?php if (!empty($settings['cards'])): ?>
                     <div class="pricing-grid">
                         <?php foreach ($settings['cards'] as $card):
-                            $card_class = ('yes' === $card['is_featured']) ? 'pricing-card--featured' : '';
+                            ?>
+                            <?php
+                            $card_class = 'pricing-card--standard';
+                            if ('yes' === $card['is_featured']) {
+                                $card_class = 'pricing-card--featured';
+                            }
+                            // If we want to support 'entry' we might need another control,
+                            // but for now let's assume first one is entry if not featured?
+                            // Actually let's just use featured vs standard as per current PHP.
+                            // I'll adjust CSS to handle .pricing-card--standard.
                             ?>
                             <div class="pricing-card <?php echo esc_attr($card_class); ?>">
                                 <div class="pricing-badge">

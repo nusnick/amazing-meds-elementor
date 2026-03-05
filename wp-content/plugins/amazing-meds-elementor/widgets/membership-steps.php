@@ -31,8 +31,9 @@ class AM_Membership_Steps_Widget extends \Elementor\Widget_Base
 
     public function get_style_depends()
     {
+        wp_register_style('am-membership-global', plugins_url('../assets/css/widgets/am-membership-global.css', __FILE__));
         wp_register_style('am-membership-steps', plugins_url('../assets/css/widgets/membership-steps-v2.css', __FILE__));
-        return ['am-membership-steps'];
+        return ['am-membership-global', 'am-membership-steps'];
     }
 
     protected function register_controls()
@@ -116,7 +117,7 @@ class AM_Membership_Steps_Widget extends \Elementor\Widget_Base
     {
         $settings = $this->get_settings_for_display();
         ?>
-        <section class="am-membership-steps am-section--steps">
+        <section class="am-membership-global am-section--steps">
             <div class="am-container">
                 <div class="am-heading-stack">
                     <?php if (!empty($settings['label'])): ?>
@@ -133,7 +134,7 @@ class AM_Membership_Steps_Widget extends \Elementor\Widget_Base
                     <div class="steps-grid" style="margin-top: var(--sub-to-content);">
                         <?php foreach ($settings['items'] as $item): ?>
                             <div class="step-card">
-                                <div class="step-icon-box">
+                                <div class="step-num">
                                     <?php echo esc_html($item['number']); ?>
                                 </div>
                                 <h3>

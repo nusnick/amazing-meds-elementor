@@ -1,23 +1,24 @@
-.am-section--trust-banner {
+/* ──────────────/* INSURANCE BANNER */
+.am-membership-global.am-section--trust-banner {
     padding: 48px 0;
-    background: var(--am-white);
+    background: var(--am-white, #FFFFFF);
 }
 
-.trust-banner-inner {
-    background: var(--am-charcoal);
-    border-radius: var(--radius-feature);
+.am-membership-global .trust-banner-inner {
+    background: var(--am-charcoal, #242119);
+    border-radius: var(--radius-feature, 24px);
     padding: 40px 48px;
     text-align: center;
 }
 
-.trust-banner-inner p {
-    color: var(--am-white);
+.am-membership-global .trust-banner-inner p {
+    color: var(--am-white, #FFFFFF);
     font-size: 16px;
     font-weight: 500;
     margin-bottom: 28px;
 }
 
-.trust-logos {
+.am-membership-global .trust-logos {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -25,7 +26,7 @@
     flex-wrap: wrap;
 }
 
-.trust-logo-item {
+.am-membership-global .trust-logo-item {
     color: rgba(255, 255, 255, 0.5);
     font-size: 13px;
     font-weight: 600;
@@ -33,15 +34,15 @@
     text-transform: uppercase;
     padding: 8px 20px;
     border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: var(--radius-pill);
+    border-radius: var(--radius-pill, 999px);
 }
 
 @media (max-width: 768px) {
-    .trust-logos {
+    .am-membership-global .trust-logos {
         gap: 16px;
     }
 
-    .trust-banner-inner {
+    .am-membership-global .trust-banner-inner {
         padding: 32px 24px;
     }
 }

@@ -31,10 +31,10 @@ class AM_Membership_Included_Benefits_Widget extends \Elementor\Widget_Base
 
     public function get_style_depends()
     {
+        wp_register_style('am-membership-global', plugins_url('../assets/css/widgets/am-membership-global.css', __FILE__));
         wp_register_style('am-membership-included-benefits', plugins_url('../assets/css/widgets/membership-included-benefits.css', __FILE__));
-        return ['am-membership-included-benefits'];
+        return ['am-membership-global', 'am-membership-included-benefits'];
     }
-
     protected function register_controls()
     {
 
@@ -130,62 +130,59 @@ class AM_Membership_Included_Benefits_Widget extends \Elementor\Widget_Base
     {
         $settings = $this->get_settings_for_display();
         ?>
-        <section class="am-membership-included-benefits am-section--included">
+        <section class="am-membership-global am-section--included">
             <div class="am-container">
-                <div class="included-card am-cap">
-                    <div class="included-grid">
-                        <div class="included-content">
-                            <?php if (!empty($settings['label'])): ?>
-                                <div class="am-label">
-                                    <?php echo esc_html($settings['label']); ?>
-                                </div>
-                            <?php endif; ?>
-                            <h2>
-                                <?php echo esc_html($settings['title']); ?>
-                            </h2>
-                            <p>
-                                <?php echo esc_html($settings['description']); ?>
-                            </p>
+                <div class="included-grid">
+                    <div class="included-content">
+                        <?php if (!empty($settings['label'])): ?>
+                            <div class="am-label">
+                                <?php echo esc_html($settings['label']); ?>
+                            </div>
+                        <?php endif; ?>
+                        <h2>
+                            <?php echo esc_html($settings['title']); ?>
+                        </h2>
+                        <p>
+                            <?php echo esc_html($settings['description']); ?>
+                        </p>
 
-                            <?php if (!empty($settings['items'])): ?>
-                                <div class="included-list">
-                                    <?php foreach ($settings['items'] as $item): ?>
-                                        <div class="included-item">
-                                            <div class="am-icon-circle">
-                                                <?php echo $item['icon_svg']; ?>
-                                            </div>
-                                            <div class="item-text">
-                                                <strong>
-                                                    <?php echo esc_html($item['title']); ?>
-                                                </strong>
-                                                <p>
-                                                    <?php echo esc_html($item['description']); ?>
-                                                </p>
-                                            </div>
+                        <?php if (!empty($settings['items'])): ?>
+                            <ul class="included-list">
+                                <?php foreach ($settings['items'] as $item): ?>
+                                    <li class="included-item">
+                                        <div class="am-icon-circle">
+                                            <?php echo $item['icon_svg']; ?>
                                         </div>
-                                    <?php endforeach; ?>
-                                </div>
-                            <?php endif; ?>
-                        </div>
+                                        <div class="item-text">
+                                            <strong>
+                                                <?php echo esc_html($item['title']); ?>
+                                            </strong>
+                                            <span>
+                                                <?php echo esc_html($item['description']); ?>
+                                            </span>
+                                        </div>
+                                    </li>
+                                <?php endforeach; ?>
+                            </ul>
+                        <?php endif; ?>
+                    </div>
 
-                        <div class="included-image">
-                            <?php if (!empty($settings['image']['url'])): ?>
-                                <div class="included-image-wrapper">
-                                    <?php echo \Elementor\Group_Control_Image_Size::get_attachment_image_html($settings, 'image'); ?>
-                                </div>
-                            <?php else: ?>
-                                <div class="am-image-placeholder" style="aspect-ratio: 1/1;">
-                                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                        stroke-width="1">
-                                        <rect x="3" y="3" width="18" height="18" rx="2" />
-                                        <circle cx="8.5" cy="8.5" r="1.5" />
-                                        <path d="M21 15l-5-5L5 21" />
-                                    </svg>
-                                    <span>Benefit Visual</span>
-                                    <span class="img-note">Image Placeholder</span>
-                                </div>
-                            <?php endif; ?>
-                        </div>
+                    <div class="included-image">
+                        <?php if (!empty($settings['image']['url'])): ?>
+                            <div class="included-image-wrapper">
+                                <?php echo \Elementor\Group_Control_Image_Size::get_attachment_image_html($settings, 'image'); ?>
+                            </div>
+                        <?php else: ?>
+                            <div class="am-image-placeholder" style="aspect-ratio: 1/1;">
+                                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                                    <rect x="3" y="3" width="18" height="18" rx="2" />
+                                    <circle cx="8.5" cy="8.5" r="1.5" />
+                                    <path d="M21 15l-5-5L5 21" />
+                                </svg>
+                                <span>Benefit Visual</span>
+                                <span class="img-note">Image Placeholder</span>
+                            </div>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>

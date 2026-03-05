@@ -6,7 +6,7 @@ if (!defined('ABSPATH')) {
 /**
  * Amazing Meds Hero Widget
  */
-class AM_Hair_Comparison_Grid_Widget extends \Elementor\Widget_Base
+class AM_Hair_Hero_Widget extends \Elementor\Widget_Base
 {
 
     const VERSION = '1.0.0';
@@ -18,7 +18,7 @@ class AM_Hair_Comparison_Grid_Widget extends \Elementor\Widget_Base
 
     public function get_title()
     {
-        return esc_html__('AM Hair Comparison Grid', 'amazing-meds-elementor');
+        return esc_html__('AM Hair Hero', 'amazing-meds-elementor');
     }
 
     public function get_icon()

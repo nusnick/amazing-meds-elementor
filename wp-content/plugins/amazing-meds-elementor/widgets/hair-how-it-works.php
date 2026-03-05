@@ -6,7 +6,7 @@ if (!defined('ABSPATH')) {
 /**
  * Amazing Meds How It Works Widget
  */
-class AM_Hair_Ingredients_Widget extends \Elementor\Widget_Base
+class AM_Hair_How_It_Works_Widget extends \Elementor\Widget_Base
 {
 
     public function get_name()
@@ -16,7 +16,7 @@ class AM_Hair_Ingredients_Widget extends \Elementor\Widget_Base
 
     public function get_title()
     {
-        return esc_html__('AM Hair Ingredients', 'amazing-meds-elementor');
+        return esc_html__('AM Hair How It Works', 'amazing-meds-elementor');
     }
 
     public function get_icon()

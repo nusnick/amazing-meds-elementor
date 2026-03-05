@@ -31,8 +31,9 @@ class AM_Membership_Testimonials_Widget extends \Elementor\Widget_Base
 
     public function get_style_depends()
     {
+        wp_register_style('am-membership-global', plugins_url('../assets/css/widgets/am-membership-global.css', __FILE__));
         wp_register_style('am-membership-testimonials', plugins_url('../assets/css/widgets/membership-testimonials.css', __FILE__));
-        return ['am-membership-testimonials'];
+        return ['am-membership-global', 'am-membership-testimonials'];
     }
 
     protected function register_controls()
@@ -115,7 +116,7 @@ class AM_Membership_Testimonials_Widget extends \Elementor\Widget_Base
     {
         $settings = $this->get_settings_for_display();
         ?>
-        <section class="am-membership-testimonials am-section--testimonials">
+        <section class="am-membership-global am-section--testimonials">
             <div class="am-container">
                 <div class="am-heading-stack">
                     <?php if (!empty($settings['label'])): ?>
@@ -135,16 +136,18 @@ class AM_Membership_Testimonials_Widget extends \Elementor\Widget_Base
                                 <div class="testimonial-stars">
                                     <?php echo esc_html($item['stars']); ?>
                                 </div>
-                                <p>
+                                <p class="testimonial-content">
                                     <?php echo $item['content']; ?>
                                 </p>
-                                <div class="testimonial-author">
-                                    <strong>
-                                        <?php echo esc_html($item['author_name']); ?>
-                                    </strong>
-                                    <span>
-                                        <?php echo esc_html($item['author_meta']); ?>
-                                    </span>
+                                <div class="testimonial-meta">
+                                    <div class="testimonial-author">
+                                        <strong>
+                                            <?php echo esc_html($item['author_name']); ?>
+                                        </strong>
+                                        <span>
+                                            <?php echo esc_html($item['author_meta']); ?>
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
                         <?php endforeach; ?>
