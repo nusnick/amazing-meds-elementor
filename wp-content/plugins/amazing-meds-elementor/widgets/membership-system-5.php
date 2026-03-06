@@ -184,8 +184,8 @@ class AM_Membership_System_5_Widget extends \Elementor\Widget_Base
     {
         $settings = $this->get_settings_for_display();
         ?>
-        <section class="am-membership-global am-section--system5">
-            <div class="am-container">
+        <section class="am-section--system5">
+            <div class="container">
                 <div class="am-heading-stack">
                     <?php if (!empty($settings['label'])): ?>
                         <div class="am-label">
@@ -205,7 +205,7 @@ class AM_Membership_System_5_Widget extends \Elementor\Widget_Base
                 <?php if (!empty($settings['items'])): ?>
                     <div class="system5-grid">
                         <?php foreach ($settings['items'] as $item):
-                            $card_class = ('yes' === $item['is_featured']) ? 'system5-card--featured' : 'system5-card';
+                            $card_class = ('yes' === $item['is_featured']) ? 'system5-card system5-card--featured' : 'system5-card am-card';
                             ?>
                             <div class="<?php echo esc_attr($card_class); ?>">
                                 <div class="step-num">

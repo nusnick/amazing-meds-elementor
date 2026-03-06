@@ -191,8 +191,8 @@ class AM_Membership_Hero_Widget extends \Elementor\Widget_Base
     {
         $settings = $this->get_settings_for_display();
         ?>
-        <section class="am-membership-global am-section--hero">
-            <div class="am-container">
+        <section class="am-section--hero">
+            <div class="container">
                 <div class="hero-grid">
                     <div class="hero-content">
                         <?php if (!empty($settings['label'])): ?>

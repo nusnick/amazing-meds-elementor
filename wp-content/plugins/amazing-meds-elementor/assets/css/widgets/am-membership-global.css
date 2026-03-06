@@ -294,6 +294,17 @@
      font-size: 13px;
      gap: 10px;
      padding: 32px;
+     max-width: 544px;
+ }
+
+ .included-image {
+     max-width: 544px;
+ }
+
+ .included-image img {
+     width: 100%;
+     height: 100%;
+     object-fit: cover;
  }
 
  .am-image-placeholder .img-note {
@@ -383,6 +394,14 @@
      display: grid;
      grid-template-columns: repeat(3, 1fr);
      gap: 20px;
+ }
+
+ .who-image img {
+     max-width: 90px;
+     object-fit: contain;
+     margin-bottom: 30px;
+     margin-left: auto;
+     margin-right: auto;
  }
 
  .who-card {

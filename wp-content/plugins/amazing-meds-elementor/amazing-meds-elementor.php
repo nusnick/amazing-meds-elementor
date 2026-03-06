@@ -81,7 +81,8 @@ final class Amazing_Meds_Elementor
         require_once(__DIR__ . '/widgets/membership-system-5.php');
         require_once(__DIR__ . '/widgets/membership-comparison.php');
         require_once(__DIR__ . '/widgets/membership-included-benefits.php');
-        require_once(__DIR__ . '/widgets/membership-steps.php');
+        require_once(__DIR__ . '/widgets/membership-what-include.php');
+        require_once(__DIR__ . '/widgets/membership-how-it-works.php');
         require_once(__DIR__ . '/widgets/membership-testimonials.php');
         require_once(__DIR__ . '/widgets/membership-pricing.php');
         require_once(__DIR__ . '/widgets/membership-conditions.php');
@@ -108,7 +109,8 @@ final class Amazing_Meds_Elementor
         $widgets_manager->register(new \AM_Membership_System_5_Widget());
         $widgets_manager->register(new \AM_Membership_Comparison_Widget());
         $widgets_manager->register(new \AM_Membership_Included_Benefits_Widget());
-        $widgets_manager->register(new \AM_Membership_Steps_Widget());
+        $widgets_manager->register(new \AM_Membership_What_Include_Widget());
+        $widgets_manager->register(new \AM_Membership_How_It_Works_Widget());
         $widgets_manager->register(new \AM_Membership_Testimonials_Widget());
         $widgets_manager->register(new \AM_Membership_Pricing_Widget());
         $widgets_manager->register(new \AM_Membership_Conditions_Widget());

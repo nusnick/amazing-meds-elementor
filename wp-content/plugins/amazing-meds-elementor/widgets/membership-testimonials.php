@@ -107,6 +107,33 @@ class AM_Membership_Testimonials_Widget extends \Elementor\Widget_Base
             ]
         );
 
+        $this->add_control(
+            'footer_text',
+            [
+                'label' => 'Footer Text',
+                'type' => \Elementor\Controls_Manager::TEXT,
+                'default' => 'Want to share your experience?',
+            ]
+        );
+
+        $this->add_control(
+            'link_text',
+            [
+                'label' => 'Link Text',
+                'type' => \Elementor\Controls_Manager::TEXT,
+                'default' => 'Contact us',
+            ]
+        );
+
+        $this->add_control(
+            'link_url',
+            [
+                'label' => 'Link URL',
+                'type' => \Elementor\Controls_Manager::URL,
+                'default' => ['url' => '#'],
+            ]
+        );
+
         $this->end_controls_section();
 
     }
@@ -115,8 +142,8 @@ class AM_Membership_Testimonials_Widget extends \Elementor\Widget_Base
     {
         $settings = $this->get_settings_for_display();
         ?>
-        <section class="am-membership-global am-section--testimonials">
-            <div class="am-container">
+        <section class="am-section--testimonials" style="background: var(--am-beige); padding: var(--section-pad-desktop) 0;">
+            <div class="container">
                 <div class="am-heading-stack">
                     <?php if (!empty($settings['label'])): ?>
                         <div class="am-label">
@@ -129,29 +156,39 @@ class AM_Membership_Testimonials_Widget extends \Elementor\Widget_Base
                 </div>
 
                 <?php if (!empty($settings['items'])): ?>
-                    <div class="testimonials-grid" style="margin-top: var(--sub-to-content);">
+                    <div
+                        style="margin-top: var(--sub-to-content); display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 900px; margin-left: auto; margin-right: auto;">
                         <?php foreach ($settings['items'] as $item): ?>
-                            <div class="testimonial-card">
-                                <div class="testimonial-stars"
-                                    style="color: var(--am-gold); font-size: 16px; letter-spacing: 2px; margin-bottom: 16px;">
+                            <div
+                                style="background: var(--am-card-white); border-radius: var(--radius-standard); padding: 32px; text-align: center;">
+                                <div style="color: var(--am-gold); font-size: 18px; letter-spacing: 3px; margin-bottom: 16px;">
                                     <?php echo esc_html($item['stars']); ?>
                                 </div>
-                                <p class="testimonial-content">
-                                    <?php echo $item['content']; ?>
+                                <p
+                                    style="font-family: var(--font-serif); font-size: 16px; font-style: italic; color: var(--am-charcoal); line-height: 1.5; margin-bottom: 16px;">
+                                    <?php echo wp_kses_post($item['content']); ?>
                                 </p>
-                                <div class="testimonial-meta">
-                                    <div class="testimonial-author">
-                                        <strong>
-                                            <?php echo esc_html($item['author_name']); ?>
-                                        </strong>
-                                        <span>
-                                            <?php echo esc_html($item['author_meta']); ?>
-                                        </span>
-                                    </div>
+                                <div style="font-size: 14px; font-weight: 600; color: var(--am-charcoal);">
+                                    <?php echo esc_html($item['author_name']); ?>
+                                </div>
+                                <div style="font-size: 13px; color: var(--am-muted);">
+                                    <?php echo esc_html($item['author_meta']); ?>
                                 </div>
                             </div>
                         <?php endforeach; ?>
                     </div>
+                <?php endif; ?>
+
+                <?php if (!empty($settings['footer_text']) || !empty($settings['link_text'])): ?>
+                    <p style="text-align:center; margin-top:24px; font-size:13px; color:var(--am-muted);">
+                        <?php echo esc_html($settings['footer_text']); ?>
+                        <?php if (!empty($settings['link_text'])): ?>
+                            <a href="<?php echo esc_url($settings['link_url']['url']); ?>"
+                                style="color:var(--am-charcoal); font-weight:600; text-decoration:underline;">
+                                <?php echo esc_html($settings['link_text']); ?>
+                            </a>
+                        <?php endif; ?>
+                    </p>
                 <?php endif; ?>
             </div>
         </section>

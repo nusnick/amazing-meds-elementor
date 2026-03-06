@@ -4,19 +4,19 @@ if (!defined('ABSPATH')) {
 }
 
 /**
- * Amazing Meds Membership Steps Widget
+ * Amazing Meds Membership How It Works Widget
  */
-class AM_Membership_Steps_Widget extends \Elementor\Widget_Base
+class AM_Membership_How_It_Works_Widget extends \Elementor\Widget_Base
 {
 
     public function get_name()
     {
-        return 'am_membership_steps';
+        return 'am_membership_how_it_works';
     }
 
     public function get_title()
     {
-        return esc_html__('AM Membership Steps', 'amazing-meds-elementor');
+        return esc_html__('AM Membership How It Works', 'amazing-meds-elementor');
     }
 
     public function get_icon()

@@ -188,7 +188,7 @@ class AM_Membership_Pricing_Widget extends \Elementor\Widget_Base
         $settings = $this->get_settings_for_display();
         ?>
         <section class="am-membership-global am-section--pricing" id="pricing">
-            <div class="am-container">
+            <div class="container">
                 <div class="am-heading-stack">
                     <?php if (!empty($settings['label'])): ?>
                         <div class="am-label">
