@@ -1,0 +1,2260 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --am-charcoal: #242119;
+    --am-dark: #312C21;
+    --am-gold: #BCA367;
+    --am-beige-accent: #D0BFA2;
+    --am-page-beige: #E7DDCC;
+    --am-card-offwhite: #F4F3F0;
+    --am-white: #FFFFFF;
+    --am-muted: #6D685D;
+    --am-divider: #D5C6B9;
+
+    --h1-desktop: 54px;
+    --h1-mobile: 36px;
+    --h2-desktop: 42px;
+    --h2-mobile: 32px;
+    --h3-desktop: 26px;
+    --h3-mobile: 22px;
+    --body: 16px;
+
+    --section-pad-desktop: 96px;
+    --section-pad-mobile: 56px;
+    --card-pad: 28px;
+    --card-gap: 28px;
+    --heading-to-sub: 12px;
+    --sub-to-content: 48px;
+    --container-max: 1200px;
+    --side-pad-desktop: 24px;
+    --side-pad-mobile: 16px;
+
+    --radius-pill: 999px;
+    --radius-standard: 16px;
+    --radius-feature: 24px;
+    --radius-cap: 60px;
+
+    --shadow-soft: 0 2px 12px rgba(36, 33, 25, 0.06);
+    --shadow-lift: 0 8px 32px rgba(36, 33, 25, 0.10);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    font-size: var(--body);
+    font-weight: 400;
+    color: var(--am-charcoal);
+    line-height: 1.6;
+    background: var(--am-white);
+    -webkit-font-smoothing: antialiased;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.am-container {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding-left: var(--side-pad-desktop);
+    padding-right: var(--side-pad-desktop);
+}
+
+h1,
+h2,
+h3 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 500;
+}
+
+h1 {
+    font-size: var(--h1-desktop);
+    line-height: 1.14;
+    letter-spacing: -0.01em;
+}
+
+h2 {
+    font-size: var(--h2-desktop);
+    line-height: 1.18;
+}
+
+h3 {
+    font-size: var(--h3-desktop);
+    line-height: 1.3;
+}
+
+.am-heading-stack {
+    text-align: center;
+}
+
+.am-heading-stack h2 {
+    margin-bottom: var(--heading-to-sub);
+}
+
+.am-heading-stack p {
+    max-width: 620px;
+    margin: 0 auto;
+    color: var(--am-muted);
+}
+
+.am-section {
+    padding: var(--section-pad-desktop) 0;
+    position: relative;
+}
+
+.am-section--white {
+    background: var(--am-white);
+}
+
+.am-section--beige {
+    background: var(--am-page-beige);
+}
+
+.am-section--dark {
+    background: var(--am-charcoal);
+    color: var(--am-white);
+}
+
+.am-section--dark h2,
+.am-section--dark h3 {
+    color: var(--am-white);
+}
+
+.am-cap {
+    border-top-left-radius: var(--radius-cap);
+    border-top-right-radius: var(--radius-cap);
+    overflow: hidden;
+    margin-top: -56px;
+    padding-top: var(--section-pad-desktop);
+    position: relative;
+    z-index: 2;
+}
+
+.am-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: var(--radius-pill);
+}
+
+.am-badge--gold {
+    background: var(--am-gold);
+    color: var(--am-white);
+}
+
+.am-badge--beige {
+    background: var(--am-beige-accent);
+    color: var(--am-charcoal);
+}
+
+.am-icon-circle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    border-radius: var(--radius-pill);
+    flex-shrink: 0;
+}
+
+.am-icon-circle--beige {
+    background: var(--am-beige-accent);
+    color: var(--am-charcoal);
+}
+
+.am-icon-circle--gold {
+    background: var(--am-gold);
+    color: var(--am-white);
+}
+
+.am-icon-circle--dark {
+    background: var(--am-charcoal);
+    color: var(--am-white);
+}
+
+.am-icon-circle svg {
+    width: 20px;
+    height: 20px;
+    stroke-width: 1.5;
+}
+
+.am-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 14px 28px;
+    border-radius: var(--radius-pill);
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    line-height: 1;
+}
+
+.am-btn--primary {
+    background: var(--am-charcoal);
+    color: var(--am-white);
+}
+
+.am-btn--primary:hover {
+    background: #3a3529;
+}
+
+.am-btn--secondary {
+    background: transparent;
+    color: var(--am-charcoal);
+    border: 1.5px solid var(--am-charcoal);
+}
+
+.am-btn--secondary:hover {
+    background: var(--am-card-offwhite);
+}
+
+.am-btn--gold {
+    background: var(--am-gold);
+    color: var(--am-white);
+}
+
+.am-btn--gold:hover {
+    background: #a8914f;
+}
+
+.am-btn--white {
+    background: var(--am-white);
+    color: var(--am-charcoal);
+}
+
+.am-btn--white:hover {
+    background: var(--am-card-offwhite);
+}
+
+.am-btn--outline-white {
+    background: transparent;
+    color: var(--am-white);
+    border: 1.5px solid rgba(255, 255, 255, 0.4);
+}
+
+.am-btn--outline-white:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.am-btn--lg {
+    padding: 16px 36px;
+    font-size: 16px;
+}
+
+.am-btn-row {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.am-card {
+    background: var(--am-card-offwhite);
+    border-radius: var(--radius-standard);
+    padding: var(--card-pad);
+    box-shadow: var(--shadow-soft);
+}
+
+.am-card--dark {
+    background: var(--am-dark);
+    border-radius: var(--radius-standard);
+    padding: var(--card-pad);
+    box-shadow: var(--shadow-lift);
+    color: var(--am-white);
+}
+
+.am-card--dark h3 {
+    color: var(--am-white);
+}
+
+.am-card--featured {
+    background: var(--am-dark);
+    border-radius: var(--radius-standard);
+    padding: var(--card-pad);
+    box-shadow: var(--shadow-lift);
+    color: var(--am-white);
+    border: 1px solid rgba(188, 163, 103, 0.3);
+}
+
+.am-section-cta {
+    text-align: center;
+    margin-top: 48px;
+}
+
+.muted {
+    color: var(--am-muted);
+}
+
+
+/* ============================================================
+       PROMO BANNER + NAV (AM_Header_v1)
+       ============================================================ */
+.am-promo-banner {
+    background: var(--am-charcoal);
+    padding: 9px 0;
+    font-size: 13px;
+    color: var(--am-white);
+}
+
+.am-promo-banner .am-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.am-promo-banner a {
+    color: var(--am-white);
+    text-decoration: none;
+}
+
+.am-promo-banner span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.am-promo-banner svg {
+    width: 14px;
+    height: 14px;
+}
+
+.am-nav-wrapper {
+    padding: 14px 0;
+}
+
+.am-nav-bar {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 12px 12px 12px 28px;
+    background: var(--am-white);
+    border-radius: var(--radius-pill);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: var(--shadow-soft);
+}
+
+.am-nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--am-charcoal);
+    text-decoration: none;
+    letter-spacing: -0.02em;
+}
+
+.am-nav-links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    list-style: none;
+}
+
+.am-nav-links a {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--am-charcoal);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.am-nav-links a:hover {
+    color: var(--am-gold);
+}
+
+
+/* ============================================================
+       SECTION 1: HERO + PRODUCT CAPSULE + PROBLEM AREAS
+       ---------------------------------------------------------------
+       ELEMENTOR BUILD NOTES:
+       - Section class: am-section am-section--white am-hero
+       - 2-column layout: Left (52%) text, Right (48%) product visual
+       - LEFT COLUMN:
+         - H1: Playfair 54px/36px mobile
+         - Subtitle: Inter 17px muted
+         - Trust badges: horizontal wrap, beige pills
+         - Pricing card: off-white, 24px radius, bordered
+       - RIGHT COLUMN:
+         - Capsule product image (replace CSS placeholder with real photo)
+         - Capsule should be photographed on warm beige/cream surface
+         - Soft overhead lighting, slight shadow
+         - Consider: capsule on small marble dish or linen cloth
+       - BELOW HERO (still in white section):
+         - Problem-area strip: 4 small rounded thumbnails showing
+           hair loss patterns women identify with
+         - Each: circular image (120px), label below
+         - Inspired by Musely's problem-identifier approach
+         - PHOTO DIRECTION: Close-up scalp shots showing:
+           1. Widening part line
+           2. Thinning crown
+           3. Overall shedding/volume loss
+           4. Receding temples
+         - Use real photos. These create instant "that's me" recognition.
+       ============================================================ */
+.am-hero {
+    padding-top: 40px;
+    padding-bottom: 48px;
+}
+
+.am-hero-grid {
+    display: grid;
+    grid-template-columns: 52fr 48fr;
+    gap: 48px;
+    align-items: center;
+}
+
+.am-hero-text h1 {
+    margin-bottom: 20px;
+}
+
+.am-hero-text h1 em {
+    font-style: italic;
+    color: var(--am-gold);
+}
+
+.am-hero-subtitle {
+    font-size: 17px;
+    color: var(--am-muted);
+    line-height: 1.65;
+    margin-bottom: 28px;
+    max-width: 500px;
+}
+
+.am-hero-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 36px;
+}
+
+.am-hero-badges .am-badge {
+    font-size: 12px;
+    padding: 5px 12px;
+    font-weight: 500;
+}
+
+.am-hero-pricing {
+    background: var(--am-card-offwhite);
+    border-radius: var(--radius-feature);
+    padding: 32px;
+    border: 1px solid var(--am-divider);
+}
+
+.am-hero-pricing .price-label {
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--am-muted);
+    margin-bottom: 8px;
+}
+
+.am-hero-pricing .price {
+    font-family: 'Playfair Display', serif;
+    font-size: 44px;
+    font-weight: 500;
+    color: var(--am-charcoal);
+    margin-bottom: 8px;
+}
+
+.am-hero-pricing .price-note {
+    font-size: 15px;
+    color: var(--am-muted);
+    margin-bottom: 6px;
+    line-height: 1.5;
+}
+
+.am-hero-pricing .price-sub {
+    font-size: 13px;
+    color: var(--am-muted);
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.am-hero-pricing .am-btn {
+    width: 100%;
+}
+
+/* --- CAPSULE PRODUCT VISUAL --- */
+/* ---------------------------------------------------------------
+       ELEMENTOR BUILD NOTES:
+       Replace this entire CSS capsule with a real product photo.
+       
+       PRODUCT PHOTO DIRECTION:
+       - Single capsule angled ~30deg on warm cream/linen surface
+       - Capsule is two-tone (consider: gold top half, cream bottom)
+       - Soft diffused overhead light, gentle shadow to the right
+       - Optional: 2-3 capsules scattered, one prominent in front
+       - Optional: small sprigs of rosemary or biotin-rich foods
+         in soft focus background for the "fresh" feel
+       - Crop: Square or 4:5 portrait
+       - Style ref: Musely product hero, clean DTC supplement vibes
+       
+       SECONDARY ANGLE for thumbnail strip:
+       - Capsule in hand (women's hand, natural nails)
+       - Capsule next to small glass of water on nightstand
+       - Open bottle with capsules spilling slightly
+       --------------------------------------------------------------- */
+.am-hero-product {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    min-width: 0;
+    width: 100%;
+    max-width: 100%;
+}
+
+.am-hero-slider-main-container {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow: hidden;
+}
+
+.am-hero-main-slider,
+.am-hero-thumbs-slider {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+}
+
+.am-slide-visual {
+    width: 100%;
+    aspect-ratio: 1/1;
+    border-radius: var(--radius-feature);
+    background: #EBE3D5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.am-slide-image {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.am-slide-image img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+}
+
+.capsule--main .cap-top::after {
+    content: '';
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    width: 16px;
+    height: 60px;
+    border-radius: 20px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0));
+}
+
+.capsule--main .cap-bottom {
+    height: 50%;
+    background: linear-gradient(180deg, #FAF6EE 0%, #F0E8D8 100%);
+    border-radius: 0 0 50px 50px;
+    position: relative;
+}
+
+.capsule--main .cap-bottom::after {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 12px;
+    width: 14px;
+    height: 40px;
+    border-radius: 16px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
+}
+
+.capsule--secondary {
+    width: 56px;
+    height: 140px;
+    top: 60px;
+    left: 20px;
+    opacity: 0.5;
+    overflow: hidden;
+    z-index: 1;
+    transform: rotate(12deg);
+}
+
+.capsule--secondary .cap-top {
+    height: 50%;
+    background: linear-gradient(180deg, #C4AD73, #B39D5F);
+    border-radius: 40px 40px 0 0;
+}
+
+.capsule--secondary .cap-bottom {
+    height: 50%;
+    background: linear-gradient(180deg, #FAF6EE, #F0E8D8);
+    border-radius: 0 0 40px 40px;
+}
+
+.capsule--tertiary {
+    width: 48px;
+    height: 120px;
+    top: 80px;
+    right: 30px;
+    opacity: 0.35;
+    overflow: hidden;
+    z-index: 1;
+    transform: rotate(-8deg);
+}
+
+.capsule--tertiary .cap-top {
+    height: 50%;
+    background: linear-gradient(180deg, #C4AD73, #B39D5F);
+    border-radius: 36px 36px 0 0;
+}
+
+.capsule--tertiary .cap-bottom {
+    height: 50%;
+    background: linear-gradient(180deg, #FAF6EE, #F0E8D8);
+    border-radius: 0 0 36px 36px;
+}
+
+.am-slide-label {
+    position: absolute;
+    bottom: 24px;
+    right: 24px;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--am-beige-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    text-align: right;
+    z-index: 4;
+    line-height: 1.4;
+}
+
+.am-slide-label span {
+    display: block;
+    font-weight: 400;
+    font-size: 10px;
+    opacity: 0.7;
+}
+
+/* Product thumbnail strip */
+.am-product-thumbs {
+    margin-top: 16px;
+    width: 100%;
+}
+
+.am-hero-thumb-container {
+    margin-top: 16px;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow: hidden;
+}
+
+.am-thumb-item {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 1;
+    border-radius: 8px;
+    border: 1px solid var(--am-divider);
+    cursor: pointer;
+    transition: all 0.2s;
+    overflow: hidden;
+    position: relative;
+    background: var(--am-card-offwhite);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.am-thumb-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.swiper-slide-thumb-active .am-thumb-item {
+    border: 2px solid var(--am-gold);
+}
+
+
+
+.thumb-capsule {
+    background: linear-gradient(160deg, #f5f0e8, #e2d9c8);
+}
+
+.thumb-capsule .mini-cap {
+    width: 18px;
+    height: 44px;
+    border-radius: 14px;
+    overflow: hidden;
+    transform: rotate(-15deg);
+    box-shadow: 0 2px 6px rgba(36, 33, 25, 0.1);
+}
+
+.thumb-capsule .mini-cap .mt {
+    height: 50%;
+    background: linear-gradient(180deg, #C4AD73, #B39D5F);
+    border-radius: 14px 14px 0 0;
+}
+
+.thumb-capsule .mini-cap .mb {
+    height: 50%;
+    background: linear-gradient(180deg, #FAF6EE, #F0E8D8);
+    border-radius: 0 0 14px 14px;
+}
+
+.thumb-hand {
+    background: linear-gradient(160deg, #f0ece4, #ddd3c2);
+}
+
+.thumb-bottle {
+    background: linear-gradient(160deg, #ebe3d5, #d8cdb8);
+}
+
+.thumb-ingredients {
+    background: linear-gradient(160deg, #e8e0d0, #d5c9b5);
+}
+
+
+/* ---------------------------------------------------------------
+       PROBLEM-AREA STRIP (Musely-inspired)
+       ---------------------------------------------------------------
+       ELEMENTOR BUILD NOTES:
+       - Container: Full-width within section, below hero grid
+       - Layout: Centered row of 4 circular images + labels
+       - Each circle: 110px, radius 50%, overflow hidden
+       - Border: 2px solid AM Beige Accent
+       - Label: Inter 500, 13px, centered below
+       - Gap between items: 40px
+       
+       PHOTO DIRECTION:
+       These MUST be real close-up scalp photos on diverse women.
+       Shoot with warm overhead lighting on cream/beige background.
+       - Image 1: Top-down view of widening part line
+       - Image 2: Crown area showing thinning
+       - Image 3: Brush/comb with shed hair (relatable, not gross)
+       - Image 4: Temples/hairline showing recession
+       Keep them editorial, warm-toned to match brand palette.
+       --------------------------------------------------------------- */
+.am-problem-strip {
+    margin-top: 64px;
+    text-align: center;
+}
+
+.am-problem-strip .strip-label {
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--am-muted);
+    margin-bottom: 24px;
+}
+
+.am-problem-items {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.am-problem-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    width: 120px;
+}
+
+.am-problem-circle {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2.5px solid var(--am-beige-accent);
+    position: relative;
+    transition: border-color 0.2s, transform 0.2s;
+    cursor: default;
+}
+
+.am-problem-circle:hover {
+    border-color: var(--am-gold);
+    transform: scale(1.04);
+}
+
+.am-problem-circle-inner {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Placeholder visuals for each problem type */
+.problem-part {
+    background: linear-gradient(180deg, #C4AD73 0%, #d4c49c 30%, #E7DDCC 60%, #E7DDCC 100%);
+}
+
+.problem-part::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 60%;
+    background: rgba(36, 33, 25, 0.15);
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.problem-crown {
+    background: radial-gradient(circle at 50% 40%, #E7DDCC 0%, #C4AD73 40%, #d4c49c 70%, #E7DDCC 100%);
+}
+
+.problem-shedding {
+    background: linear-gradient(135deg, #E7DDCC 0%, #d4c49c 100%);
+}
+
+.problem-shedding::after {
+    content: '';
+    position: absolute;
+    width: 60%;
+    height: 60%;
+    top: 20%;
+    left: 20%;
+    background: repeating-linear-gradient(-30deg,
+            transparent 0px,
+            transparent 8px,
+            rgba(188, 163, 103, 0.15) 8px,
+            rgba(188, 163, 103, 0.15) 9px);
+}
+
+.problem-temples {
+    background: linear-gradient(160deg, #E7DDCC 0%, #C4AD73 50%, #d4c49c 100%);
+}
+
+.problem-temples::before {
+    content: '';
+    position: absolute;
+    width: 40%;
+    height: 50%;
+    top: 0;
+    left: 0;
+    background: rgba(231, 221, 204, 0.6);
+    border-radius: 0 0 80% 0;
+}
+
+.am-problem-item .problem-label {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--am-charcoal);
+    text-align: center;
+    line-height: 1.35;
+}
+
+
+/* ============================================================
+       SECTION 2: WHY WE'RE DIFFERENT
+       Elementor: am-section am-section--beige am-cap
+       3-col comparison. Col 3 = dark featured card.
+       ============================================================ */
+.am-compare-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--card-gap);
+}
+
+.am-compare-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.am-compare-card .card-label {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.am-compare-card h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 14px;
+}
+
+.am-compare-card p {
+    font-size: 15px;
+    line-height: 1.65;
+}
+
+.am-compare-card.am-card p {
+    color: var(--am-muted);
+}
+
+.am-compare-card.am-card--featured h3 {
+    color: var(--am-white);
+}
+
+.am-compare-card.am-card--featured p {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.am-compare-card.am-card--featured .card-label {
+    color: var(--am-gold);
+}
+
+.am-compare-card .card-label .label-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.am-compare-card.am-card .card-label .label-dot {
+    background: var(--am-muted);
+}
+
+.am-compare-card.am-card--featured .card-label .label-dot {
+    background: var(--am-gold);
+}
+
+
+/* ============================================================
+       SECTION 3: HOW IT WORKS
+       Elementor: am-section am-section--white am-cap
+       3 step cards with arrow connectors (SOP 8.5)
+       ============================================================ */
+.am-steps-grid {
+    display: flex;
+    gap: 16px;
+    align-items: stretch;
+}
+
+.am-step-card {
+    flex: 1;
+    background: var(--am-card-offwhite);
+    border-radius: var(--radius-standard);
+    padding: var(--card-pad);
+    box-shadow: var(--shadow-soft);
+}
+
+.am-step-number {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--am-charcoal);
+    color: var(--am-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 18px;
+}
+
+.am-step-card h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.am-step-card p {
+    font-size: 15px;
+    color: var(--am-muted);
+    line-height: 1.6;
+}
+
+.am-step-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    flex-shrink: 0;
+}
+
+.am-step-arrow .arrow-circle {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--am-beige-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.am-step-arrow svg {
+    width: 16px;
+    height: 16px;
+    color: var(--am-charcoal);
+}
+
+
+/* ============================================================
+       SECTION 4: INGREDIENTS (BOTANICAL VISUAL)
+       ---------------------------------------------------------------
+       ELEMENTOR BUILD NOTES:
+       - Section class: am-section am-section--beige am-cap
+       - TOP: Phase pills (2 pill cards showing Phase 1/Phase 2 dosing)
+       - MIDDLE: Botanical ingredient visual
+         This is the Musely-inspired "fresh ingredients" treatment.
+         Layout: Full-width container with organic shapes containing
+         each ingredient name + a visual representation.
+         
+         PHOTO/VISUAL DIRECTION:
+         Create a lifestyle flat-lay photo or illustration:
+         - Centered: The actual capsule (gold + cream)
+         - Surrounding it in a circular arrangement:
+           - Biotin: small bowl of egg yolks or nuts
+           - Spironolactone: clean pharmaceutical visual or molecule
+           - Minoxidil: abstract growth/follicle illustration
+         - Surface: warm marble or linen
+         - Props: small sprig of rosemary, scattered seeds
+         - Feeling: Premium, clean, "what's inside matters"
+         
+         Alternative approach (simpler for Elementor):
+         - 3 organic-shaped containers in a row
+         - Each contains ingredient name + a circular image
+         - Images: macro shots of the raw ingredients or botanical
+           representations
+       - BOTTOM: 3 ingredient detail cards + "Why start low?" callout
+       ============================================================ */
+.am-phase-pills {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    margin-bottom: 0;
+}
+
+.am-phase-pill {
+    background: var(--am-card-offwhite);
+    border-radius: var(--radius-standard);
+    padding: 18px 28px;
+    box-shadow: var(--shadow-soft);
+    text-align: center;
+}
+
+.am-phase-pill .phase-label {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--am-gold);
+    margin-bottom: 6px;
+}
+
+.am-phase-pill .phase-doses {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--am-charcoal);
+}
+
+/* Botanical visual - The "fresh ingredients" hero image */
+.am-botanical {
+    margin: 48px auto;
+    max-width: 900px;
+    border-radius: var(--radius-feature);
+    overflow: hidden;
+    position: relative;
+    background: linear-gradient(145deg, #f5f0e8 0%, #ebe3d5 50%, #e2d9c8 100%);
+    padding: 56px 48px;
+    box-shadow: var(--shadow-soft);
+}
+
+.am-botanical-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    position: relative;
+}
+
+.am-botanical-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    z-index: 2;
+}
+
+.am-botanical-capsule {
+    width: 64px;
+    height: 156px;
+    border-radius: 44px;
+    overflow: hidden;
+    box-shadow: 0 8px 28px rgba(36, 33, 25, 0.12);
+    transform: rotate(-10deg);
+}
+
+.am-botanical-capsule .bt {
+    height: 50%;
+    background: linear-gradient(180deg, #C4AD73, #B39D5F);
+    border-radius: 44px 44px 0 0;
+    position: relative;
+}
+
+.am-botanical-capsule .bt::after {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 12px;
+    height: 44px;
+    border-radius: 16px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
+}
+
+.am-botanical-capsule .bb {
+    height: 50%;
+    background: linear-gradient(180deg, #FAF6EE, #F0E8D8);
+    border-radius: 0 0 44px 44px;
+}
+
+.am-botanical-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--am-muted);
+    text-align: center;
+}
+
+.am-botanical-ingredient {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    width: 180px;
+}
+
+.am-botanical-orb {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    box-shadow: 0 4px 16px rgba(36, 33, 25, 0.06);
+}
+
+.orb-spiro {
+    background: linear-gradient(145deg, #e8dfd0 0%, #d4c49c 100%);
+    border: 2px solid rgba(188, 163, 103, 0.2);
+}
+
+.orb-spiro::after {
+    content: '';
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 2px solid rgba(188, 163, 103, 0.3);
+    position: absolute;
+}
+
+.orb-spiro .orb-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--am-gold);
+    opacity: 0.4;
+}
+
+.orb-minoxidil {
+    background: linear-gradient(145deg, #dcd3c2 0%, #c8bb9e 100%);
+    border: 2px solid rgba(188, 163, 103, 0.2);
+}
+
+.orb-minoxidil .orb-arrows {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.orb-minoxidil .orb-arrows .arrow-up {
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 12px solid rgba(188, 163, 103, 0.5);
+}
+
+.orb-minoxidil .orb-arrows .arrow-line {
+    width: 3px;
+    height: 20px;
+    background: rgba(188, 163, 103, 0.3);
+    border-radius: 2px;
+}
+
+.orb-biotin {
+    background: linear-gradient(145deg, #f0e8d8 0%, #e2d5be 100%);
+    border: 2px solid rgba(188, 163, 103, 0.2);
+}
+
+.orb-biotin .orb-hex {
+    width: 32px;
+    height: 28px;
+    position: relative;
+}
+
+.orb-biotin .orb-hex::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(188, 163, 103, 0.3);
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
+.am-botanical-ingredient .ing-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--am-charcoal);
+}
+
+.am-botanical-ingredient .ing-role {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--am-gold);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-top: -8px;
+}
+
+/* Connecting lines (decorative) */
+.am-botanical::before,
+.am-botanical::after {
+    content: '';
+    position: absolute;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(188, 163, 103, 0.2), transparent);
+    top: 50%;
+    width: 30%;
+    z-index: 1;
+}
+
+.am-botanical::before {
+    left: 5%;
+}
+
+.am-botanical::after {
+    right: 5%;
+}
+
+/* Ingredient detail cards */
+.am-ingredients-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--card-gap);
+}
+
+.am-ingredient-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.am-ingredient-card .am-icon-circle {
+    margin-bottom: 18px;
+}
+
+.am-ingredient-card h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.am-ingredient-card .dose {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--am-gold);
+    margin-bottom: 12px;
+}
+
+.am-ingredient-card p {
+    font-size: 15px;
+    color: var(--am-muted);
+    line-height: 1.6;
+}
+
+.am-callout {
+    background: var(--am-card-offwhite);
+    border-radius: var(--radius-standard);
+    padding: 28px 32px;
+    border-left: 4px solid var(--am-gold);
+    margin-top: 40px;
+    box-shadow: var(--shadow-soft);
+}
+
+.am-callout .callout-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.am-callout p {
+    font-size: 15px;
+    color: var(--am-muted);
+    line-height: 1.65;
+}
+
+
+/* ============================================================
+       SECTION 5: THE PROTOCOL (12-MONTH TIMELINE)
+       Elementor: am-section am-section--dark
+       2-column: Phase 1 card (gold border top) + Phase 2 with timeline
+       ============================================================ */
+.am-protocol-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 32px;
+    align-items: start;
+}
+
+.am-protocol-card {
+    background: var(--am-dark);
+    border-radius: var(--radius-standard);
+    padding: 36px 32px;
+    box-shadow: var(--shadow-lift);
+}
+
+.am-protocol-card .phase-badge {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--am-gold);
+    margin-bottom: 12px;
+}
+
+.am-protocol-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    color: var(--am-white);
+    margin-bottom: 6px;
+}
+
+.am-protocol-card .phase-sub {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+.am-protocol-card p.desc {
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.65);
+    line-height: 1.65;
+}
+
+.am-protocol-card--accent {
+    border-top: 3px solid var(--am-gold);
+}
+
+.am-timeline {
+    margin-top: 24px;
+}
+
+.am-timeline-item {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+    align-items: flex-start;
+}
+
+.am-timeline-item:last-child {
+    margin-bottom: 0;
+}
+
+.am-timeline-dot {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(188, 163, 103, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.am-timeline-dot svg {
+    width: 14px;
+    height: 14px;
+    color: var(--am-gold);
+}
+
+.am-timeline-item .timeline-months {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--am-gold);
+    margin-bottom: 4px;
+}
+
+.am-timeline-item .timeline-desc {
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.65);
+    line-height: 1.55;
+}
+
+.am-callout--dark {
+    background: rgba(188, 163, 103, 0.08);
+    border-radius: var(--radius-standard);
+    padding: 28px 32px;
+    border-left: 4px solid var(--am-gold);
+    margin-top: 48px;
+}
+
+.am-callout--dark p {
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.65;
+}
+
+
+/* ============================================================
+       SECTION 6: WHAT YOU RECEIVE
+       Elementor: am-section am-section--white am-cap
+       3 cards: Medication (standard), Welcome Kit (dark featured), Ongoing (standard)
+       ============================================================ */
+.am-receive-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--card-gap);
+    align-items: start;
+}
+
+.am-receive-card .am-icon-circle {
+    margin-bottom: 18px;
+}
+
+.am-receive-card h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 19px;
+    font-weight: 600;
+    margin-bottom: 14px;
+}
+
+.am-receive-card .card-desc {
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 18px;
+}
+
+.am-card .card-desc {
+    color: var(--am-muted);
+}
+
+.am-card--dark .card-desc {
+    color: rgba(255, 255, 255, 0.65);
+}
+
+.am-checklist {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.am-checklist li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.am-card .am-checklist li {
+    color: var(--am-muted);
+}
+
+.am-card--dark .am-checklist li {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.am-checklist .ck {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    margin-top: 1px;
+    color: var(--am-gold);
+}
+
+
+/* ============================================================
+       SECTION 7: ROOT CAUSE
+       Elementor: Gold gradient BG (like homepage "Discover a Better You")
+       2-col: text left, white card right
+       ============================================================ */
+.am-rootcause {
+    background: linear-gradient(135deg, #C4AD73 0%, #A8914F 50%, #8C7740 100%);
+    color: var(--am-white);
+    padding: var(--section-pad-desktop) 0;
+}
+
+.am-rootcause-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 56px;
+    align-items: center;
+}
+
+.am-rootcause-text h2 {
+    color: var(--am-white);
+    margin-bottom: 24px;
+}
+
+.am-rootcause-text p {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.88);
+    line-height: 1.7;
+    margin-bottom: 16px;
+}
+
+.am-rootcause-text .tagline {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 500;
+    font-style: italic;
+    color: var(--am-white);
+    margin-top: 24px;
+    margin-bottom: 0;
+}
+
+.am-rootcause-card {
+    background: var(--am-white);
+    border-radius: var(--radius-feature);
+    padding: 36px;
+    box-shadow: var(--shadow-lift);
+    color: var(--am-charcoal);
+}
+
+.am-rootcause-card h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--am-charcoal);
+    margin-bottom: 20px;
+}
+
+.am-rootcause-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.am-rootcause-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 15px;
+    color: var(--am-muted);
+    line-height: 1.5;
+}
+
+.am-rootcause-list .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--am-gold);
+    flex-shrink: 0;
+    margin-top: 7px;
+}
+
+
+/* ============================================================
+       SECTION 8: PRICING (SOP 8.7 pricing cards)
+       ============================================================ */
+.am-pricing-anchor {
+    text-align: center;
+    font-size: 16px;
+    color: var(--am-muted);
+    margin-bottom: 40px;
+    margin-top: -20px;
+}
+
+.am-pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+    max-width: 860px;
+    margin: 0 auto;
+}
+
+.am-pricing-card {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.am-pricing-card .pricing-label {
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 8px;
+}
+
+.am-card .pricing-label {
+    color: var(--am-muted);
+}
+
+.am-card--featured .pricing-label {
+    color: var(--am-gold);
+}
+
+.am-pricing-card .pricing-amount {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.am-card .pricing-amount {
+    color: var(--am-charcoal);
+}
+
+.am-card--featured .pricing-amount {
+    color: var(--am-gold);
+}
+
+.am-pricing-card .pricing-note {
+    font-size: 14px;
+    margin-bottom: 24px;
+}
+
+.am-card .pricing-note {
+    color: var(--am-muted);
+}
+
+.am-card--featured .pricing-note {
+    color: rgba(255, 255, 255, 0.55);
+}
+
+.am-pricing-card .pricing-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 28px;
+    flex: 1;
+}
+
+.am-pricing-card .pricing-features li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.am-card .pricing-features li {
+    color: var(--am-muted);
+}
+
+.am-card--featured .pricing-features li {
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.am-pricing-card .am-btn {
+    width: 100%;
+}
+
+.am-pricing-badge {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+}
+
+.am-pricing-capacity {
+    text-align: center;
+    margin-top: 32px;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--am-gold);
+}
+
+.am-nosurprise {
+    max-width: 860px;
+    margin: 48px auto 0;
+}
+
+
+/* ============================================================
+       SECTION 9: EXISTING PATIENT
+       ============================================================ */
+.am-existing {
+    padding: 64px 0;
+    background: var(--am-page-beige);
+}
+
+.am-existing-card {
+    max-width: 760px;
+    margin: 0 auto;
+    background: var(--am-dark);
+    border-radius: var(--radius-feature);
+    padding: 48px;
+    text-align: center;
+    color: var(--am-white);
+    box-shadow: var(--shadow-lift);
+}
+
+.am-existing-card h2 {
+    font-size: 30px;
+    color: var(--am-white);
+    margin-bottom: 12px;
+}
+
+.am-existing-card p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 16px;
+    line-height: 1.65;
+    margin-bottom: 8px;
+    max-width: 540px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.am-existing-card .existing-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 500;
+    color: var(--am-gold);
+    margin: 20px 0 4px;
+}
+
+.am-existing-card .existing-ongoing {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 24px;
+}
+
+
+/* ============================================================
+       SECTION 10: GUARANTEE
+       ============================================================ */
+.am-guarantee-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--card-gap);
+    max-width: 860px;
+    margin: 0 auto;
+}
+
+.am-guarantee-card .am-icon-circle {
+    margin-bottom: 18px;
+}
+
+.am-guarantee-card h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.am-guarantee-card p {
+    font-size: 15px;
+    color: var(--am-muted);
+    line-height: 1.65;
+}
+
+.am-guarantee-note {
+    text-align: center;
+    margin-top: 32px;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--am-muted);
+}
+
+
+/* ============================================================
+       SECTION 11: NON-BUYER CAPTURE
+       ============================================================ */
+.am-nonbuyer {
+    padding: 72px 0;
+}
+
+.am-nonbuyer-inner {
+    max-width: 640px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.am-nonbuyer-inner h3 {
+    color: var(--am-white);
+    margin-bottom: 12px;
+}
+
+.am-nonbuyer-inner p {
+    color: rgba(255, 255, 255, 0.65);
+    margin-bottom: 28px;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.am-nonbuyer-inner .guide-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 500;
+    font-style: italic;
+    color: var(--am-gold);
+    margin-bottom: 20px;
+}
+
+
+/* ============================================================
+       SECTION 12: FAQ (SOP 8.8)
+       ============================================================ */
+.am-faq-container {
+    max-width: 780px;
+    margin: 0 auto;
+}
+
+.am-faq-item {
+    background: var(--am-card-offwhite);
+    border-radius: var(--radius-standard);
+    padding: 22px 24px;
+    margin-bottom: 16px;
+    cursor: pointer;
+    transition: box-shadow 0.2s;
+}
+
+.am-faq-item:hover {
+    box-shadow: var(--shadow-soft);
+}
+
+.am-faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+}
+
+.am-faq-question span {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1.4;
+}
+
+.am-faq-question .chevron {
+    color: var(--am-gold);
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+}
+
+.am-faq-question .chevron svg {
+    width: 20px;
+    height: 20px;
+}
+
+.am-faq-item.open .am-faq-question .chevron {
+    transform: rotate(180deg);
+}
+
+.am-faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+}
+
+.am-faq-item.open .am-faq-answer {
+    max-height: 500px;
+    padding-top: 16px;
+}
+
+.am-faq-answer p {
+    color: var(--am-muted);
+    line-height: 1.65;
+    font-size: 15px;
+}
+
+.am-faq-footer {
+    text-align: center;
+    margin-top: 32px;
+    font-size: 15px;
+    color: var(--am-muted);
+}
+
+.am-faq-footer a {
+    color: var(--am-charcoal);
+    font-weight: 500;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+
+/* ============================================================
+       SECTION 13: FINAL CTA BANNER
+       ============================================================ */
+.am-final-cta-wrapper {
+    padding: var(--section-pad-desktop) 0;
+    background: var(--am-white);
+}
+
+.am-final-cta {
+    background: var(--am-charcoal);
+    border-radius: var(--radius-feature);
+    padding: 72px 64px;
+    text-align: center;
+    max-width: var(--container-max);
+    margin: 0 auto;
+}
+
+.am-final-cta h2 {
+    color: var(--am-gold);
+    margin-bottom: 20px;
+    font-size: 38px;
+}
+
+.am-final-cta p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 16px;
+    line-height: 1.7;
+    max-width: 680px;
+    margin: 0 auto 16px;
+}
+
+.am-final-cta .price-callout {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    color: var(--am-gold);
+    margin-bottom: 8px;
+}
+
+.am-final-cta .price-note {
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 14px;
+    margin-bottom: 32px;
+}
+
+
+/* ============================================================
+       FOOTER (AM_Footer_v1)
+       ============================================================ */
+.am-footer {
+    background: var(--am-page-beige);
+    padding: 64px 0 32px;
+}
+
+.am-footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 48px;
+}
+
+.am-footer-brand p {
+    color: var(--am-muted);
+    font-size: 14px;
+    margin-top: 8px;
+    max-width: 300px;
+}
+
+.am-footer-social {
+    display: flex;
+    gap: 10px;
+}
+
+.am-footer-social a {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--am-beige-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--am-charcoal);
+    text-decoration: none;
+    transition: background 0.2s;
+}
+
+.am-footer-social a:hover {
+    background: var(--am-gold);
+    color: var(--am-white);
+}
+
+.am-footer-social svg {
+    width: 16px;
+    height: 16px;
+}
+
+.am-footer-links {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 48px;
+    margin-bottom: 48px;
+}
+
+.am-footer-col h4 {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+.am-footer-col ul {
+    list-style: none;
+}
+
+.am-footer-col li {
+    margin-bottom: 10px;
+}
+
+.am-footer-col a {
+    font-size: 14px;
+    color: var(--am-muted);
+    text-decoration: none;
+}
+
+.am-footer-col a:hover {
+    color: var(--am-charcoal);
+}
+
+.am-footer-divider {
+    height: 1px;
+    background: var(--am-divider);
+    margin-bottom: 24px;
+}
+
+.am-footer-legal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    color: var(--am-muted);
+    margin-bottom: 16px;
+}
+
+.am-footer-legal-links {
+    display: flex;
+    gap: 24px;
+}
+
+.am-footer-legal-links a {
+    color: var(--am-muted);
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.am-footer-fda {
+    font-size: 12px;
+    color: var(--am-muted);
+    line-height: 1.55;
+    max-width: 900px;
+}
+
+
+/* ============================================================
+       RESPONSIVE
+       ============================================================ */
+@media (max-width: 1024px) {
+
+    .am-compare-grid,
+    .am-ingredients-grid,
+    .am-receive-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .am-receive-grid> :nth-child(2) {
+        grid-column: 1 / -1;
+    }
+
+    .am-rootcause-grid,
+    .am-protocol-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .am-botanical-inner {
+        gap: 24px;
+    }
+
+    .am-botanical-ingredient {
+        width: 140px;
+    }
+
+    .am-botanical-orb {
+        width: 90px;
+        height: 90px;
+    }
+}
+
+@media (max-width: 768px) {
+    .am-container {
+        padding-left: var(--side-pad-mobile);
+        padding-right: var(--side-pad-mobile);
+    }
+
+    .am-section {
+        padding: var(--section-pad-mobile) 0;
+    }
+
+    .am-cap {
+        margin-top: -40px;
+        padding-top: var(--section-pad-mobile);
+    }
+
+    h1 {
+        font-size: var(--h1-mobile);
+    }
+
+    h2 {
+        font-size: var(--h2-mobile);
+    }
+
+    h3 {
+        font-size: var(--h3-mobile);
+    }
+
+    .am-nav-links {
+        display: none;
+    }
+
+    .am-nav-bar {
+        padding: 10px 12px 10px 20px;
+    }
+
+    .am-hero-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .am-hero-pricing .price {
+        font-size: 36px;
+    }
+
+    .am-problem-items {
+        gap: 20px;
+    }
+
+    .am-problem-item {
+        width: 100px;
+    }
+
+    .am-problem-circle {
+        width: 90px;
+        height: 90px;
+    }
+
+    .am-problem-item .problem-label {
+        font-size: 12px;
+    }
+
+    .am-compare-grid,
+    .am-ingredients-grid,
+    .am-receive-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .am-receive-grid> :nth-child(2) {
+        grid-column: auto;
+    }
+
+    .am-steps-grid {
+        flex-direction: column;
+    }
+
+    .am-step-arrow {
+        transform: rotate(90deg);
+        width: 100%;
+        justify-content: center;
+    }
+
+    .am-botanical {
+        padding: 36px 24px;
+    }
+
+    .am-botanical-inner {
+        flex-direction: column;
+        gap: 28px;
+    }
+
+    .am-botanical::before,
+    .am-botanical::after {
+        display: none;
+    }
+
+    .am-pricing-grid,
+    .am-guarantee-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .am-phase-pills {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .am-existing-card {
+        padding: 36px 24px;
+    }
+
+    .am-final-cta {
+        padding: 48px 24px;
+        border-radius: var(--radius-standard);
+    }
+
+    .am-nonbuyer {
+        padding: 56px 0;
+    }
+
+    .am-existing {
+        padding: 48px 0;
+    }
+
+    .am-footer-top {
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .am-footer-links {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .am-footer-legal {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+    }
+
+    .am-btn-row .am-btn {
+        flex: 1;
+        text-align: center;
+    }
+}

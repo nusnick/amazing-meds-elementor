@@ -32,8 +32,7 @@ class AM_Membership_Insurance_Banner_Widget extends \Elementor\Widget_Base
     public function get_style_depends()
     {
         wp_register_style('am-membership-global', plugins_url('../assets/css/widgets/am-membership-global.css', __FILE__));
-        wp_register_style('am-membership-insurance-banner', plugins_url('../assets/css/widgets/membership-insurance-banner.css', __FILE__));
-        return ['am-membership-global', 'am-membership-insurance-banner'];
+        return ['am-membership-global'];
     }
 
     protected function register_controls()
@@ -92,52 +91,6 @@ class AM_Membership_Insurance_Banner_Widget extends \Elementor\Widget_Base
             ]
         );
 
-        $this->add_control(
-            'primary_button_text',
-            [
-                'label' => esc_html__('Primary Button Text', 'amazing-meds-elementor'),
-                'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => esc_html__('Book Your Free Consult', 'amazing-meds-elementor'),
-            ]
-        );
-
-        $this->add_control(
-            'primary_button_url',
-            [
-                'label' => esc_html__('Primary Button URL', 'amazing-meds-elementor'),
-                'type' => \Elementor\Controls_Manager::URL,
-                'placeholder' => esc_html__('https://your-link.com', 'amazing-meds-elementor'),
-                'default' => [
-                    'url' => '#',
-                    'is_external' => false,
-                    'nofollow' => false,
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'secondary_button_text',
-            [
-                'label' => esc_html__('Secondary Button Text', 'amazing-meds-elementor'),
-                'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => esc_html__('View Membership Options', 'amazing-meds-elementor'),
-            ]
-        );
-
-        $this->add_control(
-            'secondary_button_url',
-            [
-                'label' => esc_html__('Secondary Button URL', 'amazing-meds-elementor'),
-                'type' => \Elementor\Controls_Manager::URL,
-                'placeholder' => esc_html__('https://your-link.com', 'amazing-meds-elementor'),
-                'default' => [
-                    'url' => '#pricing',
-                    'is_external' => false,
-                    'nofollow' => false,
-                ],
-            ]
-        );
-
         $this->end_controls_section();
 
     }
@@ -147,7 +100,7 @@ class AM_Membership_Insurance_Banner_Widget extends \Elementor\Widget_Base
         $settings = $this->get_settings_for_display();
         ?>
         <section class="am-membership-global am-section--trust-banner">
-            <div class="am-container">
+            <div class="am-container container">
                 <div class="trust-banner-inner">
                     <p>
                         <?php echo esc_html($settings['text']); ?>
@@ -167,29 +120,8 @@ class AM_Membership_Insurance_Banner_Widget extends \Elementor\Widget_Base
                             <?php endforeach; ?>
                         </div>
                     <?php endif; ?>
-
-                    <div style="text-align:center; margin-top: 36px;">
-                        <?php if (!empty($settings['primary_button_text'])): ?>
-                            <a href="<?php echo esc_url($settings['primary_button_url']['url']); ?>"
-                                class="am-btn--primary-on-dark">
-                                <?php echo esc_html($settings['primary_button_text']); ?>
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                                    stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M5 12h14M12 5l7 7-7 7"></path>
-                                </svg>
-                            </a>
-                        <?php endif; ?>
-
-                        <span style="display:inline-block; margin: 0 12px; color: rgba(255,255,255,0.3);">or</span>
-
-                        <?php if (!empty($settings['secondary_button_text'])): ?>
-                            <a href="<?php echo esc_url($settings['secondary_button_url']['url']); ?>"
-                                class="am-btn--secondary-on-dark">
-                                <?php echo esc_html($settings['secondary_button_text']); ?>
-                            </a>
-                        <?php endif; ?>
-                    </div>
                 </div>
+            </div>
             </div>
         </section>
         <?php

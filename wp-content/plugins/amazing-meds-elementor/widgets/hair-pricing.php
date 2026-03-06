@@ -31,8 +31,8 @@ class AM_Hair_Pricing_Widget extends \Elementor\Widget_Base
 
     public function get_style_depends()
     {
-        wp_register_style('am-widget-pricing', plugins_url('../assets/css/widgets/pricing.css', __FILE__));
-        return ['am-widget-pricing'];
+        wp_register_style('am-hair-css', plugins_url('../assets/css/widgets/hair-global.css', __FILE__));
+        return ['am-hair-css'];
     }
 
     protected function register_controls()

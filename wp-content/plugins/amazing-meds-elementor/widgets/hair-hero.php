@@ -39,8 +39,8 @@ class AM_Hair_Hero_Widget extends \Elementor\Widget_Base
     public function get_style_depends()
     {
         wp_register_style('swiper-css', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css');
-        wp_register_style('am-widget-hero', plugins_url('../assets/css/widgets/hero.css', __FILE__), ['swiper-css']);
-        return ['am-widget-hero'];
+        wp_register_style('am-hair-css', plugins_url('../assets/css/widgets/hair-global.css', __FILE__));
+        return ['am-hair-css', 'swiper-css'];
     }
 
     public function get_script_depends()

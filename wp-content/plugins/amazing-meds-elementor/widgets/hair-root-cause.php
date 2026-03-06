@@ -31,8 +31,8 @@ class AM_Hair_Root_Cause_Widget extends \Elementor\Widget_Base
 
     public function get_style_depends()
     {
-        wp_register_style('am-widget-root-cause', plugins_url('../assets/css/widgets/root-cause.css', __FILE__));
-        return ['am-widget-root-cause'];
+        wp_register_style('am-hair-css', plugins_url('../assets/css/widgets/hair-global.css', __FILE__));
+        return ['am-hair-css'];
     }
 
     protected function register_controls()

@@ -32,8 +32,7 @@ class AM_Membership_Agitation_Widget extends \Elementor\Widget_Base
     public function get_style_depends()
     {
         wp_register_style('am-membership-global', plugins_url('../assets/css/widgets/am-membership-global.css', __FILE__));
-        wp_register_style('am-membership-agitation', plugins_url('../assets/css/widgets/membership-agitation.css', __FILE__));
-        return ['am-membership-global', 'am-membership-agitation'];
+        return ['am-membership-global'];
     }
 
     protected function register_controls()
@@ -156,7 +155,7 @@ class AM_Membership_Agitation_Widget extends \Elementor\Widget_Base
                 </div>
 
                 <?php if (!empty($settings['items'])): ?>
-                    <div class="who-grid">
+                    <div class="who-grid" style="margin-top: var(--sub-to-content);">
                         <?php foreach ($settings['items'] as $item): ?>
                             <div class="who-card">
                                 <div class="who-image">

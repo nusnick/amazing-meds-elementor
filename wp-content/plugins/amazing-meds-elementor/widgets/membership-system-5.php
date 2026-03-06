@@ -32,8 +32,7 @@ class AM_Membership_System_5_Widget extends \Elementor\Widget_Base
     public function get_style_depends()
     {
         wp_register_style('am-membership-global', plugins_url('../assets/css/widgets/am-membership-global.css', __FILE__));
-        wp_register_style('am-membership-system-5', plugins_url('../assets/css/widgets/membership-system-5.css', __FILE__));
-        return ['am-membership-global', 'am-membership-system-5'];
+        return ['am-membership-global'];
     }
 
     protected function register_controls()
@@ -204,11 +203,11 @@ class AM_Membership_System_5_Widget extends \Elementor\Widget_Base
                 </div>
 
                 <?php if (!empty($settings['items'])): ?>
-                    <div class="system5-grid" style="margin-top: var(--sub-to-content);">
+                    <div class="system5-grid">
                         <?php foreach ($settings['items'] as $item):
-                            $card_class = ('yes' === $item['is_featured']) ? 'system5-card--featured' : 'am-card';
+                            $card_class = ('yes' === $item['is_featured']) ? 'system5-card--featured' : 'system5-card';
                             ?>
-                            <div class="system5-card <?php echo esc_attr($card_class); ?>">
+                            <div class="<?php echo esc_attr($card_class); ?>">
                                 <div class="step-num">
                                     <?php echo esc_html($item['number']); ?>
                                 </div>

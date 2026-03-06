@@ -32,8 +32,7 @@ class AM_Membership_Social_Proof_Widget extends \Elementor\Widget_Base
     public function get_style_depends()
     {
         wp_register_style('am-membership-global', plugins_url('../assets/css/widgets/am-membership-global.css', __FILE__));
-        wp_register_style('am-membership-social-proof', plugins_url('../assets/css/widgets/membership-social-proof.css', __FILE__));
-        return ['am-membership-global', 'am-membership-social-proof'];
+        return ['am-membership-global'];
     }
 
     protected function register_controls()

@@ -32,8 +32,7 @@ class AM_Membership_Pricing_Widget extends \Elementor\Widget_Base
     public function get_style_depends()
     {
         wp_register_style('am-membership-global', plugins_url('../assets/css/widgets/am-membership-global.css', __FILE__));
-        wp_register_style('am-membership-pricing', plugins_url('../assets/css/widgets/membership-pricing-v2.css', __FILE__));
-        return ['am-membership-global', 'am-membership-pricing'];
+        return ['am-membership-global'];
     }
 
     protected function register_controls()
@@ -64,6 +63,21 @@ class AM_Membership_Pricing_Widget extends \Elementor\Widget_Base
 
         $this->end_controls_section();
 
+        // Value Banner
+        $this->start_controls_section(
+            'value_banner_section',
+            [
+                'label' => esc_html__('Value Banner', 'amazing-meds-elementor'),
+            ]
+        );
+
+        $this->add_control('vb_label', ['label' => 'Banner Label', 'type' => \Elementor\Controls_Manager::TEXT, 'default' => 'What You Save As a Member']);
+        $this->add_control('vb_items', ['label' => 'Banner Items (one per line)', 'type' => \Elementor\Controls_Manager::TEXTAREA, 'default' => "Labs billed to your insurance (not $300-500+ out of pocket)\nProvider visits billed to insurance (you just pay copay)\n30% off meds through cheapest routing\nFree shipping + free syringe kits"]);
+        $this->add_control('vb_crossed', ['label' => 'Banner Crossed Value', 'type' => \Elementor\Controls_Manager::TEXT, 'default' => '$200-400/mo at other clinics (cash pay, no insurance help)']);
+        $this->add_control('vb_price', ['label' => 'Banner Real Price', 'type' => \Elementor\Controls_Manager::TEXT, 'default' => '~$99/mo with Amazing Meds']);
+
+        $this->end_controls_section();
+
         // Cards
         $this->start_controls_section(
             'cards_section',
@@ -73,13 +87,27 @@ class AM_Membership_Pricing_Widget extends \Elementor\Widget_Base
         );
 
         $card_repeater = new \Elementor\Repeater();
-        $card_repeater->add_control('badge', ['label' => 'Badge', 'type' => \Elementor\Controls_Manager::TEXT, 'default' => 'System 5 Lab Panel']);
-        $card_repeater->add_control('price', ['label' => 'Price', 'type' => \Elementor\Controls_Manager::TEXT, 'default' => '$75']);
-        $card_repeater->add_control('price_suffix', ['label' => 'Price Suffix', 'type' => \Elementor\Controls_Manager::TEXT, 'default' => 'deposit']);
-        $card_repeater->add_control('features', ['label' => 'Features (one per line)', 'type' => \Elementor\Controls_Manager::TEXTAREA, 'default' => "Comprehensive 5-System Panel\n15-Min Results Call\nProvider Review\nInsurance Verification"]);
-        $card_repeater->add_control('button_text', ['label' => 'Button Text', 'type' => \Elementor\Controls_Manager::TEXT, 'default' => 'Get Started']);
+        $card_repeater->add_control('card_style', [
+            'label' => 'Card Style',
+            'type' => \Elementor\Controls_Manager::SELECT,
+            'options' => [
+                'entry' => 'Phase 1 (Entry / Diagnostic)',
+                'featured' => 'Phase 2 (Featured / Quarterly)',
+                'standard' => 'Phase 3 (Standard / Annual)',
+            ],
+            'default' => 'featured',
+        ]);
+        $card_repeater->add_control('top_badge', ['label' => 'Top Badge', 'type' => \Elementor\Controls_Manager::TEXT, 'default' => '']);
+        $card_repeater->add_control('phase_label', ['label' => 'Phase Label', 'type' => \Elementor\Controls_Manager::TEXT, 'default' => 'Phase 2']);
+        $card_repeater->add_control('title', ['label' => 'Title', 'type' => \Elementor\Controls_Manager::TEXT, 'default' => 'Quarterly Membership']);
+        $card_repeater->add_control('price_desc', ['label' => 'Price Desc', 'type' => \Elementor\Controls_Manager::TEXT, 'default' => 'All 5 systems. Every 90 days.']);
+        $card_repeater->add_control('price', ['label' => 'Price', 'type' => \Elementor\Controls_Manager::TEXT, 'default' => '$299']);
+        $card_repeater->add_control('price_suffix', ['label' => 'Price Suffix / Period', 'type' => \Elementor\Controls_Manager::TEXT, 'default' => 'billed quarterly · that\'s just ~$99/month. Cancel anytime.']);
+        $card_repeater->add_control('features', ['label' => 'Features (one per line)', 'type' => \Elementor\Controls_Manager::TEXTAREA, 'default' => "All 5 systems monitored every 90 days\n30% off all protocol medications\nFree discreet shipping & supplies included\nSame-day provider messaging"]);
+        $card_repeater->add_control('button_text', ['label' => 'Button Text', 'type' => \Elementor\Controls_Manager::TEXT, 'default' => 'Start Quarterly Care']);
         $card_repeater->add_control('button_url', ['label' => 'Button URL', 'type' => \Elementor\Controls_Manager::URL, 'default' => ['url' => '#']]);
-        $card_repeater->add_control('is_featured', ['label' => 'Featured', 'type' => \Elementor\Controls_Manager::SWITCHER, 'default' => '']);
+        $card_repeater->add_control('savings_text', ['label' => 'Savings Text (Bottom)', 'type' => \Elementor\Controls_Manager::TEXT, 'default' => '']);
+        $card_repeater->add_control('disclaimer_text', ['label' => 'Disclaimer Text (Above button)', 'type' => \Elementor\Controls_Manager::TEXT, 'default' => '']);
 
         $this->add_control(
             'cards',
@@ -89,50 +117,62 @@ class AM_Membership_Pricing_Widget extends \Elementor\Widget_Base
                 'fields' => $card_repeater->get_controls(),
                 'default' => [
                     [
-                        'badge' => 'System 5 Lab Panel',
+                        'card_style' => 'entry',
+                        'top_badge' => 'Phase 1',
+                        'phase_label' => 'Diagnostics',
+                        'title' => '$75 Deposit',
+                        'price_desc' => 'Fully credited toward your membership',
                         'price' => '$75',
-                        'price_suffix' => 'deposit',
-                        'features' => "Comprehensive 5-System Panel\n15-Min Results Call\nProvider Review\nInsurance Verification",
-                        'is_featured' => '',
+                        'price_suffix' => 'one-time deposit',
+                        'features' => "Free initial discovery call\nComprehensive 5-system lab orders\nLabs billed directly to your insurance\nOfficial Provider Visit to review results\nPersonalized protocol design",
+                        'button_text' => 'Book Free Consult & Start Labs',
+                        'disclaimer_text' => 'Treatment and ongoing care require membership'
                     ],
                     [
-                        'badge' => 'Ongoing Membership',
-                        'price' => '$149',
-                        'price_suffix' => '/ month',
-                        'features' => "Full Protocol Management\nQuarterly Provider Visits\nPriority Support Access\nInsurance Denial Support\nExclusive Pharmacy Pricing",
-                        'is_featured' => 'yes',
+                        'card_style' => 'featured',
+                        'top_badge' => 'Most Popular',
+                        'phase_label' => 'Phase 2',
+                        'title' => 'Quarterly Membership',
+                        'price_desc' => 'All 5 systems. Every 90 days.',
+                        'price' => '$299',
+                        'price_suffix' => 'billed quarterly · that\'s just ~$99/month. Cancel anytime.',
+                        'features' => "Everything in Phase 1, plus:\nAll 5 systems monitored every 90 days\n30% off all protocol medications\nFree discreet shipping & supplies included\nSame-day provider messaging\nWe handle insurance billing & prior auths\nRefill management (never run out)",
+                        'button_text' => 'Start Quarterly Care',
+                    ],
+                    [
+                        'card_style' => 'standard',
+                        'top_badge' => 'Best Value',
+                        'phase_label' => 'Phase 3',
+                        'title' => 'Annual Membership',
+                        'price_desc' => 'Get 1 quarter entirely FREE. Save $299.',
+                        'price' => '$897',
+                        'price_suffix' => 'billed annually · just $2.46/day',
+                        'features' => "Everything in Quarterly, plus:\n4 full 5-system lab panels ordered and billed to your insurance\nPriority provider access\nDedicated care coordinator\nThe lowest overall cost for your protocol\nSet it and forget it for 12 months",
+                        'button_text' => 'Start Annual Care',
+                        'savings_text' => 'Save $299/year vs. quarterly',
                     ],
                 ],
-                'title_field' => '{{{ badge }}}',
+                'title_field' => '{{{ title }}}',
             ]
         );
 
         $this->end_controls_section();
 
-        // Banner & Guarantee
+        // Guarantee
         $this->start_controls_section(
             'extras_section',
             [
-                'label' => esc_html__('Banner & Guarantee', 'amazing-meds-elementor'),
+                'label' => esc_html__('Guarantee', 'amazing-meds-elementor'),
             ]
         );
 
         $this->add_control(
-            'banner_text',
-            ['label' => 'Banner Bold Text', 'type' => \Elementor\Controls_Manager::TEXT, 'default' => 'Total value of services: $400+/mo']
-        );
-        $this->add_control(
-            'banner_subtext',
-            ['label' => 'Banner Subtext', 'type' => \Elementor\Controls_Manager::TEXT, 'default' => 'Your membership locks in your price and priority access.']
-        );
-
-        $this->add_control(
             'guarantee_title',
-            ['label' => 'Guarantee Title', 'type' => \Elementor\Controls_Manager::TEXT, 'default' => 'Our "True Feel" Guarantee']
+            ['label' => 'Guarantee Title', 'type' => \Elementor\Controls_Manager::TEXT, 'default' => 'Our 90-Day Guarantee']
         );
         $this->add_control(
-            'guarantee_desc',
-            ['label' => 'Guarantee Desc', 'type' => \Elementor\Controls_Manager::TEXTAREA, 'default' => 'If you don\'t feel a measurable difference in your energy, focus, or symptoms after your first 90 days of following our protocol, we\'ll refund your membership fees. Period.']
+            'guarantee_desc_html',
+            ['label' => 'Guarantee Desc HTML', 'type' => \Elementor\Controls_Manager::TEXTAREA, 'default' => 'We measure results with data, not just feelings. If your 5-system labs don\'t show measurable improvement and you don\'t feel better after 90 days on our protocol, <span class="guarantee-highlight">we will pay for a consultation at the telehealth competitor of your choice.</span>']
         );
         $this->add_control(
             'guarantee_icon',
@@ -165,29 +205,53 @@ class AM_Membership_Pricing_Widget extends \Elementor\Widget_Base
                     <?php endif; ?>
                 </div>
 
+                <?php if (!empty($settings['vb_label']) || !empty($settings['vb_items'])): ?>
+                    <div class="value-banner" style="margin-top: var(--sub-to-content);">
+                        <div class="vb-label"><?php echo esc_html($settings['vb_label']); ?></div>
+                        <div class="vb-items">
+                            <?php
+                            $items = explode("\n", str_replace("\r", "", $settings['vb_items']));
+                            foreach ($items as $idx => $item) {
+                                echo '<span>' . esc_html($item) . '</span>';
+                                if ($idx < count($items) - 1) {
+                                    echo '<span class="vb-dot">·</span>';
+                                }
+                            }
+                            ?>
+                        </div>
+                        <div class="vb-total">
+                            <span class="vb-crossed"><?php echo esc_html($settings['vb_crossed']); ?></span>
+                            <span class="vb-price"><?php echo esc_html($settings['vb_price']); ?></span>
+                        </div>
+                    </div>
+                <?php endif; ?>
+
                 <?php if (!empty($settings['cards'])): ?>
                     <div class="pricing-grid">
                         <?php foreach ($settings['cards'] as $card):
+                            $card_class = 'pricing-card--' . esc_attr($card['card_style']);
                             ?>
-                            <?php
-                            $card_class = 'pricing-card--standard';
-                            if ('yes' === $card['is_featured']) {
-                                $card_class = 'pricing-card--featured';
-                            }
-                            // If we want to support 'entry' we might need another control,
-                            // but for now let's assume first one is entry if not featured?
-                            // Actually let's just use featured vs standard as per current PHP.
-                            // I'll adjust CSS to handle .pricing-card--standard.
-                            ?>
-                            <div class="pricing-card <?php echo esc_attr($card_class); ?>">
-                                <div class="pricing-badge">
-                                    <?php echo esc_html($card['badge']); ?>
+                            <div class="<?php echo esc_attr($card_class); ?>">
+                                <?php if (!empty($card['top_badge'])): ?>
+                                    <?php if ($card['card_style'] === 'entry' || $card['card_style'] === 'standard'): ?>
+                                        <span class="am-badge"
+                                            style="<?php echo ($card['card_style'] === 'entry') ? 'background: rgba(255,255,255,0.2); color: var(--am-white);' : ''; ?> position: absolute; top: -12px; left: 36px;"><?php echo esc_html($card['top_badge']); ?></span>
+                                    <?php elseif ($card['card_style'] === 'featured'): ?>
+                                        <span class="am-badge--gold"><?php echo esc_html($card['top_badge']); ?></span>
+                                    <?php endif; ?>
+                                <?php endif; ?>
+
+                                <?php if (!empty($card['phase_label'])): ?>
+                                    <div class="phase-label"><?php echo esc_html($card['phase_label']); ?></div>
+                                <?php endif; ?>
+
+                                <h3><?php echo esc_html($card['title']); ?></h3>
+                                <p class="price-desc"><?php echo esc_html($card['price_desc']); ?></p>
+
+                                <div class="pricing-amount">
+                                    <span class="dollar"><?php echo esc_html($card['price']); ?></span>
                                 </div>
-                                <div class="price">
-                                    <?php echo esc_html($card['price']); ?> <span>
-                                        <?php echo esc_html($card['price_suffix']); ?>
-                                    </span>
-                                </div>
+                                <p class="pricing-period"><?php echo esc_html($card['price_suffix']); ?></p>
 
                                 <?php if (!empty($card['features'])):
                                     $features = explode("\n", str_replace("\r", "", $card['features']));
@@ -195,47 +259,48 @@ class AM_Membership_Pricing_Widget extends \Elementor\Widget_Base
                                     <ul class="pricing-features">
                                         <?php foreach ($features as $feature): ?>
                                             <li>
-                                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                    stroke-width="3">
-                                                    <polyline points="20 6 9 17 4 12"></polyline>
-                                                </svg>
+                                                <span class="pricing-check">
+                                                    <svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round">
+                                                        <polyline points="20 6 9 17 4 12" />
+                                                    </svg>
+                                                </span>
                                                 <?php echo esc_html($feature); ?>
                                             </li>
                                         <?php endforeach; ?>
                                     </ul>
                                 <?php endif; ?>
 
-                                <a href="<?php echo esc_url($card['button_url']['url']); ?>"
-                                    class="am-btn <?php echo ('yes' === $card['is_featured']) ? 'am-btn--gold' : 'am-btn--primary'; ?>">
+                                <?php if (!empty($card['disclaimer_text'])): ?>
+                                    <p style="font-size: 12px; color: rgba(255,255,255,0.5); margin-bottom: 20px; text-align: center;">
+                                        <?php echo esc_html($card['disclaimer_text']); ?>
+                                    </p>
+                                <?php endif; ?>
+
+                                <a href="<?php echo esc_url($card['button_url']['url']); ?>" class="pricing-cta">
                                     <?php echo esc_html($card['button_text']); ?>
                                 </a>
+
+                                <?php if (!empty($card['savings_text'])): ?>
+                                    <p class="pricing-savings"><?php echo esc_html($card['savings_text']); ?></p>
+                                <?php endif; ?>
                             </div>
                         <?php endforeach; ?>
                     </div>
                 <?php endif; ?>
 
-                <div class="pricing-value-banner">
-                    <strong>
-                        <?php echo esc_html($settings['banner_text']); ?>
-                    </strong>
-                    <span>
-                        <?php echo esc_html($settings['banner_subtext']); ?>
-                    </span>
-                </div>
-
-                <div class="pricing-guarantee">
-                    <div class="guarantee-icon">
-                        <?php echo esc_html($settings['guarantee_icon']); ?>
-                    </div>
-                    <div>
+                <?php if (!empty($settings['guarantee_title'])): ?>
+                    <div class="guarantee-banner">
+                        <div class="guarantee-icon">
+                            <?php echo esc_html($settings['guarantee_icon']); ?>
+                        </div>
                         <h3>
                             <?php echo esc_html($settings['guarantee_title']); ?>
                         </h3>
                         <p>
-                            <?php echo esc_html($settings['guarantee_desc']); ?>
+                            <?php echo $settings['guarantee_desc_html']; ?>
                         </p>
                     </div>
-                </div>
+                <?php endif; ?>
             </div>
         </section>
         <?php

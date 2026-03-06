@@ -32,8 +32,7 @@ class AM_Membership_Comparison_Widget extends \Elementor\Widget_Base
     public function get_style_depends()
     {
         wp_register_style('am-membership-global', plugins_url('../assets/css/widgets/am-membership-global.css', __FILE__));
-        wp_register_style('am-membership-comparison', plugins_url('../assets/css/widgets/membership-comparison-v2.css', __FILE__));
-        return ['am-membership-global', 'am-membership-comparison'];
+        return ['am-membership-global'];
     }
 
     protected function register_controls()
@@ -243,7 +242,7 @@ class AM_Membership_Comparison_Widget extends \Elementor\Widget_Base
         $widget_id = $this->get_id();
         ?>
         <section class="am-membership-global am-section--compare" id="compare-<?php echo esc_attr($widget_id); ?>">
-            <div class="am-container">
+            <div class="am-container container">
                 <div class="am-heading-stack">
                     <?php if (!empty($settings['label'])): ?>
                         <div class="am-label">
@@ -262,101 +261,99 @@ class AM_Membership_Comparison_Widget extends \Elementor\Widget_Base
 
                 <?php if (!empty($settings['tabs'])): ?>
                     <div class="compare-tabs" style="margin-top: var(--sub-to-content);">
-                        <div class="compare-tabs-nav">
-                            <?php foreach ($settings['tabs'] as $index => $tab): ?>
-                                <button class="compare-tab-btn <?php echo 0 === $index ? 'active' : ''; ?>"
-                                    data-tab="tab-<?php echo esc_attr($widget_id . '-' . $index); ?>">
-                                    <?php echo esc_html($tab['tab_title']); ?>
-                                </button>
-                            <?php endforeach; ?>
-                        </div>
+                        <?php foreach ($settings['tabs'] as $index => $tab): ?>
+                            <button class="compare-tab <?php echo 0 === $index ? 'active' : ''; ?>"
+                                onclick="switchTab_<?php echo esc_attr($widget_id); ?>('tab-<?php echo esc_attr($widget_id . '-' . $index); ?>', this)">
+                                <?php echo esc_html($tab['tab_title']); ?>
+                            </button>
+                        <?php endforeach; ?>
+                    </div>
 
-                        <div class="compare-tabs-content">
-                            <?php foreach ($settings['tabs'] as $index => $tab): ?>
-                                <div class="compare-tab-panel <?php echo 0 === $index ? 'active' : ''; ?>"
-                                    id="tab-<?php echo esc_attr($widget_id . '-' . $index); ?>">
-                                    <div class="compare-table-wrapper">
-                                        <table class="compare-table">
-                                            <thead>
-                                                <tr>
-                                                    <th>
-                                                        <?php echo esc_html($tab['col_head_1']); ?>
-                                                    </th>
-                                                    <th class="am-col">
-                                                        <?php echo esc_html($tab['col_head_2']); ?>
-                                                    </th>
-                                                    <th>
-                                                        <?php echo esc_html($tab['col_head_3']); ?>
-                                                    </th>
-                                                    <th>
-                                                        <?php echo esc_html($tab['col_head_4']); ?>
-                                                    </th>
-                                                    <th>
-                                                        <?php echo esc_html($tab['col_head_5']); ?>
-                                                    </th>
-                                                    <th>
-                                                        <?php echo esc_html($tab['col_head_6']); ?>
-                                                    </th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <?php if (!empty($tab['rows'])): ?>
-                                                    <?php foreach ($tab['rows'] as $row): ?>
-                                                        <tr>
-                                                            <td>
-                                                                <span class="system-label">
-                                                                    <?php echo esc_html($row['row_label']); ?>
-                                                                </span>
-                                                                <span class="system-desc">
-                                                                    <?php echo esc_html($row['row_desc']); ?>
-                                                                </span>
-                                                            </td>
-                                                            <td class="am-col">
-                                                                <?php $this->render_status($row['val_2']); ?>
-                                                            </td>
-                                                            <td>
-                                                                <?php $this->render_status($row['val_3']); ?>
-                                                            </td>
-                                                            <td>
-                                                                <?php $this->render_status($row['val_4']); ?>
-                                                            </td>
-                                                            <td>
-                                                                <?php $this->render_status($row['val_5']); ?>
-                                                            </td>
-                                                            <td>
-                                                                <?php $this->render_status($row['val_6']); ?>
-                                                            </td>
-                                                        </tr>
-                                                    <?php endforeach; ?>
-                                                <?php endif; ?>
-                                            </tbody>
-                                            <tfoot>
-                                                <tr>
-                                                    <td>
-                                                        <?php echo esc_html($tab['footer_label']); ?>
-                                                    </td>
-                                                    <td class="am-col" style="font-size:22px;">
-                                                        <?php echo esc_html($tab['footer_val_2']); ?>
-                                                    </td>
-                                                    <td>
-                                                        <?php echo esc_html($tab['footer_val_3']); ?>
-                                                    </td>
-                                                    <td>
-                                                        <?php echo esc_html($tab['footer_val_4']); ?>
-                                                    </td>
-                                                    <td>
-                                                        <?php echo esc_html($tab['footer_val_5']); ?>
-                                                    </td>
-                                                    <td>
-                                                        <?php echo esc_html($tab['footer_val_6']); ?>
-                                                    </td>
-                                                </tr>
-                                            </tfoot>
-                                        </table>
-                                    </div>
+                    <div id="panels-<?php echo esc_attr($widget_id); ?>">
+                        <?php foreach ($settings['tabs'] as $index => $tab): ?>
+                            <div class="compare-panel <?php echo 0 === $index ? 'active' : ''; ?>"
+                                id="tab-<?php echo esc_attr($widget_id . '-' . $index); ?>">
+                                <div class="compare-table-wrapper">
+                                    <table class="compare-table">
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    <?php echo esc_html($tab['col_head_1']); ?>
+                                                </th>
+                                                <th class="am-col">
+                                                    <?php echo esc_html($tab['col_head_2']); ?>
+                                                </th>
+                                                <th>
+                                                    <?php echo esc_html($tab['col_head_3']); ?>
+                                                </th>
+                                                <th>
+                                                    <?php echo esc_html($tab['col_head_4']); ?>
+                                                </th>
+                                                <th>
+                                                    <?php echo esc_html($tab['col_head_5']); ?>
+                                                </th>
+                                                <th>
+                                                    <?php echo esc_html($tab['col_head_6']); ?>
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php if (!empty($tab['rows'])): ?>
+                                                <?php foreach ($tab['rows'] as $row): ?>
+                                                    <tr>
+                                                        <td>
+                                                            <span class="system-label">
+                                                                <?php echo esc_html($row['row_label']); ?>
+                                                            </span>
+                                                            <span class="system-desc">
+                                                                <?php echo esc_html($row['row_desc']); ?>
+                                                            </span>
+                                                        </td>
+                                                        <td class="am-col">
+                                                            <?php $this->render_status($row['val_2']); ?>
+                                                        </td>
+                                                        <td>
+                                                            <?php $this->render_status($row['val_3']); ?>
+                                                        </td>
+                                                        <td>
+                                                            <?php $this->render_status($row['val_4']); ?>
+                                                        </td>
+                                                        <td>
+                                                            <?php $this->render_status($row['val_5']); ?>
+                                                        </td>
+                                                        <td>
+                                                            <?php $this->render_status($row['val_6']); ?>
+                                                        </td>
+                                                    </tr>
+                                                <?php endforeach; ?>
+                                            <?php endif; ?>
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <td>
+                                                    <?php echo esc_html($tab['footer_label']); ?>
+                                                </td>
+                                                <td class="am-col" style="font-size:22px;">
+                                                    <?php echo esc_html($tab['footer_val_2']); ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo esc_html($tab['footer_val_3']); ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo esc_html($tab['footer_val_4']); ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo esc_html($tab['footer_val_5']); ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo esc_html($tab['footer_val_6']); ?>
+                                                </td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
                                 </div>
-                            <?php endforeach; ?>
-                        </div>
+                            </div>
+                        <?php endforeach; ?>
                     </div>
                 <?php endif; ?>
 
@@ -382,7 +379,7 @@ class AM_Membership_Comparison_Widget extends \Elementor\Widget_Base
                     </p>
                 <?php endif; ?>
 
-                <div class="compare-buttons" style="text-align:center; margin-top: 36px;">
+                <div style="text-align:center; margin-top: 36px;">
                     <?php if (!empty($settings['primary_button_text'])): ?>
                         <a href="<?php echo esc_url($settings['primary_button_url']['url']); ?>" class="am-btn--primary-on-dark">
                             <?php echo esc_html($settings['primary_button_text']); ?>
@@ -403,18 +400,14 @@ class AM_Membership_Comparison_Widget extends \Elementor\Widget_Base
                 </div>
             </div>
             <script>
-                document.querySelectorAll('.compare-tab-btn').forEach(btn => {
-                    btn.addEventListener('click', () => {
-                        const widget = btn.closest('.am-section--compare');
-                        const tabId = btn.getAttribute('data-tab');
+                function switchTab_<?php echo esc_attr($widget_id); ?>(tabId, btnElement) {
+                    const widget = document.getElementById('compare-<?php echo esc_attr($widget_id); ?>');
+                    widget.querySelectorAll('.compare-tab').forEach(b => b.classList.remove('active'));
+                    widget.querySelectorAll('.compare-panel').forEach(p => p.classList.remove('active'));
 
-                        widget.querySelectorAll('.compare-tab-btn').forEach(b => b.classList.remove('active'));
-                        widget.querySelectorAll('.compare-tab-panel').forEach(p => p.classList.remove('active'));
-
-                        btn.classList.add('active');
-                        widget.querySelector('#' + tabId).classList.add('active');
-                    });
-                });
+                    btnElement.classList.add('active');
+                    widget.querySelector('#' + tabId).classList.add('active');
+                }
             </script>
         </section>
         <?php

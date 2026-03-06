@@ -31,8 +31,8 @@ class AM_Hair_FAQ_Widget extends \Elementor\Widget_Base
 
     public function get_style_depends()
     {
-        wp_register_style('am-widget-faq', plugins_url('../assets/css/widgets/faq.css', __FILE__));
-        return ['am-widget-faq'];
+        wp_register_style('am-hair-css', plugins_url('../assets/css/widgets/hair-global.css', __FILE__));
+        return ['am-hair-css'];
     }
 
     protected function register_controls()

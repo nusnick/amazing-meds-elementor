@@ -31,8 +31,8 @@ class AM_Hair_How_It_Works_Widget extends \Elementor\Widget_Base
 
     public function get_style_depends()
     {
-        wp_register_style('am-widget-steps', plugins_url('../assets/css/widgets/steps.css', __FILE__));
-        return ['am-widget-steps'];
+        wp_register_style('am-hair-css', plugins_url('../assets/css/widgets/hair-global.css', __FILE__));
+        return ['am-hair-css'];
     }
 
     protected function register_controls()

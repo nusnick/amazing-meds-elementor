@@ -32,8 +32,7 @@ class AM_Membership_Testimonials_Widget extends \Elementor\Widget_Base
     public function get_style_depends()
     {
         wp_register_style('am-membership-global', plugins_url('../assets/css/widgets/am-membership-global.css', __FILE__));
-        wp_register_style('am-membership-testimonials', plugins_url('../assets/css/widgets/membership-testimonials.css', __FILE__));
-        return ['am-membership-global', 'am-membership-testimonials'];
+        return ['am-membership-global'];
     }
 
     protected function register_controls()
@@ -133,7 +132,8 @@ class AM_Membership_Testimonials_Widget extends \Elementor\Widget_Base
                     <div class="testimonials-grid" style="margin-top: var(--sub-to-content);">
                         <?php foreach ($settings['items'] as $item): ?>
                             <div class="testimonial-card">
-                                <div class="testimonial-stars">
+                                <div class="testimonial-stars"
+                                    style="color: var(--am-gold); font-size: 16px; letter-spacing: 2px; margin-bottom: 16px;">
                                     <?php echo esc_html($item['stars']); ?>
                                 </div>
                                 <p class="testimonial-content">

@@ -32,8 +32,7 @@ class AM_Membership_Included_Benefits_Widget extends \Elementor\Widget_Base
     public function get_style_depends()
     {
         wp_register_style('am-membership-global', plugins_url('../assets/css/widgets/am-membership-global.css', __FILE__));
-        wp_register_style('am-membership-included-benefits', plugins_url('../assets/css/widgets/membership-included-benefits.css', __FILE__));
-        return ['am-membership-global', 'am-membership-included-benefits'];
+        return ['am-membership-global'];
     }
     protected function register_controls()
     {
@@ -149,7 +148,7 @@ class AM_Membership_Included_Benefits_Widget extends \Elementor\Widget_Base
                         <?php if (!empty($settings['items'])): ?>
                             <ul class="included-list">
                                 <?php foreach ($settings['items'] as $item): ?>
-                                    <li class="included-item">
+                                    <li>
                                         <div class="am-icon-circle">
                                             <?php echo $item['icon_svg']; ?>
                                         </div>

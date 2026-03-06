@@ -55,10 +55,6 @@ final class Amazing_Meds_Elementor
 
     public function register_frontend_styles()
     {
-        wp_register_style('am-global', plugins_url('assets/css/global.css', __FILE__), [], self::VERSION);
-        wp_register_style('am-membership-global', plugins_url('assets/css/widgets/am-membership-global.css', __FILE__), [], self::VERSION);
-        wp_enqueue_style('am-global');
-
         // Google Fonts
         wp_enqueue_style('am-google-fonts', 'https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap', [], null);
     }
@@ -89,6 +85,8 @@ final class Amazing_Meds_Elementor
         require_once(__DIR__ . '/widgets/membership-testimonials.php');
         require_once(__DIR__ . '/widgets/membership-pricing.php');
         require_once(__DIR__ . '/widgets/membership-conditions.php');
+        require_once(__DIR__ . '/widgets/membership-faq.php');
+        require_once(__DIR__ . '/widgets/membership-final-cta.php');
 
         $widgets_manager->register(new \AM_Hair_Hero_Widget());
         $widgets_manager->register(new \AM_Hair_Comparison_Grid_Widget());
@@ -114,6 +112,8 @@ final class Amazing_Meds_Elementor
         $widgets_manager->register(new \AM_Membership_Testimonials_Widget());
         $widgets_manager->register(new \AM_Membership_Pricing_Widget());
         $widgets_manager->register(new \AM_Membership_Conditions_Widget());
+        $widgets_manager->register(new \AM_Membership_FAQ_Widget());
+        $widgets_manager->register(new \AM_Membership_Final_CTA_Widget());
     }
 
     public function register_categories($elements_manager)

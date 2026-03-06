@@ -32,8 +32,7 @@ class AM_Membership_Conditions_Widget extends \Elementor\Widget_Base
     public function get_style_depends()
     {
         wp_register_style('am-membership-global', plugins_url('../assets/css/widgets/am-membership-global.css', __FILE__));
-        wp_register_style('am-membership-conditions', plugins_url('../assets/css/widgets/membership-conditions.css', __FILE__));
-        return ['am-membership-global', 'am-membership-conditions'];
+        return ['am-membership-global'];
     }
 
     protected function register_controls()
@@ -81,27 +80,44 @@ class AM_Membership_Conditions_Widget extends \Elementor\Widget_Base
                         'label' => 'Icon SVG',
                         'type' => \Elementor\Controls_Manager::TEXTAREA,
                     ],
+                    [
+                        'name' => 'is_featured',
+                        'label' => 'Dark/Featured Card?',
+                        'type' => \Elementor\Controls_Manager::SWITCHER,
+                        'default' => '',
+                    ]
                 ],
                 'default' => [
                     [
-                        'title' => 'Menopause & Perimenopause',
-                        'description' => 'Hot flashes, night sweats, mood swings, and sleep disruption.',
-                        'icon_svg' => '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"/><path d="M12 7v5l3 3"/></svg>'
-                    ],
-                    [
-                        'title' => 'Low Testosterone (TRT)',
-                        'description' => 'Fatigue, loss of muscle mass, low libido, and brain fog.',
-                        'icon_svg' => '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18z"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>'
+                        'title' => 'Hormone Optimization',
+                        'description' => 'Testosterone, estradiol, progesterone, thyroid. Full HRT for men and women, tailored to your labs and symptoms.',
+                        'icon_svg' => '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>',
+                        'is_featured' => 'yes',
                     ],
                     [
                         'title' => 'Weight Management',
-                        'description' => 'Metabolic resistance, stubborn fat, and insulin sensitivity issues.',
-                        'icon_svg' => '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20v-8m0 0V4m0 8h8m-8 0H4"/></svg>'
+                        'description' => 'GLP-1 medications and metabolic support for medically-supervised weight loss. Insurance accepted where eligible.',
+                        'icon_svg' => '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>'
                     ],
                     [
-                        'title' => 'Thyroid Dysfunction',
-                        'description' => 'Hypothyroidism, Hashimoto\'s, and metabolic slowdown.',
-                        'icon_svg' => '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4.5 16.5c1.5 1.5 4 2.5 7.5 2.5s6-1 7.5-2.5"/><path d="M4.5 7.5C6 6 8.5 5 12 5s6 1 7.5 2.5"/></svg>'
+                        'title' => 'Sexual Health',
+                        'description' => 'Discreet treatment for ED, PE, and other sexual health concerns. Prescribed and shipped with complete privacy.',
+                        'icon_svg' => '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>'
+                    ],
+                    [
+                        'title' => 'Hair Restoration',
+                        'description' => 'Evidence-based hair loss treatments including finasteride, minoxidil, and combination therapies.',
+                        'icon_svg' => '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>'
+                    ],
+                    [
+                        'title' => 'Peptide Therapy',
+                        'description' => 'NAD+, sermorelin, and advanced peptide protocols. Compounded and coordinated as part of your full treatment plan.',
+                        'icon_svg' => '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>'
+                    ],
+                    [
+                        'title' => 'Ongoing Chronic Care',
+                        'description' => 'Long-term management and quarterly lab monitoring for conditions that need consistent provider oversight.',
+                        'icon_svg' => '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>'
                     ],
                 ],
                 'title_field' => '{{{ title }}}',
@@ -117,7 +133,7 @@ class AM_Membership_Conditions_Widget extends \Elementor\Widget_Base
         $settings = $this->get_settings_for_display();
         ?>
         <section class="am-membership-global am-section--conditions">
-            <div class="am-container">
+            <div class="am-container container">
                 <div class="am-heading-stack">
                     <?php if (!empty($settings['label'])): ?>
                         <div class="am-label">
@@ -131,17 +147,24 @@ class AM_Membership_Conditions_Widget extends \Elementor\Widget_Base
 
                 <?php if (!empty($settings['items'])): ?>
                     <div class="conditions-grid" style="margin-top: var(--sub-to-content);">
-                        <?php foreach ($settings['items'] as $item): ?>
-                            <div class="condition-card">
-                                <div class="am-icon-circle">
+                        <?php foreach ($settings['items'] as $item):
+                            $is_dark = ('yes' === $item['is_featured']);
+                            $card_class = $is_dark ? 'am-card--dark condition-card' : 'am-card condition-card';
+                            $icon_class = $is_dark ? 'am-icon-circle am-icon-circle--gold' : 'am-icon-circle';
+                            ?>
+                            <div class="<?php echo esc_attr($card_class); ?>">
+                                <div class="<?php echo esc_attr($icon_class); ?>">
                                     <?php echo $item['icon_svg']; ?>
                                 </div>
-                                <h3>
-                                    <?php echo esc_html($item['title']); ?>
-                                </h3>
-                                <p>
-                                    <?php echo esc_html($item['description']); ?>
-                                </p>
+                                <?php if ($is_dark): ?>
+                                    <div class="condition-card-text">
+                                        <h3><?php echo esc_html($item['title']); ?></h3>
+                                        <p><?php echo esc_html($item['description']); ?></p>
+                                    </div>
+                                <?php else: ?>
+                                    <h3><?php echo esc_html($item['title']); ?></h3>
+                                    <p><?php echo esc_html($item['description']); ?></p>
+                                <?php endif; ?>
                             </div>
                         <?php endforeach; ?>
                     </div>
