@@ -284,6 +284,10 @@
      box-shadow: var(--shadow-lift);
  }
 
+ body .am-card--dark h3 {
+     color: var(--am-white);
+ }
+
  body .am-image-placeholder {
      background: var(--am-beige);
      border: 2px dashed var(--am-divider);
