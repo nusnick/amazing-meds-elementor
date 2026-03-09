@@ -101,7 +101,7 @@ class AM_Hair_NonBuyer_Widget extends \Elementor\Widget_Base
     {
         $settings = $this->get_settings_for_display();
         ?>
-        <section class="am-section am-nonbuyer">
+        <section class="am-section am-nonbuyer am-section--dark">
             <div class="am-container">
                 <div class="am-nonbuyer-inner">
                     <h3>
