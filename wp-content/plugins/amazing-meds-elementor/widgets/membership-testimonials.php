@@ -142,7 +142,7 @@ class AM_Membership_Testimonials_Widget extends \Elementor\Widget_Base
     {
         $settings = $this->get_settings_for_display();
         ?>
-        <section class="am-section--testimonials" style="background: var(--am-beige); padding: var(--section-pad-desktop) 0;">
+        <section class="am-section--testimonials">
             <div class="container">
                 <div class="am-heading-stack">
                     <?php if (!empty($settings['label'])): ?>
@@ -156,22 +156,19 @@ class AM_Membership_Testimonials_Widget extends \Elementor\Widget_Base
                 </div>
 
                 <?php if (!empty($settings['items'])): ?>
-                    <div
-                        style="margin-top: var(--sub-to-content); display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 900px; margin-left: auto; margin-right: auto;">
+                    <div class="am-testimonials-grid">
                         <?php foreach ($settings['items'] as $item): ?>
-                            <div
-                                style="background: var(--am-card-white); border-radius: var(--radius-standard); padding: 32px; text-align: center;">
-                                <div style="color: var(--am-gold); font-size: 18px; letter-spacing: 3px; margin-bottom: 16px;">
+                            <div class="am-testimonial-card">
+                                <div class="am-testimonial-stars">
                                     <?php echo esc_html($item['stars']); ?>
                                 </div>
-                                <p
-                                    style="font-family: var(--font-serif); font-size: 16px; font-style: italic; color: var(--am-charcoal); line-height: 1.5; margin-bottom: 16px;">
+                                <p class="am-testimonial-content">
                                     <?php echo wp_kses_post($item['content']); ?>
                                 </p>
-                                <div style="font-size: 14px; font-weight: 600; color: var(--am-charcoal);">
+                                <div class="am-testimonial-author">
                                     <?php echo esc_html($item['author_name']); ?>
                                 </div>
-                                <div style="font-size: 13px; color: var(--am-muted);">
+                                <div class="am-testimonial-meta">
                                     <?php echo esc_html($item['author_meta']); ?>
                                 </div>
                             </div>
@@ -180,11 +177,10 @@ class AM_Membership_Testimonials_Widget extends \Elementor\Widget_Base
                 <?php endif; ?>
 
                 <?php if (!empty($settings['footer_text']) || !empty($settings['link_text'])): ?>
-                    <p style="text-align:center; margin-top:24px; font-size:13px; color:var(--am-muted);">
+                    <p class="am-testimonials-footer">
                         <?php echo esc_html($settings['footer_text']); ?>
                         <?php if (!empty($settings['link_text'])): ?>
-                            <a href="<?php echo esc_url($settings['link_url']['url']); ?>"
-                                style="color:var(--am-charcoal); font-weight:600; text-decoration:underline;">
+                            <a href="<?php echo esc_url($settings['link_url']['url']); ?>">
                                 <?php echo esc_html($settings['link_text']); ?>
                             </a>
                         <?php endif; ?>
