@@ -193,7 +193,7 @@ class AM_Membership_Hero_Widget extends \Elementor\Widget_Base
         ?>
         <section class="am-section--hero">
             <div class="container">
-                <div class="hero-grid">
+                <div class="hero-grid am-dynamic-grid cols-2">
                     <div class="hero-content">
                         <?php if (!empty($settings['label'])): ?>
                             <div class="am-label">

@@ -131,7 +131,7 @@ class AM_Membership_Included_Benefits_Widget extends \Elementor\Widget_Base
         ?>
         <section class="am-membership-global am-section--included">
             <div class="am-container">
-                <div class="included-grid">
+                <div class="included-grid am-dynamic-grid cols-2">
                     <div class="included-content">
                         <?php if (!empty($settings['label'])): ?>
                             <div class="am-label">

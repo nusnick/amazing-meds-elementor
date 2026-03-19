@@ -153,8 +153,11 @@ class AM_Membership_Steps_Widget extends \Elementor\Widget_Base
                     <?php endif; ?>
                 </div>
 
-                <?php if (!empty($settings['items'])): ?>
-                    <div class="steps-grid" style="margin-top: var(--sub-to-content);">
+                <?php if (!empty($settings['items'])):
+                    $count = count($settings['items']);
+                    $cols = min($count, 4);
+                    ?>
+                    <div class="steps-grid am-dynamic-grid cols-<?php echo $cols; ?>" style="margin-top: var(--sub-to-content);">
                         <?php foreach ($settings['items'] as $item): ?>
                             <div class="step-card">
                                 <div class="step-num">

@@ -131,7 +131,7 @@ class AM_Membership_What_Include_Widget extends \Elementor\Widget_Base
         ?>
         <section class="am-membership-global am-section--included">
             <div class="container">
-                <div class="included-grid">
+                <div class="included-grid am-dynamic-grid cols-2">
                     <div class="included-image">
                         <?php if (!empty($settings['image']['url'])): ?>
                             <div class="included-image-wrapper">

@@ -157,7 +157,7 @@ class AM_Membership_How_It_Works_Widget extends \Elementor\Widget_Base
                     $count = count($settings['items']);
                     $cols = min($count, 4);
                     ?>
-                    <div class="steps-grid cols-<?php echo $cols; ?>" style="margin-top: var(--sub-to-content);">
+                    <div class="steps-grid am-dynamic-grid cols-<?php echo $cols; ?>" style="margin-top: var(--sub-to-content);">
                         <?php foreach ($settings['items'] as $item): ?>
                             <div class="step-card">
                                 <div class="step-num">

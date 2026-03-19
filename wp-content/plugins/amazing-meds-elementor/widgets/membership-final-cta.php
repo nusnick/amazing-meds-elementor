@@ -171,7 +171,7 @@ class AM_Membership_Final_CTA_Widget extends \Elementor\Widget_Base
                         $ns_count = count($settings['next_steps']);
                         $ns_cols = min($ns_count, 4);
                         ?>
-                        <div class="next-steps-grid cols-<?php echo $ns_cols; ?>">
+                        <div class="next-steps-grid am-dynamic-grid cols-<?php echo $ns_cols; ?>">
                             <?php foreach ($settings['next_steps'] as $ns): ?>
                                 <div class="next-step-item">
                                     <div class="ns-time">
@@ -189,7 +189,7 @@ class AM_Membership_Final_CTA_Widget extends \Elementor\Widget_Base
                         $t_count = count($settings['trust_items']);
                         $t_cols = min($t_count, 5);
                         ?>
-                        <div class="final-cta-trust cols-<?php echo $t_cols; ?>" style="margin-top: 32px;">
+                        <div class="final-cta-trust am-dynamic-grid cols-<?php echo $t_cols; ?>" style="margin-top: 32px;">
                             <?php foreach ($settings['trust_items'] as $idx => $t): ?>
                                 <span>
                                     <?php echo esc_html($t['text']); ?>

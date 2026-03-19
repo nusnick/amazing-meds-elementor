@@ -226,8 +226,11 @@ class AM_Membership_Pricing_Widget extends \Elementor\Widget_Base
                     </div>
                 <?php endif; ?>
 
-                <?php if (!empty($settings['cards'])): ?>
-                    <div class="pricing-grid">
+                <?php if (!empty($settings['cards'])):
+                    $count = count($settings['cards']);
+                    $cols = min($count, 4);
+                    ?>
+                    <div class="pricing-grid am-dynamic-grid cols-<?php echo $cols; ?>">
                         <?php foreach ($settings['cards'] as $card):
                             $card_class = 'pricing-card-item pricing-card--' . esc_attr($card['card_style']);
                             ?>
