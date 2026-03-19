@@ -167,8 +167,11 @@ class AM_Membership_Final_CTA_Widget extends \Elementor\Widget_Base
                         <?php endif; ?>
                     </div>
 
-                    <?php if (!empty($settings['next_steps'])): ?>
-                        <div class="next-steps-grid">
+                    <?php if (!empty($settings['next_steps'])):
+                        $ns_count = count($settings['next_steps']);
+                        $ns_cols = min($ns_count, 4);
+                        ?>
+                        <div class="next-steps-grid cols-<?php echo $ns_cols; ?>">
                             <?php foreach ($settings['next_steps'] as $ns): ?>
                                 <div class="next-step-item">
                                     <div class="ns-time">
@@ -182,15 +185,15 @@ class AM_Membership_Final_CTA_Widget extends \Elementor\Widget_Base
                         </div>
                     <?php endif; ?>
 
-                    <?php if (!empty($settings['trust_items'])): ?>
-                        <div class="final-cta-trust" style="margin-top: 32px;">
+                    <?php if (!empty($settings['trust_items'])):
+                        $t_count = count($settings['trust_items']);
+                        $t_cols = min($t_count, 5);
+                        ?>
+                        <div class="final-cta-trust cols-<?php echo $t_cols; ?>" style="margin-top: 32px;">
                             <?php foreach ($settings['trust_items'] as $idx => $t): ?>
                                 <span>
                                     <?php echo esc_html($t['text']); ?>
                                 </span>
-                                <?php if ($idx < count($settings['trust_items']) - 1): ?>
-                                    <span class="separator">|</span>
-                                <?php endif; ?>
                             <?php endforeach; ?>
                         </div>
                     <?php endif; ?>
