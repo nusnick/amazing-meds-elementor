@@ -202,8 +202,11 @@ class AM_Membership_System_5_Widget extends \Elementor\Widget_Base
                     <?php endif; ?>
                 </div>
 
-                <?php if (!empty($settings['items'])): ?>
-                    <div class="system5-grid">
+                <?php if (!empty($settings['items'])):
+                    $count = count($settings['items']);
+                    $cols = min($count, 5);
+                    ?>
+                    <div class="system5-grid cols-<?php echo $cols; ?>">
                         <?php foreach ($settings['items'] as $item):
                             $card_class = ('yes' === $item['is_featured']) ? 'system5-card system5-card--featured' : 'system5-card am-card';
                             ?>

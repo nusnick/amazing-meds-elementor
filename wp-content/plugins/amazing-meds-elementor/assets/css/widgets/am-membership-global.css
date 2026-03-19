@@ -504,7 +504,7 @@
  }
 
  body .trust-logo-item {
-     color: rgba(255, 255, 255, 0.5);
+     color: var(--am-charcoal);
      font-size: 13px;
      font-weight: 600;
      letter-spacing: 1px;
@@ -512,6 +512,12 @@
      padding: 8px 20px;
      border: 1px solid rgba(255, 255, 255, 0.15);
      border-radius: var(--radius-pill);
+     background: white;
+ }
+
+ .trust-logo-item img {
+     height: 46px;
+     width: auto;
  }
 
  /* SYSTEM 5 */
@@ -531,6 +537,29 @@
      grid-template-columns: repeat(5, 1fr);
      gap: 20px;
      margin-bottom: 48px;
+ }
+
+ body .system5-grid.cols-1 {
+     grid-template-columns: 1fr;
+     max-width: 600px;
+     margin-left: auto;
+     margin-right: auto;
+ }
+
+ body .system5-grid.cols-2 {
+     grid-template-columns: repeat(2, 1fr);
+ }
+
+ body .system5-grid.cols-3 {
+     grid-template-columns: repeat(3, 1fr);
+ }
+
+ body .system5-grid.cols-4 {
+     grid-template-columns: repeat(4, 1fr);
+ }
+
+ body .system5-grid.cols-5 {
+     grid-template-columns: repeat(5, 1fr);
  }
 
  body .system5-card {
@@ -892,6 +921,31 @@
      gap: var(--card-gap);
  }
 
+ body .steps-grid.cols-1 {
+     grid-template-columns: 1fr;
+     max-width: 600px;
+     margin-left: auto;
+     margin-right: auto;
+ }
+
+ body .steps-grid.cols-2 {
+     grid-template-columns: repeat(2, 1fr);
+ }
+
+ body .steps-grid.cols-3 {
+     grid-template-columns: repeat(3, 1fr);
+ }
+
+ body .steps-grid.cols-4 {
+     grid-template-columns: repeat(4, 1fr);
+ }
+
+ body .steps-grid.cols-2 .step-card:nth-child(2n)::after,
+ body .steps-grid.cols-3 .step-card:nth-child(3n)::after,
+ body .steps-grid.cols-4 .step-card:nth-child(4n)::after {
+     display: none;
+ }
+
  body .step-card {
      text-align: center;
      padding: 32px 20px;
@@ -1142,6 +1196,16 @@
      border-radius: var(--radius-feature);
      padding: 40px 36px;
      box-shadow: var(--shadow-soft);
+ }
+
+ body .pricing-card-item {
+     position: relative;
+ }
+
+ body .pricing-card-item .am-badge {
+     position: absolute;
+     top: 9px;
+     left: 9px;
  }
 
  body .pricing-card--standard h3 {

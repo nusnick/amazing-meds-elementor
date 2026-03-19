@@ -229,13 +229,13 @@ class AM_Membership_Pricing_Widget extends \Elementor\Widget_Base
                 <?php if (!empty($settings['cards'])): ?>
                     <div class="pricing-grid">
                         <?php foreach ($settings['cards'] as $card):
-                            $card_class = 'pricing-card--' . esc_attr($card['card_style']);
+                            $card_class = 'pricing-card-item pricing-card--' . esc_attr($card['card_style']);
                             ?>
                             <div class="<?php echo esc_attr($card_class); ?>">
                                 <?php if (!empty($card['top_badge'])): ?>
                                     <?php if ($card['card_style'] === 'entry' || $card['card_style'] === 'standard'): ?>
                                         <span class="am-badge"
-                                            style="<?php echo ($card['card_style'] === 'entry') ? 'background: rgba(255,255,255,0.2); color: var(--am-white);' : ''; ?> position: absolute; top: 9px; left: 9px;"><?php echo esc_html($card['top_badge']); ?></span>
+                                            style="<?php echo ($card['card_style'] === 'entry') ? 'background: rgba(255,255,255,0.2); color: var(--am-white);' : ''; ?> "><?php echo esc_html($card['top_badge']); ?></span>
                                     <?php elseif ($card['card_style'] === 'featured'): ?>
                                         <span class="am-badge--gold"><?php echo esc_html($card['top_badge']); ?></span>
                                     <?php endif; ?>

@@ -111,8 +111,7 @@ class AM_Membership_Insurance_Banner_Widget extends \Elementor\Widget_Base
                                 <span class="trust-logo-item">
                                     <?php if (!empty($logo['image']['url'])): ?>
                                         <img src="<?php echo esc_url($logo['image']['url']); ?>"
-                                            alt="<?php echo esc_attr($logo['name']); ?>"
-                                            style="max-height: 24px; width: auto; opacity: 0.7;">
+                                            alt="<?php echo esc_attr($logo['name']); ?>">
                                     <?php else: ?>
                                         <?php echo esc_html($logo['name']); ?>
                                     <?php endif; ?>
