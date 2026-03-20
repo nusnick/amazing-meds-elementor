@@ -115,7 +115,7 @@ class AM_Membership_How_It_Works_Widget extends \Elementor\Widget_Base
 
         $this->add_control(
             'btn_text',
-            ['label' => 'Button Text', 'type' => \Elementor\Controls_Manager::TEXT, 'default' => 'Book Your Free Consult']
+            ['label' => 'Button Text', 'type' => \Elementor\Controls_Manager::TEXT, 'default' => 'Get Started']
         );
 
         $this->add_control(
@@ -176,7 +176,7 @@ class AM_Membership_How_It_Works_Widget extends \Elementor\Widget_Base
 
                 <?php if (!empty($settings['btn_text'])): ?>
                     <div style="text-align:center; margin-top: 40px;">
-                        <a href="<?php echo esc_url($settings['btn_url']['url']); ?>" class="am-btn--primary">
+                        <a href="<?php echo esc_url($settings['btn_url']['url']); ?>" class="am-btn--primary am-btn-get-started">
                             <?php echo esc_html($settings['btn_text']); ?>
                         </a>
                     </div>

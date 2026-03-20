@@ -115,7 +115,7 @@ class AM_Membership_Steps_Widget extends \Elementor\Widget_Base
 
         $this->add_control(
             'btn_text',
-            ['label' => 'Button Text', 'type' => \Elementor\Controls_Manager::TEXT, 'default' => 'Book Your Free Consult']
+            ['label' => 'Button Text', 'type' => \Elementor\Controls_Manager::TEXT, 'default' => 'Get Started']
         );
 
         $this->add_control(

@@ -80,7 +80,7 @@ class AM_Membership_Hero_Widget extends \Elementor\Widget_Base
             [
                 'label' => esc_html__('Primary Button Text', 'amazing-meds-elementor'),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => esc_html__('Book Your Free Consult', 'amazing-meds-elementor'),
+                'default' => esc_html__('Get Started', 'amazing-meds-elementor'),
             ]
         );
 
@@ -206,7 +206,8 @@ class AM_Membership_Hero_Widget extends \Elementor\Widget_Base
 
                         <div class="hero-buttons">
                             <?php if (!empty($settings['primary_button_text'])): ?>
-                                <a href="<?php echo esc_url($settings['primary_button_url']['url']); ?>" class="am-btn--primary">
+                                <a href="<?php echo esc_url($settings['primary_button_url']['url']); ?>"
+                                    class="am-btn--primary am-btn-get-started">
                                     <?php echo esc_html($settings['primary_button_text']); ?>
                                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                         stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">

@@ -9,6 +9,7 @@
      --am-white: #FFFFFF;
      --am-muted: #6D685D;
      --am-divider: #D5C6B9;
+     --am-green: #264626;
      --font-serif: 'Playfair Display', Georgia, serif;
      --font-sans: 'Inter', -apple-system, sans-serif;
      --section-pad-desktop: 96px;
@@ -128,7 +129,18 @@
      transition: all 0.3s ease;
  }
 
+ body .am-btn-get-started {
+     background: var(--am-green);
+     color: var(--am-white);
+ }
+
  body.am-btn--primary:hover {
+     background: var(--am-charcoal-dark);
+     box-shadow: var(--shadow-lift);
+     transform: translateY(-2px);
+ }
+
+ body .am-btn-get-started:hover {
      background: var(--am-charcoal-dark);
      box-shadow: var(--shadow-lift);
      transform: translateY(-2px);

@@ -158,7 +158,7 @@ class AM_Membership_System_5_Widget extends \Elementor\Widget_Base
             [
                 'label' => esc_html__('Button Text', 'amazing-meds-elementor'),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => esc_html__('Book Your Free Consult', 'amazing-meds-elementor'),
+                'default' => esc_html__('Get Started', 'amazing-meds-elementor'),
             ]
         );
 
@@ -232,7 +232,7 @@ class AM_Membership_System_5_Widget extends \Elementor\Widget_Base
                 <?php endif; ?>
 
                 <div style="text-align:center; margin-top: 32px;">
-                    <a href="<?php echo esc_url($settings['button_url']['url']); ?>" class="am-btn--primary">
+                    <a href="<?php echo esc_url($settings['button_url']['url']); ?>" class="am-btn--primary am-btn-get-started">
                         <?php echo esc_html($settings['button_text']); ?>
                     </a>
                 </div>

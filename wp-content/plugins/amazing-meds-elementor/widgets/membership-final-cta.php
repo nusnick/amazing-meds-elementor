@@ -56,7 +56,7 @@ class AM_Membership_Final_CTA_Widget extends \Elementor\Widget_Base
             ['label' => 'Description', 'type' => \Elementor\Controls_Manager::TEXTAREA, 'default' => 'Start with a Free Call, lock in your labs with a $75 deposit, or go all-in with the membership. Either way, we check all five systems.']
         );
 
-        $this->add_control('primary_button_text', ['label' => 'Primary Button Text', 'type' => \Elementor\Controls_Manager::TEXT, 'default' => 'Book Your Free Consult']);
+        $this->add_control('primary_button_text', ['label' => 'Primary Button Text', 'type' => \Elementor\Controls_Manager::TEXT, 'default' => 'Get Started']);
         $this->add_control('primary_button_url', ['label' => 'Primary Button URL', 'type' => \Elementor\Controls_Manager::URL, 'default' => ['url' => '#']]);
 
         $this->add_control('secondary_button_text', ['label' => 'Secondary Button Text', 'type' => \Elementor\Controls_Manager::TEXT, 'default' => 'View Membership Options']);
@@ -150,7 +150,7 @@ class AM_Membership_Final_CTA_Widget extends \Elementor\Widget_Base
                     <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
                         <?php if (!empty($settings['primary_button_text'])): ?>
                             <a href="<?php echo esc_url($settings['primary_button_url']['url']); ?>"
-                                class="am-btn--primary-on-dark">
+                                class="am-btn--primary-on-dark am-btn-get-started">
                                 <?php echo esc_html($settings['primary_button_text']); ?>
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
                                     stroke-linecap="round" stroke-linejoin="round">
