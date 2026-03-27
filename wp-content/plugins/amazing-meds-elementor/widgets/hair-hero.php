@@ -218,6 +218,83 @@ class AM_Hair_Hero_Widget extends \Elementor\Widget_Base
 
         $this->end_controls_section();
 
+        // Button Style Section
+        $this->start_controls_section(
+            'section_button_style',
+            [
+                'label' => esc_html__('Button Style', 'amazing-meds-elementor'),
+                'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->start_controls_tabs('tabs_button_style');
+
+        $this->start_controls_tab(
+            'tab_button_normal',
+            [
+                'label' => esc_html__('Normal', 'amazing-meds-elementor'),
+            ]
+        );
+
+        $this->add_control(
+            'btn_bg_color',
+            [
+                'label' => esc_html__('Background Color', 'amazing-meds-elementor'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .am-btn' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'btn_text_color',
+            [
+                'label' => esc_html__('Text Color', 'amazing-meds-elementor'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .am-btn' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_tab();
+
+        $this->start_controls_tab(
+            'tab_button_hover',
+            [
+                'label' => esc_html__('Hover', 'amazing-meds-elementor'),
+            ]
+        );
+
+        $this->add_control(
+            'btn_bg_color_hover',
+            [
+                'label' => esc_html__('Background Color (Hover)', 'amazing-meds-elementor'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .am-btn:hover' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'btn_text_color_hover',
+            [
+                'label' => esc_html__('Text Color (Hover)', 'amazing-meds-elementor'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .am-btn:hover' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_tab();
+
+        $this->end_controls_tabs();
+
+        $this->end_controls_section();
+
         // Problem Strip Section
         $this->start_controls_section(
             'section_problems',

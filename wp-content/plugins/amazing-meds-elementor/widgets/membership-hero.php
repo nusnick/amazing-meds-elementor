@@ -185,6 +185,160 @@ class AM_Membership_Hero_Widget extends \Elementor\Widget_Base
 
         $this->end_controls_section();
 
+        // Primary Button Style
+        $this->start_controls_section(
+            'section_primary_button_style',
+            [
+                'label' => esc_html__('Primary Button Style', 'amazing-meds-elementor'),
+                'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->start_controls_tabs('tabs_primary_button_style');
+
+        $this->start_controls_tab(
+            'tab_primary_button_normal',
+            [
+                'label' => esc_html__('Normal', 'amazing-meds-elementor'),
+            ]
+        );
+
+        $this->add_control(
+            'primary_btn_bg_color',
+            [
+                'label' => esc_html__('Background Color', 'amazing-meds-elementor'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .am-btn--primary' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'primary_btn_text_color',
+            [
+                'label' => esc_html__('Text Color', 'amazing-meds-elementor'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .am-btn--primary' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_tab();
+
+        $this->start_controls_tab(
+            'tab_primary_button_hover',
+            [
+                'label' => esc_html__('Hover', 'amazing-meds-elementor'),
+            ]
+        );
+
+        $this->add_control(
+            'primary_btn_bg_color_hover',
+            [
+                'label' => esc_html__('Background Color (Hover)', 'amazing-meds-elementor'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .am-btn--primary:hover' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'primary_btn_text_color_hover',
+            [
+                'label' => esc_html__('Text Color (Hover)', 'amazing-meds-elementor'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .am-btn--primary:hover' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_tab();
+
+        $this->end_controls_tabs();
+
+        $this->end_controls_section();
+
+        // Secondary Button Style
+        $this->start_controls_section(
+            'section_secondary_button_style',
+            [
+                'label' => esc_html__('Secondary Button Style', 'amazing-meds-elementor'),
+                'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->start_controls_tabs('tabs_secondary_button_style');
+
+        $this->start_controls_tab(
+            'tab_secondary_button_normal',
+            [
+                'label' => esc_html__('Normal', 'amazing-meds-elementor'),
+            ]
+        );
+
+        $this->add_control(
+            'secondary_btn_bg_color',
+            [
+                'label' => esc_html__('Background Color', 'amazing-meds-elementor'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .am-btn--secondary' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'secondary_btn_text_color',
+            [
+                'label' => esc_html__('Text Color', 'amazing-meds-elementor'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .am-btn--secondary' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_tab();
+
+        $this->start_controls_tab(
+            'tab_secondary_button_hover',
+            [
+                'label' => esc_html__('Hover', 'amazing-meds-elementor'),
+            ]
+        );
+
+        $this->add_control(
+            'secondary_btn_bg_color_hover',
+            [
+                'label' => esc_html__('Background Color (Hover)', 'amazing-meds-elementor'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .am-btn--secondary:hover' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'secondary_btn_text_color_hover',
+            [
+                'label' => esc_html__('Text Color (Hover)', 'amazing-meds-elementor'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .am-btn--secondary:hover' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_tab();
+
+        $this->end_controls_tabs();
+
+        $this->end_controls_section();
+
     }
 
     protected function render()
