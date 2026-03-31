@@ -134,10 +134,15 @@
      color: var(--am-white);
  }
 
- body.am-btn--primary:hover {
+ body .am-btn--primary:hover {
      background: var(--am-charcoal-dark);
      box-shadow: var(--shadow-lift);
      transform: translateY(-2px);
+ }
+
+ .am-pricing-card .am-btn--primary {
+     width: 100%;
+     justify-content: center;
  }
 
  body .am-btn-get-started:hover {
@@ -1754,6 +1759,248 @@
      text-decoration: underline;
  }
 
+ /* ── COMPARISON TABLE ── */
+ body .am-comparison-wrap {
+     background: var(--am-white);
+     border-radius: 20px;
+     overflow: hidden;
+     box-shadow: var(--shadow-lift);
+     margin-bottom: 48px;
+ }
+
+ body .am-comparison-header {
+     background: var(--am-charcoal);
+     color: var(--am-white);
+     padding: 20px 32px;
+     text-align: center;
+     font-family: var(--font-serif);
+     font-size: 20px;
+     font-weight: 500;
+ }
+
+ body .am-comparison-table {
+     width: 100%;
+     border-collapse: collapse;
+ }
+
+ body .am-comparison-table thead th {
+     padding: 16px 24px;
+     text-align: left;
+     font-size: 13px;
+     font-weight: 600;
+     text-transform: uppercase;
+     letter-spacing: 1px;
+     color: var(--am-muted);
+     background: var(--am-card-white);
+     border-bottom: 1px solid var(--am-divider);
+ }
+
+ body .am-comparison-table tbody tr {
+     border-bottom: 1px solid var(--am-divider);
+ }
+
+ body .am-comparison-table tbody tr:nth-child(even) {
+     background: #faf9f7;
+ }
+
+ body .am-comparison-table td {
+     padding: 18px 24px;
+     font-size: 15px;
+     vertical-align: middle;
+ }
+
+ body .am-comparison-table td:first-child {
+     font-weight: 600;
+     color: var(--am-charcoal);
+ }
+
+ body .am-comparison-table td:nth-child(2) {
+     color: var(--am-muted);
+ }
+
+ body .am-comparison-table td:nth-child(3) {
+     color: var(--am-green);
+     font-weight: 500;
+ }
+
+ body .am-comparison-table .am-total-row {
+     background: var(--am-charcoal) !important;
+     border-bottom: none;
+ }
+
+ body .am-comparison-table .am-total-row td {
+     color: var(--am-white) !important;
+     font-weight: 700;
+     font-size: 16px;
+     padding: 22px 24px;
+ }
+
+ body .am-total-callout {
+     display: inline-flex;
+     align-items: center;
+     gap: 12px;
+ }
+
+ body .am-total-price-badge {
+     background: var(--am-gold);
+     color: var(--am-charcoal);
+     padding: 6px 14px;
+     border-radius: var(--radius-pill);
+     font-size: 13px;
+     font-weight: 700;
+     white-space: nowrap;
+ }
+
+ body .am-advocate-row td {
+     background: #f0f5f0 !important;
+     color: var(--am-green) !important;
+     font-weight: 600 !important;
+     border-left: 3px solid var(--am-green);
+ }
+
+ body .am-comparison-disclaimer {
+     text-align: center;
+     font-size: 13px;
+     color: var(--am-muted);
+     padding: 16px 24px;
+     background: var(--am-card-white);
+ }
+
+ /* ── URGENCY BAR ── */
+ body .am-urgency-bar {
+     background: #fef9ec;
+     border: 1px solid var(--am-gold);
+     border-radius: var(--radius-standard);
+     padding: 18px 28px;
+     text-align: center;
+     color: var(--am-charcoal);
+     font-size: 15px;
+     font-weight: 500;
+     margin-bottom: 48px;
+ }
+
+ body .am-urgency-bar strong {
+     color: var(--am-green);
+ }
+
+ /* ── PRICING CARDS ── */
+ body .am-pricing-card {
+     background: var(--am-white);
+     border-radius: 20px;
+     padding: 40px;
+     box-shadow: var(--shadow-soft);
+     position: relative;
+     border: 1px solid var(--am-divider);
+     display: flex;
+     flex-direction: column;
+     box-sizing: border-box;
+     transition: all 0.3s ease;
+     height: 100%;
+ }
+
+ body .am-pricing-card:hover {
+     transform: translateY(-5px);
+     box-shadow: var(--shadow-lift);
+ }
+
+ body .am-pricing-card--featured {
+     border: 2px solid var(--am-gold);
+     box-shadow: var(--shadow-lift);
+ }
+
+ body .am-card-badge {
+     position: absolute;
+     top: -14px;
+     left: 50%;
+     transform: translateX(-50%);
+     background: var(--am-gold);
+     color: var(--am-charcoal);
+     padding: 5px 18px;
+     border-radius: var(--radius-pill);
+     font-size: 12px;
+     font-weight: 700;
+     letter-spacing: 1px;
+     text-transform: uppercase;
+     white-space: nowrap;
+     z-index: 2;
+ }
+
+ body .am-card-badge--value {
+     background: var(--am-green);
+     color: var(--am-white);
+ }
+
+ body .am-card-plan {
+     font-family: var(--font-serif);
+     font-size: 22px;
+     font-weight: 500;
+     margin-bottom: 8px;
+     text-align: center;
+ }
+
+ body .am-card-price {
+     font-family: var(--font-serif);
+     font-size: 48px;
+     font-weight: 500;
+     color: var(--am-charcoal);
+     text-align: center;
+     line-height: 1.1;
+     margin-bottom: 8px;
+     display: flex;
+     align-items: baseline;
+     justify-content: center;
+     flex-wrap: wrap;
+     gap: 6px;
+ }
+
+ body .am-card-price span {
+     font-size: 20px;
+     color: var(--am-muted);
+     font-family: var(--font-sans);
+     font-weight: 400;
+ }
+
+ body .am-card-sub {
+     text-align: center;
+     color: var(--am-muted);
+     font-size: 14px;
+     margin-bottom: 28px;
+     min-height: 1.4em;
+ }
+
+ body .am-card-refund {
+     font-size: 12px;
+     text-align: center;
+     color: var(--am-muted);
+     margin-top: auto;
+     padding-top: 16px;
+     line-height: 1.5;
+ }
+
+ body .am-card-features {
+     list-style: none;
+     padding: 0;
+     margin: 24px 0 0;
+     border-top: 1px solid var(--am-divider);
+     padding-top: 24px;
+ }
+
+ body .am-card-features li {
+     font-size: 14px;
+     color: var(--am-muted);
+     margin-bottom: 12px;
+     padding-left: 28px;
+     position: relative;
+ }
+
+ body .am-card-features li::before {
+     content: '✓';
+     position: absolute;
+     left: 0;
+     color: var(--am-gold);
+     font-weight: 800;
+ }
+
  /* ═══════════════════════════════════════
      RESPONSIVE
      ═══════════════════════════════════════ */
@@ -1878,5 +2125,13 @@
 
      body .am-testimonial-card {
          padding: 24px;
+     }
+
+     body .am-pricing-card {
+         padding: 24px;
+     }
+
+     body .am-card-price {
+         font-size: 36px;
      }
  }
