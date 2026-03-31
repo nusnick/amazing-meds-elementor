@@ -1887,7 +1887,7 @@
  body .am-pricing-card {
      background: var(--am-white);
      border-radius: 20px;
-     padding: 40px;
+     padding: 32px 40px 40px;
      box-shadow: var(--shadow-soft);
      position: relative;
      border: 1px solid var(--am-divider);
@@ -1904,8 +1904,8 @@
  }
 
  body .am-pricing-card--featured {
-     border: 2px solid var(--am-gold);
-     box-shadow: var(--shadow-lift);
+     border: 1px solid var(--am-gold);
+     box-shadow: 0 10px 30px rgba(188, 163, 103, 0.1);
  }
 
  body .am-card-badge {
@@ -1926,7 +1926,7 @@
  }
 
  body .am-card-badge--value {
-     background: var(--am-green);
+     background: #143023;
      color: var(--am-white);
  }
 
@@ -1934,71 +1934,74 @@
      font-family: var(--font-serif);
      font-size: 22px;
      font-weight: 500;
-     margin-bottom: 8px;
+     margin-bottom: 2px;
      text-align: center;
  }
 
  body .am-card-price {
      font-family: var(--font-serif);
-     font-size: 48px;
+     font-size: 56px;
      font-weight: 500;
      color: var(--am-charcoal);
      text-align: center;
-     line-height: 1.1;
-     margin-bottom: 8px;
+     line-height: 1;
+     margin-bottom: 2px;
      display: flex;
      align-items: baseline;
      justify-content: center;
-     flex-wrap: wrap;
-     gap: 6px;
+     gap: 4px;
  }
 
  body .am-card-price span {
-     font-size: 20px;
+     font-size: 14px;
      color: var(--am-muted);
      font-family: var(--font-sans);
-     font-weight: 400;
+     font-weight: 500;
+     margin-left: 2px;
  }
 
  body .am-card-sub {
      text-align: center;
      color: var(--am-muted);
-     font-size: 14px;
-     margin-bottom: 28px;
-     min-height: 1.4em;
+     font-size: 13px;
+     margin-bottom: 24px;
  }
 
  body .am-card-refund {
      font-size: 12px;
      text-align: center;
      color: var(--am-muted);
-     margin-top: auto;
-     padding-top: 16px;
-     line-height: 1.5;
+     margin: 16px 0;
+     line-height: 1.4;
+     max-width: 90%;
+     margin-left: auto;
+     margin-right: auto;
  }
 
  body .am-card-features {
      list-style: none;
      padding: 0;
-     margin: 24px 0 0;
-     border-top: 1px solid var(--am-divider);
-     padding-top: 24px;
+     margin: 4px 0 0;
  }
 
  body .am-card-features li {
      font-size: 14px;
-     color: var(--am-muted);
-     margin-bottom: 12px;
-     padding-left: 28px;
+     color: var(--am-charcoal);
+     padding: 14px 0;
      position: relative;
+     border-top: 1px solid var(--am-divider);
+     display: flex;
+     align-items: center;
+     gap: 12px;
+     line-height: 1.4;
  }
 
  body .am-card-features li::before {
      content: '✓';
-     position: absolute;
-     left: 0;
      color: var(--am-gold);
      font-weight: 800;
+     font-size: 16px;
+     flex-shrink: 0;
  }
 
  /* ═══════════════════════════════════════

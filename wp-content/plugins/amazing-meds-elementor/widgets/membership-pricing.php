@@ -387,16 +387,16 @@ class AM_Membership_Pricing_Widget extends \Elementor\Widget_Base
                                     <div class="am-card-sub"><?php echo esc_html($card['price_sub']); ?></div>
                                 <?php endif; ?>
 
-                                <?php if (!empty($card['disclaimer_text'])): ?>
-                                    <p class="am-card-refund"><?php echo esc_html($card['disclaimer_text']); ?></p>
-                                <?php endif; ?>
-
                                 <a href="<?php echo esc_url($card['button_url']['url']); ?>" 
                                    class="am-btn--primary <?php echo ($card['card_style'] === 'featured') ? 'am-btn--gold' : ''; ?>"
                                    <?php echo $card['button_url']['is_external'] ? 'target="_blank"' : ''; ?>
                                    <?php echo $card['button_url']['nofollow'] ? 'rel="nofollow"' : ''; ?>>
                                     <?php echo esc_html($card['button_text']); ?>
                                 </a>
+
+                                <?php if (!empty($card['disclaimer_text'])): ?>
+                                    <p class="am-card-refund"><?php echo esc_html($card['disclaimer_text']); ?></p>
+                                <?php endif; ?>
 
                                 <?php if (!empty($card['features'])):
                                     $features = explode("\n", str_replace("\r", "", $card['features']));
