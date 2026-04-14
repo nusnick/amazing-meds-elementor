@@ -57,6 +57,9 @@ final class Amazing_Meds_Elementor
     {
         // Google Fonts
         wp_enqueue_style('am-google-fonts', 'https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap', [], null);
+
+        // Home Widgets CSS
+        wp_enqueue_style('am-home-widgets', plugins_url('assets/css/home-widgets.css', __FILE__), [], self::VERSION);
     }
 
     public function register_widgets($widgets_manager)
@@ -88,6 +91,18 @@ final class Amazing_Meds_Elementor
         require_once(__DIR__ . '/widgets/membership-conditions.php');
         require_once(__DIR__ . '/widgets/membership-faq.php');
         require_once(__DIR__ . '/widgets/membership-final-cta.php');
+        require_once(__DIR__ . '/widgets/home-hero.php');
+        require_once(__DIR__ . '/widgets/home-trusted-bar.php');
+        require_once(__DIR__ . '/widgets/home-services.php');
+        require_once(__DIR__ . '/widgets/home-care-plan.php');
+        require_once(__DIR__ . '/widgets/home-journey.php');
+        require_once(__DIR__ . '/widgets/home-symptoms.php');
+        require_once(__DIR__ . '/widgets/home-women-care.php');
+        require_once(__DIR__ . '/widgets/home-testimonials.php');
+        require_once(__DIR__ . '/widgets/home-wellness.php');
+        require_once(__DIR__ . '/widgets/home-team.php');
+        require_once(__DIR__ . '/widgets/home-faq.php');
+        require_once(__DIR__ . '/widgets/home-cta.php');
 
         $widgets_manager->register(new \AM_Hair_Hero_Widget());
         $widgets_manager->register(new \AM_Hair_Comparison_Grid_Widget());
@@ -116,6 +131,18 @@ final class Amazing_Meds_Elementor
         $widgets_manager->register(new \AM_Membership_Conditions_Widget());
         $widgets_manager->register(new \AM_Membership_FAQ_Widget());
         $widgets_manager->register(new \AM_Membership_Final_CTA_Widget());
+        $widgets_manager->register(new \AM_Home_Hero_Widget());
+        $widgets_manager->register(new \AM_Home_Trusted_Bar_Widget());
+        $widgets_manager->register(new \AM_Home_Services_Widget());
+        $widgets_manager->register(new \AM_Home_Care_Plan_Widget());
+        $widgets_manager->register(new \AM_Home_Journey_Widget());
+        $widgets_manager->register(new \AM_Home_Symptoms_Widget());
+        $widgets_manager->register(new \AM_Home_Women_Care_Widget());
+        $widgets_manager->register(new \AM_Home_Testimonials_Widget());
+        $widgets_manager->register(new \AM_Home_Wellness_Widget());
+        $widgets_manager->register(new \AM_Home_Team_Widget());
+        $widgets_manager->register(new \AM_Home_FAQ_Widget());
+        $widgets_manager->register(new \AM_Home_CTA_Widget());
     }
 
     public function register_categories($elements_manager)

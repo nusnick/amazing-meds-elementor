@@ -1,0 +1,779 @@
+/* Amazing Meds Home Widgets Styles */
+
+:root {
+    --am-nude: #E8DECD;
+    --am-dark: #312C21;
+    --am-dark-bg: #242119;
+    --am-gold: #BFA568;
+    --am-gold-light: #D2BE9D;
+    --am-beige-light: #F5F3F1;
+    --am-beige-mid: #EBE4D9;
+    --am-text-gray: #676158;
+    --am-text-gray-light: rgba(103, 97, 88, 0.4);
+    --am-white: #FFFFFF;
+
+    --am-font-heading: 'Bodoni Moda', serif;
+    --am-font-body: 'Neue Plak', sans-serif;
+    --am-font-secondary: 'Inter', sans-serif;
+}
+
+/* Base Styles */
+.am-home-widget {
+    font-family: var(--am-font-body);
+    color: var(--am-dark);
+    line-height: 1.5;
+    box-sizing: border-box;
+}
+
+.am-home-widget * {
+    box-sizing: border-box;
+}
+
+.am-button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px 40px;
+    border-radius: 500px;
+    font-family: var(--am-font-body);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+}
+
+.am-button-dark {
+    background: var(--am-dark);
+    color: var(--am-white);
+}
+
+.am-button-dark:hover {
+    background: #453e2e;
+}
+
+.am-button-gold {
+    background: var(--am-gold);
+    color: var(--am-white);
+}
+
+.am-button-gold:hover {
+    background: #a38d59;
+}
+
+.am-heading-large {
+    font-family: var(--am-font-heading);
+    font-weight: 700;
+    font-size: 56px;
+    line-height: 64px;
+}
+
+.am-heading-xl {
+    font-family: var(--am-font-heading);
+    font-weight: 700;
+    font-size: 80px;
+    line-height: 96px;
+}
+
+.am-text-p {
+    color: var(--am-text-gray);
+    font-size: 20px;
+    line-height: 32px;
+}
+
+/* Hero Widget */
+.am-hero {
+    align-self: stretch;
+    background: var(--am-nude);
+    justify-content: flex-start;
+    align-items: flex-start;
+    display: inline-flex;
+    width: 100%;
+}
+
+.am-hero-container {
+    flex: 1 1 0;
+    padding: 160px;
+    background: var(--am-white);
+    overflow: hidden;
+    border-bottom-left-radius: 120px;
+    border-bottom-right-radius: 120px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 80px;
+    display: inline-flex;
+    width: 100%;
+}
+
+.am-hero-content {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 48px;
+    display: flex;
+    max-width: 1000px;
+    text-align: center;
+}
+
+.am-hero-text-group {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 24px;
+    display: flex;
+}
+
+.am-hero-title {
+    align-self: stretch;
+    text-align: center;
+    color: var(--am-dark);
+}
+
+.am-hero-description {
+    align-self: stretch;
+    text-align: center;
+    color: var(--am-text-gray);
+    font-size: 24px;
+    font-family: var(--am-font-body);
+    font-weight: 400;
+    line-height: 36px;
+}
+
+/* Wellness (Feature Highlights) Widget */
+.am-wellness {
+    align-self: stretch;
+    background: var(--am-white);
+    padding: 120px 160px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 80px;
+    display: flex;
+    width: 100%;
+}
+
+.am-wellness-header {
+    width: 800px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 16px;
+    display: flex;
+    text-align: center;
+}
+
+.am-features-grid {
+    align-self: stretch;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 24px;
+    display: inline-flex;
+}
+
+.am-feature-card {
+    flex: 1 1 0;
+    padding: 40px;
+    background: var(--am-beige-light);
+    border-radius: 40px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 24px;
+    display: flex;
+}
+
+.am-feature-icon-box {
+    width: 56px;
+    height: 56px;
+    background: var(--am-nude);
+    border-radius: 999px;
+    justify-content: center;
+    align-items: center;
+    display: inline-flex;
+}
+
+.am-feature-title {
+    align-self: stretch;
+    color: var(--am-dark);
+    font-size: 24px;
+    font-family: var(--am-font-heading);
+    font-weight: 700;
+}
+
+.am-feature-description {
+    align-self: stretch;
+    color: var(--am-text-gray);
+    font-size: 18px;
+    font-family: var(--am-font-body);
+    font-weight: 400;
+    line-height: 28px;
+}
+
+/* Services (Comparison Grid) Widget */
+.am-services {
+    align-self: stretch;
+    background: var(--am-white);
+    padding: 120px 160px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 80px;
+    display: flex;
+    width: 100%;
+}
+
+.am-services-header {
+    width: 800px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 16px;
+    display: flex;
+    text-align: center;
+}
+
+.am-comparison-container {
+    align-self: stretch;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 40px;
+    display: inline-flex;
+}
+
+.am-comparison-col {
+    flex: 1 1 0;
+    padding: 40px;
+    border-radius: 40px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 40px;
+    display: flex;
+}
+
+.am-col-standard {
+    background: var(--am-beige-light);
+}
+
+.am-col-amazing {
+    background: var(--am-nude);
+    box-shadow: 0px 40px 0px -24px var(--am-gold);
+}
+
+.am-col-header {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 8px;
+    display: flex;
+}
+
+.am-col-title {
+    text-align: center;
+    color: var(--am-dark);
+    font-size: 32px;
+    font-family: var(--am-font-heading);
+    font-weight: 700;
+}
+
+.am-items-list {
+    align-self: stretch;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 20px;
+    display: flex;
+}
+
+.am-list-item {
+    align-self: stretch;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 12px;
+    display: inline-flex;
+}
+
+.am-list-icon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+}
+
+.am-list-text {
+    flex: 1 1 0;
+    color: var(--am-text-gray);
+    font-size: 18px;
+    font-family: var(--am-font-body);
+    font-weight: 400;
+    line-height: 28px;
+}
+
+/* Trusted Bar Widget */
+.am-trusted-bar {
+    align-self: stretch;
+    background: var(--am-nude);
+    padding: 0 160px 120px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 80px;
+    display: flex;
+    width: 100%;
+}
+
+.am-trust-items {
+    justify-content: flex-start;
+    align-items: center;
+    gap: 40px;
+    display: inline-flex;
+    opacity: 0.9;
+}
+
+.am-trust-item {
+    justify-content: flex-start;
+    align-items: center;
+    gap: 8px;
+    display: flex;
+}
+
+.am-trust-text {
+    color: var(--am-dark);
+    font-size: 18px;
+    font-family: var(--am-font-body);
+    font-weight: 400;
+    line-height: 32px;
+}
+
+.am-insurance-box {
+    align-self: stretch;
+    padding: 48px 80px;
+    background: var(--am-white);
+    border-radius: 40px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 32px;
+    display: flex;
+    width: 100%;
+}
+
+.am-insurance-title {
+    color: var(--am-text-gray);
+    font-size: 16px;
+    font-family: var(--am-font-body);
+    font-weight: 400;
+    line-height: 24px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.am-logo-grid {
+    align-self: stretch;
+    justify-content: space-between;
+    align-items: center;
+    display: inline-flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.am-insurance-logo {
+    height: 40px;
+    opacity: 0.5;
+    filter: grayscale(1);
+    transition: all 0.3s ease;
+}
+
+.am-insurance-logo:hover {
+    opacity: 1;
+    filter: grayscale(0);
+}
+
+/* Journey (How it Works) Widget */
+.am-journey {
+    align-self: stretch;
+    background: var(--am-beige-light);
+    padding: 120px 160px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 80px;
+    display: flex;
+    width: 100%;
+}
+
+.am-journey-header {
+    width: 800px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 16px;
+    display: flex;
+    text-align: center;
+}
+
+.am-journey-grid {
+    align-self: stretch;
+    justify-content: space-between;
+    align-items: flex-start;
+    display: inline-flex;
+    gap: 24px;
+}
+
+.am-journey-card {
+    flex: 1 1 0;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 24px;
+    display: flex;
+}
+
+.am-journey-num {
+    color: var(--am-text-gray-light);
+    font-size: 80px;
+    font-family: var(--am-font-heading);
+    font-weight: 700;
+    line-height: normal;
+}
+
+.am-journey-title {
+    align-self: stretch;
+    color: var(--am-dark);
+    font-size: 24px;
+    font-family: var(--am-font-heading);
+    font-weight: 700;
+}
+
+.am-journey-description {
+    align-self: stretch;
+    color: var(--am-text-gray);
+    font-size: 18px;
+    font-family: var(--am-font-body);
+    font-weight: 400;
+    line-height: 28px;
+}
+
+/* Care Plan (Pricing) Widget */
+.am-care-plan {
+    align-self: stretch;
+    background: var(--am-white);
+    padding: 120px 160px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 80px;
+    display: flex;
+    width: 100%;
+}
+
+.am-plans-grid {
+    align-self: stretch;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 24px;
+    display: inline-flex;
+}
+
+.am-plan-card {
+    flex: 1 1 0;
+    padding: 64px 40px;
+    background: var(--am-beige-light);
+    border-radius: 40px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 40px;
+    display: flex;
+    transition: all 0.3s ease;
+}
+
+.am-plan-card:hover {
+    transform: translateY(-8px);
+    background: var(--am-beige-mid);
+}
+
+.am-plan-header {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 8px;
+    display: flex;
+}
+
+.am-plan-name {
+    color: var(--am-text-gray);
+    font-size: 16px;
+    font-family: var(--am-font-body);
+    font-weight: 400;
+    line-height: 24px;
+    text-transform: uppercase;
+}
+
+.am-plan-price-group {
+    justify-content: center;
+    align-items: baseline;
+    display: inline-flex;
+    gap: 4px;
+}
+
+.am-plan-price {
+    color: var(--am-dark);
+    font-size: 64px;
+    font-family: var(--am-font-heading);
+    font-weight: 700;
+}
+
+.am-plan-period {
+    color: var(--am-text-gray);
+    font-size: 18px;
+    font-family: var(--am-font-body);
+}
+
+.am-plan-feature {
+    color: var(--am-dark);
+    font-size: 18px;
+    font-family: var(--am-font-body);
+    text-align: center;
+}
+
+/* Symptoms Widget */
+.am-symptoms {
+    align-self: stretch;
+    background: var(--am-beige-light);
+    padding: 120px 160px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 80px;
+    display: flex;
+    width: 100%;
+}
+
+.am-symptoms-grid {
+    align-self: stretch;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    width: 100%;
+}
+
+.am-symptom-card {
+    padding: 40px;
+    background: var(--am-white);
+    border-radius: 40px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 24px;
+    display: flex;
+    transition: all 0.3s ease;
+}
+
+.am-symptom-card:hover {
+    background: var(--am-nude);
+}
+
+.am-symptom-icon {
+    width: 48px;
+    height: 48px;
+    opacity: 0.8;
+}
+
+.am-symptom-text {
+    text-align: center;
+    color: var(--am-dark);
+    font-size: 20px;
+    font-family: var(--am-font-body);
+    font-weight: 500;
+}
+
+/* Women's Care Widget */
+.am-women-care {
+    align-self: stretch;
+    background: var(--am-nude);
+    padding: 120px 160px;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    gap: 80px;
+}
+
+.am-women-care-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.am-women-care-img {
+    flex: 1;
+    border-radius: 40px;
+    overflow: hidden;
+}
+
+.am-women-care-img img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Testimonials Widget */
+.am-testimonials {
+    align-self: stretch;
+    background: var(--am-white);
+    padding: 120px 160px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 80px;
+    display: flex;
+    width: 100%;
+}
+
+.am-testimonial-card {
+    background: var(--am-beige-light);
+    border-radius: 40px;
+    padding: 64px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    max-width: 1000px;
+}
+
+.am-testimonial-quote {
+    font-family: var(--am-font-heading);
+    font-size: 32px;
+    line-height: 44px;
+    font-style: italic;
+    color: var(--am-dark);
+}
+
+.am-testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.am-author-name {
+    font-weight: 600;
+    font-size: 18px;
+}
+
+/* Team Widget */
+.am-team {
+    align-self: stretch;
+    background: var(--am-beige-light);
+    padding: 120px 160px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 80px;
+    display: flex;
+    width: 100%;
+}
+
+.am-team-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    width: 100%;
+}
+
+.am-team-member {
+    background: var(--am-white);
+    border-radius: 40px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.am-member-img {
+    height: 400px;
+    background: #ccc;
+    position: relative;
+}
+
+.am-member-info {
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.am-member-name {
+    font-family: var(--am-font-heading);
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.am-member-role {
+    color: var(--am-gold);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+/* FAQ Widget */
+.am-faq {
+    align-self: stretch;
+    background: var(--am-white);
+    padding: 120px 160px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 80px;
+    display: flex;
+    width: 100%;
+}
+
+.am-faq-item {
+    width: 100%;
+    max-width: 800px;
+    border-bottom: 1px solid var(--am-beige-mid);
+    padding: 32px 0;
+}
+
+.am-faq-question {
+    font-family: var(--am-font-heading);
+    font-size: 24px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.am-faq-answer {
+    padding-top: 24px;
+    color: var(--am-text-gray);
+    font-size: 18px;
+}
+
+/* CTA Widget */
+.am-cta {
+    align-self: stretch;
+    background: var(--am-dark-bg);
+    padding: 160px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 48px;
+    display: flex;
+    width: 100%;
+    text-align: center;
+    color: var(--am-white);
+    border-top-left-radius: 120px;
+    border-top-right-radius: 120px;
+}
+
+.am-cta-title {
+    color: var(--am-white);
+}
+
+.am-cta-description {
+    color: rgba(255, 255, 255, 0.7);
+    max-width: 600px;
+}
