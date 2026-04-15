@@ -3,9 +3,6 @@ if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly.
 }
 
-/**
- * Amazing Meds Home Services Widget
- */
 class AM_Home_Services_Widget extends \Elementor\Widget_Base
 {
 
@@ -16,12 +13,12 @@ class AM_Home_Services_Widget extends \Elementor\Widget_Base
 
     public function get_title()
     {
-        return esc_html__('AM Home Services', 'amazing-meds-elementor');
+        return esc_html__('AM Home Comparison', 'amazing-meds-elementor');
     }
 
     public function get_icon()
     {
-        return 'eicon-inner-section';
+        return 'eicon-columns';
     }
 
     public function get_categories()
@@ -36,93 +33,89 @@ class AM_Home_Services_Widget extends \Elementor\Widget_Base
 
     protected function register_controls()
     {
-
+        // Header
         $this->start_controls_section(
-            'content_section',
+            'section_content',
             [
-                'label' => esc_html__('Content', 'amazing-meds-elementor'),
+                'label' => esc_html__('Header Content', 'amazing-meds-elementor'),
                 'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
 
-        $this->add_control(
-            'title',
+        $this->add_control('title', ['label' => 'Title', 'type' => \Elementor\Controls_Manager::TEXTAREA, 'default' => 'Not All Hormone Care Providers<br>Are Built the Same']);
+        $this->add_control('subtitle', ['label' => 'Subtitle', 'type' => \Elementor\Controls_Manager::TEXTAREA, 'default' => 'Here\'s how Amazing Meds compares to typical telehealth clinics.']);
+
+        $this->end_controls_section();
+
+        // Left Column (Typical)
+        $this->start_controls_section(
+            'section_left_col',
             [
-                'label' => esc_html__('Main Title', 'amazing-meds-elementor'),
-                'type' => \Elementor\Controls_Manager::TEXTAREA,
-                'default' => esc_html__('A More Complete Approach to Helping You Feel Better', 'amazing-meds-elementor'),
+                'label' => esc_html__('Left Column (Typical)', 'amazing-meds-elementor'),
+                'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
 
-        // Standard Care
-        $this->add_control(
-            'standard_title',
-            [
-                'label' => esc_html__('Standard Care Title', 'amazing-meds-elementor'),
-                'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => esc_html__('Standard Care', 'amazing-meds-elementor'),
-                'separator' => 'before',
-            ]
-        );
+        $this->add_control('left_title', ['label' => 'Title', 'type' => \Elementor\Controls_Manager::TEXT, 'default' => 'Typical Clinics']);
 
-        $standard_repeater = new \Elementor\Repeater();
-        $standard_repeater->add_control(
-            'item_text',
-            [
-                'label' => esc_html__('Item Text', 'amazing-meds-elementor'),
-                'type' => \Elementor\Controls_Manager::TEXTAREA,
-            ]
-        );
-
+        $repeater_left = new \Elementor\Repeater();
+        $repeater_left->add_control('text', ['label' => 'Item Text', 'type' => \Elementor\Controls_Manager::TEXT]);
         $this->add_control(
-            'standard_items',
+            'left_items',
             [
-                'label' => esc_html__('Standard Care Items', 'amazing-meds-elementor'),
+                'label' => 'Items',
                 'type' => \Elementor\Controls_Manager::REPEATER,
-                'fields' => $standard_repeater->get_controls(),
+                'fields' => $repeater_left->get_controls(),
                 'default' => [
-                    ['item_text' => 'Treatment often based on a single number from a basic lab panel.'],
-                    ['item_text' => 'One-size-fits-all prescriptions (capsules/topicals only).'],
-                    ['item_text' => 'Minimal follow-up or adjustment once treatment begins.'],
-                    ['item_text' => 'Navigating appointments, labs, and pharmacies on your own.'],
+                    ['text' => 'Limited testing'],
+                    ['text' => 'One-time prescriptions'],
+                    ['text' => 'Minimal follow-up'],
+                    ['text' => 'No insurance support'],
+                    ['text' => 'Mail-order only pharmacies'],
+                    ['text' => 'Standardized treatment plans'],
                 ],
+                'title_field' => '{{{ text }}}',
             ]
         );
 
-        // Amazing Meds
+        $this->end_controls_section();
+
+
+        // Right Column (Amazing Meds)
+        $this->start_controls_section(
+            'section_right_col',
+            [
+                'label' => esc_html__('Right Column (Amazing Meds)', 'amazing-meds-elementor'),
+                'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+            ]
+        );
+
+        $this->add_control('right_badge', ['label' => 'Badge', 'type' => \Elementor\Controls_Manager::TEXT, 'default' => 'Best Option']);
+        $this->add_control('right_title', ['label' => 'Brand Title', 'type' => \Elementor\Controls_Manager::TEXT, 'default' => 'amazing meds']);
+
+        $repeater_right = new \Elementor\Repeater();
+        $repeater_right->add_control('text', ['label' => 'Item Text', 'type' => \Elementor\Controls_Manager::TEXT]);
         $this->add_control(
-            'amazing_title',
+            'right_items',
             [
-                'label' => esc_html__('Amazing Meds Title', 'amazing-meds-elementor'),
-                'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => esc_html__('Amazing Meds', 'amazing-meds-elementor'),
-                'separator' => 'before',
-            ]
-        );
-
-        $amazing_repeater = new \Elementor\Repeater();
-        $amazing_repeater->add_control(
-            'item_text',
-            [
-                'label' => esc_html__('Item Text', 'amazing-meds-elementor'),
-                'type' => \Elementor\Controls_Manager::TEXTAREA,
-            ]
-        );
-
-        $this->add_control(
-            'amazing_items',
-            [
-                'label' => esc_html__('Amazing Meds Items', 'amazing-meds-elementor'),
+                'label' => 'Items',
                 'type' => \Elementor\Controls_Manager::REPEATER,
-                'fields' => $amazing_repeater->get_controls(),
+                'fields' => $repeater_right->get_controls(),
                 'default' => [
-                    ['item_text' => 'Comprehensive lab review looking at your full hormonal picture.'],
-                    ['item_text' => 'Personalized delivery options tailored to your body and goals.'],
-                    ['item_text' => 'Ongoing quarterly monitoring and treatment adjustments.'],
-                    ['item_text' => 'A seamless experience where we handle the logistics for you.'],
+                    ['text' => 'Complete hormone and metabolic mapping'],
+                    ['text' => 'Ongoing safety monitoring'],
+                    ['text' => 'Quarterly treatment adjustments'],
+                    ['text' => 'Insurance and prior authorization support'],
+                    ['text' => 'Prescriptions sent to local pharmacies'],
+                    ['text' => 'Multiple treatment options'],
+                    ['text' => 'Personalized and ongoing care'],
                 ],
+                'title_field' => '{{{ text }}}',
             ]
         );
+
+        $this->add_control('btn_text', ['label' => 'Button Text', 'type' => \Elementor\Controls_Manager::TEXT, 'default' => 'Get Started']);
+        $this->add_control('btn_url', ['label' => 'Button URL', 'type' => \Elementor\Controls_Manager::URL, 'default' => ['url' => '#']]);
 
         $this->end_controls_section();
 
@@ -132,43 +125,55 @@ class AM_Home_Services_Widget extends \Elementor\Widget_Base
     {
         $settings = $this->get_settings_for_display();
         ?>
-        <div class="am-home-widget am-services">
-            <div class="am-services-header">
-                <?php if (!empty($settings['title'])): ?>
-                    <h2 class="am-heading-large"><?php echo wp_kses_post($settings['title']); ?></h2>
-                <?php endif; ?>
-            </div>
+        <div class="am-home-widget am-home-services">
+            <section class="section am-home-container text-center">
+                <h2 class="serif"><?php echo wp_kses_post($settings['title']); ?></h2>
+                <p><?php echo wp_kses_post($settings['subtitle']); ?></p>
 
-            <div class="am-comparison-container">
-                <!-- Standard Care -->
-                <div class="am-comparison-col am-col-standard">
-                    <div class="am-col-header">
-                        <h3 class="am-col-title"><?php echo esc_html($settings['standard_title']); ?></h3>
-                    </div>
-                    <div class="am-items-list">
-                        <?php foreach ($settings['standard_items'] as $item): ?>
-                            <div class="am-list-item">
-                                <div class="am-list-text"><?php echo esc_html($item['item_text']); ?></div>
-                            </div>
-                        <?php endforeach; ?>
-                    </div>
-                </div>
+                <div class="comp-wrap">
 
-                <!-- Amazing Meds -->
-                <div class="am-comparison-col am-col-amazing">
-                    <div class="am-col-header">
-                        <h3 class="am-col-title"><?php echo esc_html($settings['amazing_title']); ?></h3>
+                    <div class="comp-left">
+                        <h3 style="font-size: 18px; font-weight: 600; margin-bottom: 24px; text-align: left;">
+                            <?php echo esc_html($settings['left_title']); ?>
+                        </h3>
+                        <?php if (!empty($settings['left_items'])): ?>
+                            <ul class="comp-list-left">
+                                <?php foreach ($settings['left_items'] as $item): ?>
+                                    <li><span class="icon-minus"></span><?php echo wp_kses_post($item['text']); ?></li>
+                                <?php endforeach; ?>
+                            </ul>
+                        <?php endif; ?>
                     </div>
-                    <div class="am-items-list">
-                        <?php foreach ($settings['amazing_items'] as $item): ?>
-                            <div class="am-list-item">
-                                <div class="am-list-text"><?php echo esc_html($item['item_text']); ?></div>
+
+                    <div class="comp-right text-white">
+                        <?php if (!empty($settings['right_badge'])): ?>
+                            <span class="badge-best"><?php echo esc_html($settings['right_badge']); ?></span>
+                        <?php endif; ?>
+
+                        <h3 class="serif" style="font-size: 36px; margin-bottom: 24px; letter-spacing: -1px; color: #fff;">
+                            <?php echo esc_html($settings['right_title']); ?>
+                        </h3>
+
+                        <?php if (!empty($settings['right_items'])): ?>
+                            <ul class="comp-list-right">
+                                <?php foreach ($settings['right_items'] as $item): ?>
+                                    <li><span class="icon-check"></span><?php echo wp_kses_post($item['text']); ?></li>
+                                <?php endforeach; ?>
+                            </ul>
+                        <?php endif; ?>
+
+                        <?php if (!empty($settings['btn_text'])): ?>
+                            <div style="text-align: center; margin-top: 32px;">
+                                <a href="<?php echo esc_url($settings['btn_url']['url']); ?>" class="btn btn-white"
+                                    style="width: 100%;">
+                                    <?php echo esc_html($settings['btn_text']); ?>
+                                </a>
                             </div>
-                        <?php endforeach; ?>
+                        <?php endif; ?>
                     </div>
-                    <a href="#" class="am-button am-button-dark">Get Started</a>
+
                 </div>
-            </div>
+            </section>
         </div>
         <?php
     }

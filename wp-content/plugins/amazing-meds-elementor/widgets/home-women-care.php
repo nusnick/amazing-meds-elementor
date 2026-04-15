@@ -3,9 +3,6 @@ if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly.
 }
 
-/**
- * Amazing Meds Home Women's Care Widget
- */
 class AM_Home_Women_Care_Widget extends \Elementor\Widget_Base
 {
 
@@ -16,12 +13,12 @@ class AM_Home_Women_Care_Widget extends \Elementor\Widget_Base
 
     public function get_title()
     {
-        return esc_html__('AM Home Women\'s Care', 'amazing-meds-elementor');
+        return esc_html__('AM Home Women Care', 'amazing-meds-elementor');
     }
 
     public function get_icon()
     {
-        return 'eicon-image-pulse';
+        return 'eicon-image-box';
     }
 
     public function get_categories()
@@ -36,122 +33,75 @@ class AM_Home_Women_Care_Widget extends \Elementor\Widget_Base
 
     protected function register_controls()
     {
-
         $this->start_controls_section(
-            'content_section',
+            'section_content',
             [
                 'label' => esc_html__('Content', 'amazing-meds-elementor'),
                 'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
 
-        $this->add_control(
-            'title',
-            [
-                'label' => esc_html__('Main Title', 'amazing-meds-elementor'),
-                'type' => \Elementor\Controls_Manager::TEXTAREA,
-                'default' => esc_html__('Modern Women’s Care', 'amazing-meds-elementor'),
-            ]
-        );
-
-        $this->add_control(
-            'description',
-            [
-                'label' => esc_html__('Description', 'amazing-meds-elementor'),
-                'type' => \Elementor\Controls_Manager::TEXTAREA,
-                'default' => esc_html__('Precision medicine tailored to the unique hormonal needs of woman at every stage of life.', 'amazing-meds-elementor'),
-            ]
-        );
+        $this->add_control('title', ['label' => 'Title', 'type' => \Elementor\Controls_Manager::TEXTAREA, 'default' => 'Personalized Hormone<br>Care for Women']);
+        $this->add_control('description', ['label' => 'Description', 'type' => \Elementor\Controls_Manager::TEXTAREA, 'default' => 'Hormone health for women is often overlooked or oversimplified. At Amazing Meds, we provide personalized care based on your labs, symptoms, and goals—including testosterone therapy for women when clinically appropriate.']);
 
         $repeater = new \Elementor\Repeater();
-
-        $repeater->add_control(
-            'item_text',
-            [
-                'label' => esc_html__('Item', 'amazing-meds-elementor'),
-                'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => esc_html__('Perimenopause & Menopause', 'amazing-meds-elementor'),
-            ]
-        );
-
+        $repeater->add_control('text', ['label' => 'List Item text', 'type' => \Elementor\Controls_Manager::TEXT]);
         $this->add_control(
             'items',
             [
-                'label' => esc_html__('Specialties', 'amazing-meds-elementor'),
+                'label' => 'Checklist Items',
                 'type' => \Elementor\Controls_Manager::REPEATER,
                 'fields' => $repeater->get_controls(),
                 'default' => [
-                    ['item_text' => 'Perimenopause & Menopause'],
-                    ['item_text' => 'PCOS & Hormonal Imbalance'],
-                    ['item_text' => 'Metabolic Support & Weight Loss'],
-                    ['item_text' => 'Thyroid Optimization'],
+                    ['text' => 'Multiple treatment delivery options'],
+                    ['text' => 'Care tailored to your body and needs'],
+                    ['text' => 'Ongoing monitoring and adjustments'],
                 ],
-                'title_field' => '{{{ item_text }}}',
+                'title_field' => '{{{ text }}}',
             ]
         );
 
-        $this->add_control(
-            'btn_text',
-            [
-                'label' => esc_html__('Button Text', 'amazing-meds-elementor'),
-                'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => esc_html__('Learn About Women’s Health', 'amazing-meds-elementor'),
-            ]
-        );
+        $this->add_control('btn_text', ['label' => 'Button Text', 'type' => \Elementor\Controls_Manager::TEXT, 'default' => 'Explore Women\'s Care']);
+        $this->add_control('btn_url', ['label' => 'Button URL', 'type' => \Elementor\Controls_Manager::URL, 'default' => ['url' => '#']]);
 
-        $this->add_control(
-            'image',
-            [
-                'label' => esc_html__('Section Image', 'amazing-meds-elementor'),
-                'type' => \Elementor\Controls_Manager::MEDIA,
-            ]
-        );
+        $this->add_control('image', ['label' => 'Image', 'type' => \Elementor\Controls_Manager::MEDIA, 'default' => ['url' => \Elementor\Utils::get_placeholder_image_src()]]);
 
         $this->end_controls_section();
-
     }
 
     protected function render()
     {
         $settings = $this->get_settings_for_display();
         ?>
-        <div class="am-home-widget am-women-care">
-            <div class="am-women-care-content">
-                <?php if (!empty($settings['title'])): ?>
-                    <h2 class="am-heading-large"><?php echo wp_kses_post($settings['title']); ?></h2>
-                <?php endif; ?>
+        <div class="am-home-widget am-home-women-care">
+            <section class="am-home-container section">
+                <div class="women-card">
+                    <div>
+                        <h2 class="serif"><?php echo wp_kses_post($settings['title']); ?></h2>
+                        <p><?php echo wp_kses_post($settings['description']); ?></p>
 
-                <?php if (!empty($settings['description'])): ?>
-                    <p class="am-text-p"><?php echo wp_kses_post($settings['description']); ?></p>
-                <?php endif; ?>
+                        <?php if (!empty($settings['items'])): ?>
+                            <ul class="check-list">
+                                <?php foreach ($settings['items'] as $item): ?>
+                                    <li><?php echo wp_kses_post($item['text']); ?></li>
+                                <?php endforeach; ?>
+                            </ul>
+                        <?php endif; ?>
 
-                <div class="am-items-list">
-                    <?php foreach ($settings['items'] as $item): ?>
-                        <div class="am-list-item">
-                            <div class="am-list-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="12" cy="12" r="10" stroke="#BFA568" stroke-width="2" />
-                                    <path d="M8 12L11 15L16 9" stroke="#BFA568" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                </svg>
-                            </div>
-                            <div class="am-list-text"><?php echo esc_html($item['item_text']); ?></div>
-                        </div>
-                    <?php endforeach; ?>
+                        <?php if (!empty($settings['btn_text'])): ?>
+                            <a href="<?php echo esc_url($settings['btn_url']['url']); ?>" class="btn btn-dark"
+                                style="margin-top: 16px;">
+                                <?php echo esc_html($settings['btn_text']); ?>
+                            </a>
+                        <?php endif; ?>
+                    </div>
+                    <div class="wc-img">
+                        <?php if (!empty($settings['image']['url'])): ?>
+                            <img src="<?php echo esc_url($settings['image']['url']); ?>" alt="Women Care">
+                        <?php endif; ?>
+                    </div>
                 </div>
-
-                <a href="#" class="am-button am-button-dark"><?php echo esc_html($settings['btn_text']); ?></a>
-            </div>
-
-            <div class="am-women-care-img">
-                <?php if (!empty($settings['image']['url'])): ?>
-                    <img src="<?php echo esc_url($settings['image']['url']); ?>" alt="<?php echo esc_attr($settings['title']); ?>">
-                <?php else: ?>
-                    <div
-                        style="width: 100%; height: 600px; background: var(--am-beige-mid); display: flex; align-items: center; justify-content: center; color: var(--am-text-gray);">
-                        Image Placeholder</div>
-                <?php endif; ?>
-            </div>
+            </section>
         </div>
         <?php
     }

@@ -3,15 +3,12 @@ if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly.
 }
 
-/**
- * Amazing Meds Home Trusted Bar Widget
- */
 class AM_Home_Trusted_Bar_Widget extends \Elementor\Widget_Base
 {
 
     public function get_name()
     {
-        return 'am_home_trusted';
+        return 'am_home_trusted_bar';
     }
 
     public function get_title()
@@ -21,7 +18,7 @@ class AM_Home_Trusted_Bar_Widget extends \Elementor\Widget_Base
 
     public function get_icon()
     {
-        return 'eicon-info-box';
+        return 'eicon-image-box';
     }
 
     public function get_categories()
@@ -36,9 +33,8 @@ class AM_Home_Trusted_Bar_Widget extends \Elementor\Widget_Base
 
     protected function register_controls()
     {
-
         $this->start_controls_section(
-            'content_section',
+            'section_content',
             [
                 'label' => esc_html__('Content', 'amazing-meds-elementor'),
                 'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
@@ -46,76 +42,63 @@ class AM_Home_Trusted_Bar_Widget extends \Elementor\Widget_Base
         );
 
         $this->add_control(
-            'insurance_title',
+            'title',
             [
-                'label' => esc_html__('Insurance Title', 'amazing-meds-elementor'),
+                'label' => esc_html__('Title', 'amazing-meds-elementor'),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => esc_html__('Insurance Accepted', 'amazing-meds-elementor'),
+                'default' => esc_html__('We proudly accept most major insurance plans', 'amazing-meds-elementor'),
             ]
         );
 
         $repeater = new \Elementor\Repeater();
-
         $repeater->add_control(
-            'logo_image',
+            'image',
             [
                 'label' => esc_html__('Logo Image', 'amazing-meds-elementor'),
                 'type' => \Elementor\Controls_Manager::MEDIA,
+                'default' => [
+                    'url' => \Elementor\Utils::get_placeholder_image_src(),
+                ],
             ]
         );
 
         $this->add_control(
             'logos',
             [
-                'label' => esc_html__('Insurance Logos', 'amazing-meds-elementor'),
+                'label' => esc_html__('Logos', 'amazing-meds-elementor'),
                 'type' => \Elementor\Controls_Manager::REPEATER,
                 'fields' => $repeater->get_controls(),
                 'default' => [
-                    ['logo_image' => ['url' => 'https://placehold.co/100x40']],
-                    ['logo_image' => ['url' => 'https://placehold.co/100x40']],
-                    ['logo_image' => ['url' => 'https://placehold.co/100x40']],
-                    ['logo_image' => ['url' => 'https://placehold.co/100x40']],
-                    ['logo_image' => ['url' => 'https://placehold.co/100x40']],
+                    ['image' => ['url' => \Elementor\Utils::get_placeholder_image_src()]],
+                    ['image' => ['url' => \Elementor\Utils::get_placeholder_image_src()]],
+                    ['image' => ['url' => \Elementor\Utils::get_placeholder_image_src()]],
+                    ['image' => ['url' => \Elementor\Utils::get_placeholder_image_src()]],
+                    ['image' => ['url' => \Elementor\Utils::get_placeholder_image_src()]],
                 ],
             ]
         );
 
         $this->end_controls_section();
-
     }
 
     protected function render()
     {
         $settings = $this->get_settings_for_display();
         ?>
-        <div class="am-home-widget am-trusted-bar">
-            <!-- Trust Indicators -->
-            <div class="am-trust-items">
-                <div class="am-trust-item">
-                    <span class="am-trust-text">Provider-reviewed</span>
-                </div>
-                <div class="am-trust-item">
-                    <span class="am-trust-text">Free discreet shipping</span>
-                </div>
-                <div class="am-trust-item">
-                    <span class="am-trust-text">4.8/5 rating</span>
-                </div>
-            </div>
-
-            <!-- Insurance Box -->
-            <div class="am-insurance-box">
-                <?php if (!empty($settings['insurance_title'])): ?>
-                    <div class="am-insurance-title"><?php echo esc_html($settings['insurance_title']); ?></div>
+        <div class="am-home-widget am-home-trusted-bar">
+            <div class="ins-banner am-home-container section">
+                <p style="margin-bottom: 0;">
+                    <?php echo wp_kses_post($settings['title']); ?>
+                </p>
+                <?php if (!empty($settings['logos'])): ?>
+                    <div class="ins-logos">
+                        <?php foreach ($settings['logos'] as $item): ?>
+                            <?php if (!empty($item['image']['url'])): ?>
+                                <img src="<?php echo esc_url($item['image']['url']); ?>" alt="Insurance Logo">
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    </div>
                 <?php endif; ?>
-
-                <div class="am-logo-grid">
-                    <?php foreach ($settings['logos'] as $item): ?>
-                        <?php if (!empty($item['logo_image']['url'])): ?>
-                            <img src="<?php echo esc_url($item['logo_image']['url']); ?>" class="am-insurance-logo"
-                                alt="Insurance Partner">
-                        <?php endif; ?>
-                    <?php endforeach; ?>
-                </div>
             </div>
         </div>
         <?php
