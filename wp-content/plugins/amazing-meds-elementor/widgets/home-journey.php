@@ -66,6 +66,61 @@ class AM_Home_Journey_Widget extends \Elementor\Widget_Base
 
         $this->add_control('btn_text', ['label' => 'Button Text', 'type' => \Elementor\Controls_Manager::TEXT, 'default' => 'Get Started']);
         $this->add_control('btn_url', ['label' => 'Button URL', 'type' => \Elementor\Controls_Manager::URL, 'default' => ['url' => '#']]);
+        $this->end_controls_section();
+
+        // Style Tab
+        $this->start_controls_section(
+            'section_style_journey',
+            [
+                'label' => esc_html__('Style', 'amazing-meds-elementor'),
+                'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_control(
+            'num_color',
+            [
+                'label' => esc_html__('Number Color', 'amazing-meds-elementor'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .how-num' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'num_bg',
+            [
+                'label' => esc_html__('Number BG Color', 'amazing-meds-elementor'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .how-num' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'arrow_color',
+            [
+                'label' => esc_html__('Arrow Circle Color', 'amazing-meds-elementor'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .how-arr-circle' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .how-arr-circle svg' => 'stroke: {{VALUE}};', // This might need a separate color
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'arrow_stroke',
+            [
+                'label' => esc_html__('Arrow SVG Color', 'amazing-meds-elementor'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .how-arr-circle svg' => 'stroke: {{VALUE}};',
+                ],
+            ]
+        );
 
         $this->end_controls_section();
     }

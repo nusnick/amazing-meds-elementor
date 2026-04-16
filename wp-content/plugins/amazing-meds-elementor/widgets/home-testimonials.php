@@ -69,6 +69,50 @@ class AM_Home_Testimonials_Widget extends \Elementor\Widget_Base
         );
 
         $this->end_controls_section();
+
+        // Style Tab
+        $this->start_controls_section(
+            'section_style_testi',
+            [
+                'label' => esc_html__('Style', 'amazing-meds-elementor'),
+                'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_control(
+            'star_color',
+            [
+                'label' => esc_html__('Stars Color', 'amazing-meds-elementor'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .t-stars' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'play_bg',
+            [
+                'label' => esc_html__('Play Button BG', 'amazing-meds-elementor'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .play-circ' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'play_icon',
+            [
+                'label' => esc_html__('Play Icon Color', 'amazing-meds-elementor'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .play-circ svg' => 'fill: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
     }
 
     protected function render()
@@ -123,9 +167,11 @@ class AM_Home_Testimonials_Widget extends \Elementor\Widget_Base
                                             <?php endif; ?>
                                             <div style="text-align: left;">
                                                 <div style="font-size: 14px; font-weight: 600; color: var(--text-dark);">
-                                                    <?php echo esc_html($testi['author_name']); ?></div>
+                                                    <?php echo esc_html($testi['author_name']); ?>
+                                                </div>
                                                 <div style="font-size: 11px; color: var(--text-muted);">
-                                                    <?php echo esc_html($testi['author_title']); ?></div>
+                                                    <?php echo esc_html($testi['author_title']); ?>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

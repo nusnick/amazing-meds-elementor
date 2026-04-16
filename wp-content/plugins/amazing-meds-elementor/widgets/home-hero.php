@@ -144,6 +144,29 @@ class AM_Home_Hero_Widget extends \Elementor\Widget_Base
         );
 
         $this->end_controls_section();
+
+        // Style Tab
+        $this->start_controls_section(
+            'section_style_hero',
+            [
+                'label' => esc_html__('Style', 'amazing-meds-elementor'),
+                'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_control(
+            'feat_icon_color',
+            [
+                'label' => esc_html__('Features Icon Color', 'amazing-meds-elementor'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .hero-feats span i' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .hero-feats span svg' => 'fill: {{VALUE}}; stroke: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
     }
 
     protected function render()

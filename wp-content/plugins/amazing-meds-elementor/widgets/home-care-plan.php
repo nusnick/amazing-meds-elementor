@@ -116,6 +116,20 @@ class AM_Home_Care_Plan_Widget extends \Elementor\Widget_Base
             'label' => 'Icon',
             'type' => \Elementor\Controls_Manager::ICONS,
         ]);
+        $repeater_adv->add_control('icon_color', [
+            'label' => 'Icon Color',
+            'type' => \Elementor\Controls_Manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} {{CURRENT_ITEM}} .adv-icon i' => 'color: {{VALUE}};',
+                '{{WRAPPER}} {{CURRENT_ITEM}} .adv-icon svg' => 'fill: {{VALUE}}; stroke: {{VALUE}};',
+                '{{WRAPPER}} {{CURRENT_ITEM}} .adv-icon' => 'color: {{VALUE}};',
+            ],
+        ]);
+        $repeater_adv->add_control('icon_bg', [
+            'label' => 'Icon BG',
+            'type' => \Elementor\Controls_Manager::COLOR,
+            'selectors' => ['{{WRAPPER}} {{CURRENT_ITEM}} .adv-icon' => 'background-color: {{VALUE}};'],
+        ]);
         $repeater_adv->add_control('is_highlight', ['label' => 'Highlight Style? (Tan)', 'type' => \Elementor\Controls_Manager::SWITCHER, 'return_value' => 'yes', 'default' => '']);
         $repeater_adv->add_control('items', ['label' => 'Bullet Items (One per line)', 'type' => \Elementor\Controls_Manager::TEXTAREA]);
 
@@ -167,6 +181,20 @@ class AM_Home_Care_Plan_Widget extends \Elementor\Widget_Base
             'label' => 'Icon',
             'type' => \Elementor\Controls_Manager::ICONS,
         ]);
+        $repeater_bot->add_control('icon_color', [
+            'label' => 'Icon Color',
+            'type' => \Elementor\Controls_Manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} {{CURRENT_ITEM}} .feat-mini-icon i' => 'color: {{VALUE}};',
+                '{{WRAPPER}} {{CURRENT_ITEM}} .feat-mini-icon svg' => 'fill: {{VALUE}}; stroke: {{VALUE}};',
+                '{{WRAPPER}} {{CURRENT_ITEM}} .feat-mini-icon' => 'color: {{VALUE}};',
+            ],
+        ]);
+        $repeater_bot->add_control('icon_bg', [
+            'label' => 'Icon BG',
+            'type' => \Elementor\Controls_Manager::COLOR,
+            'selectors' => ['{{WRAPPER}} {{CURRENT_ITEM}} .feat-mini-icon' => 'background-color: {{VALUE}};'],
+        ]);
 
         $this->add_control(
             'bot_features',
@@ -186,6 +214,28 @@ class AM_Home_Care_Plan_Widget extends \Elementor\Widget_Base
         );
 
         $this->end_controls_section();
+
+        // Style Tab
+        $this->start_controls_section(
+            'section_style_icons',
+            [
+                'label' => esc_html__('Icons Style', 'amazing-meds-elementor'),
+                'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_control(
+            'check_icon_color',
+            [
+                'label' => esc_html__('Checklist Bullet BG', 'amazing-meds-elementor'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .check-list li::before' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
     }
 
     protected function render()
@@ -197,10 +247,10 @@ class AM_Home_Care_Plan_Widget extends \Elementor\Widget_Base
             <section class="section">
                 <div class="plan-sec">
                     <div class="am-home-container">
-                        <h2 class="serif text-center" style="color: var(--accent-gold); margin-bottom: 24px;">
+                        <h2 class="serif text-center">
                             <?php echo esc_html($settings['title']); ?>
                         </h2>
-                        <p class="text-center" style="color: #D6CEC3; max-width: 600px; margin: 0 auto;">
+                        <p class="text-center" style="max-width: 600px; margin: 0 auto;">
                             <?php echo esc_html($settings['subtitle']); ?>
                         </p>
 
@@ -282,7 +332,8 @@ class AM_Home_Care_Plan_Widget extends \Elementor\Widget_Base
                                     foreach ($settings['adv_cards'] as $card) {
                                         $hl_class = ($card['is_highlight'] === 'yes') ? ' highlight' : '';
                                         ?>
-                                        <div class="adv-card<?php echo esc_attr($hl_class); ?>">
+                                        <div
+                                            class="adv-card<?php echo esc_attr($hl_class); ?> elementor-repeater-item-<?php echo esc_attr($card['_id']); ?>">
                                             <div class="adv-icon">
                                                 <?php
                                                 if (!empty($card['icon']['value'])) {
@@ -293,7 +344,7 @@ class AM_Home_Care_Plan_Widget extends \Elementor\Widget_Base
                                                 ?>
                                             </div>
                                             <div>
-                                                <h4 style="font-size: 16px; margin-bottom: 4px; font-weight:600;">
+                                                <h4>
                                                     <?php echo esc_html($card['title']); ?>
                                                 </h4>
 
@@ -322,7 +373,7 @@ class AM_Home_Care_Plan_Widget extends \Elementor\Widget_Base
                         <?php if (!empty($settings['bot_features'])): ?>
                             <div class="feat-bot">
                                 <?php foreach ($settings['bot_features'] as $feat): ?>
-                                    <div class="feat-mini">
+                                    <div class="feat-mini elementor-repeater-item-<?php echo esc_attr($feat['_id']); ?>">
                                         <div class="feat-mini-icon">
                                             <?php
                                             if (!empty($feat['icon']['value'])) {

@@ -55,7 +55,7 @@ class AM_Home_Wellness_Widget extends \Elementor\Widget_Base
             [
                 'label' => esc_html__('Main Heading', 'amazing-meds-elementor'),
                 'type' => \Elementor\Controls_Manager::TEXTAREA,
-                'default' => esc_html__('An Absolutely Complete Way to<br>Understand & Treat Your Health', 'amazing-meds-elementor'),
+                'default' => 'An Absolutely Complete Way to<br>Understand & Treat Your Health',
             ]
         );
 
@@ -90,6 +90,53 @@ class AM_Home_Wellness_Widget extends \Elementor\Widget_Base
                 'library' => 'fa-solid',
             ],
         ]);
+        $this->add_control('lc1_icon_color', [
+            'label' => 'Icon Color',
+            'type' => \Elementor\Controls_Manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .sys-c1 .sys-icon-circle i' => 'color: {{VALUE}};',
+                '{{WRAPPER}} .sys-c1 .sys-icon-circle svg' => 'fill: {{VALUE}}; stroke: {{VALUE}};',
+                '{{WRAPPER}} .sys-c1 .sys-icon-circle' => 'color: {{VALUE}};',
+            ]
+        ]);
+        $this->add_control('lc1_icon_bg', ['label' => 'Icon BG', 'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => ['{{WRAPPER}} .sys-c1 .sys-icon-circle' => 'background-color: {{VALUE}};']]);
+
+        $this->add_responsive_control('lc1_img_scale', [
+            'label' => 'Image Scale (px/%)',
+            'type' => \Elementor\Controls_Manager::SLIDER,
+            'size_units' => ['px', '%'],
+            'range' => [
+                '%' => ['min' => 50, 'max' => 200],
+                'px' => ['min' => 100, 'max' => 600],
+            ],
+            'default' => [
+                'unit' => '%',
+                'size' => 135,
+            ],
+            'tablet_default' => [
+                'unit' => 'px',
+                'size' => 300,
+            ],
+            'mobile_default' => [
+                'unit' => 'px',
+                'size' => 250,
+            ],
+            'selectors' => ['{{WRAPPER}} .sys-c1 img' => 'height: {{SIZE}}{{UNIT}};'],
+        ]);
+        $this->add_responsive_control('lc1_img_x', [
+            'label' => 'Image Offset X (px)',
+            'type' => \Elementor\Controls_Manager::SLIDER,
+            'range' => ['px' => ['min' => -200, 'max' => 200]],
+            'default' => ['unit' => 'px', 'size' => -80],
+            'selectors' => ['{{WRAPPER}} .sys-c1 img' => 'left: {{SIZE}}{{UNIT}};'],
+        ]);
+        $this->add_responsive_control('lc1_img_y', [
+            'label' => 'Image Offset Y (px)',
+            'type' => \Elementor\Controls_Manager::SLIDER,
+            'range' => ['px' => ['min' => -100, 'max' => 100]],
+            'default' => ['unit' => 'px', 'size' => 0],
+            'selectors' => ['{{WRAPPER}} .sys-c1 img' => 'bottom: {{SIZE}}{{UNIT}};'],
+        ]);
 
         $this->add_control('lc2_title', ['label' => 'Card 2 Title', 'type' => \Elementor\Controls_Manager::TEXTAREA, 'default' => 'Metabolic<br>Insight']);
         $this->add_control('lc2_desc', ['label' => 'Card 2 Description', 'type' => \Elementor\Controls_Manager::TEXTAREA, 'default' => 'In-depth analysis of thyroid, insulin, glucose, lipids, vitamin levels, and more.']);
@@ -101,6 +148,53 @@ class AM_Home_Wellness_Widget extends \Elementor\Widget_Base
                 'value' => 'fas fa-chart-line',
                 'library' => 'fa-solid',
             ],
+        ]);
+        $this->add_control('lc2_icon_color', [
+            'label' => 'Icon Color',
+            'type' => \Elementor\Controls_Manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .sys-c2 .sys-icon-circle i' => 'color: {{VALUE}};',
+                '{{WRAPPER}} .sys-c2 .sys-icon-circle svg' => 'fill: {{VALUE}}; stroke: {{VALUE}};',
+                '{{WRAPPER}} .sys-c2 .sys-icon-circle' => 'color: {{VALUE}};',
+            ]
+        ]);
+        $this->add_control('lc2_icon_bg', ['label' => 'Icon BG', 'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => ['{{WRAPPER}} .sys-c2 .sys-icon-circle' => 'background-color: {{VALUE}};']]);
+
+        $this->add_responsive_control('lc2_img_scale', [
+            'label' => 'Image Scale (px/%)',
+            'type' => \Elementor\Controls_Manager::SLIDER,
+            'size_units' => ['px', '%'],
+            'range' => [
+                '%' => ['min' => 50, 'max' => 200],
+                'px' => ['min' => 100, 'max' => 600],
+            ],
+            'default' => [
+                'unit' => '%',
+                'size' => 135,
+            ],
+            'tablet_default' => [
+                'unit' => 'px',
+                'size' => 300,
+            ],
+            'mobile_default' => [
+                'unit' => 'px',
+                'size' => 250,
+            ],
+            'selectors' => ['{{WRAPPER}} .sys-c2 img' => 'height: {{SIZE}}{{UNIT}};'],
+        ]);
+        $this->add_responsive_control('lc2_img_x', [
+            'label' => 'Image Offset X (px)',
+            'type' => \Elementor\Controls_Manager::SLIDER,
+            'range' => ['px' => ['min' => -200, 'max' => 200]],
+            'default' => ['unit' => 'px', 'size' => -80],
+            'selectors' => ['{{WRAPPER}} .sys-c2 img' => 'left: {{SIZE}}{{UNIT}};'],
+        ]);
+        $this->add_responsive_control('lc2_img_y', [
+            'label' => 'Image Offset Y (px)',
+            'type' => \Elementor\Controls_Manager::SLIDER,
+            'range' => ['px' => ['min' => -100, 'max' => 100]],
+            'default' => ['unit' => 'px', 'size' => 0],
+            'selectors' => ['{{WRAPPER}} .sys-c2 img' => 'bottom: {{SIZE}}{{UNIT}};'],
         ]);
 
         $this->end_controls_section();
@@ -125,6 +219,16 @@ class AM_Home_Wellness_Widget extends \Elementor\Widget_Base
                 'library' => 'fa-solid',
             ],
         ]);
+        $this->add_control('sc1_icon_color', [
+            'label' => 'Icon Color',
+            'type' => \Elementor\Controls_Manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .sys-grid-bot .sys-card-sm:nth-child(1) .sys-icon-circle i' => 'color: {{VALUE}};',
+                '{{WRAPPER}} .sys-grid-bot .sys-card-sm:nth-child(1) .sys-icon-circle svg' => 'fill: {{VALUE}}; stroke: {{VALUE}};',
+                '{{WRAPPER}} .sys-grid-bot .sys-card-sm:nth-child(1) .sys-icon-circle' => 'color: {{VALUE}};',
+            ]
+        ]);
+        $this->add_control('sc1_icon_bg', ['label' => 'Icon BG', 'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => ['{{WRAPPER}} .sys-grid-bot .sys-card-sm:nth-child(1) .sys-icon-circle' => 'background-color: {{VALUE}};']]);
 
         $this->add_control('sc2_title', ['label' => 'Small Card 2 Title', 'type' => \Elementor\Controls_Manager::TEXT, 'default' => 'Hormone Therapy']);
         $this->add_control('sc2_desc', ['label' => 'Small Card 2 Desc', 'type' => \Elementor\Controls_Manager::TEXTAREA, 'default' => 'Personalized HRT to help you feel balanced and energized.']);
@@ -136,6 +240,16 @@ class AM_Home_Wellness_Widget extends \Elementor\Widget_Base
                 'library' => 'fa-solid',
             ],
         ]);
+        $this->add_control('sc2_icon_color', [
+            'label' => 'Icon Color',
+            'type' => \Elementor\Controls_Manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .sys-grid-bot .sys-card-sm:nth-child(2) .sys-icon-circle i' => 'color: {{VALUE}};',
+                '{{WRAPPER}} .sys-grid-bot .sys-card-sm:nth-child(2) .sys-icon-circle svg' => 'fill: {{VALUE}}; stroke: {{VALUE}};',
+                '{{WRAPPER}} .sys-grid-bot .sys-card-sm:nth-child(2) .sys-icon-circle' => 'color: {{VALUE}};',
+            ]
+        ]);
+        $this->add_control('sc2_icon_bg', ['label' => 'Icon BG', 'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => ['{{WRAPPER}} .sys-grid-bot .sys-card-sm:nth-child(2) .sys-icon-circle' => 'background-color: {{VALUE}};']]);
 
         $this->add_control('sc3_title', ['label' => 'Small Card 3 Title', 'type' => \Elementor\Controls_Manager::TEXT, 'default' => 'Weight Management']);
         $this->add_control('sc3_desc', ['label' => 'Small Card 3 Desc', 'type' => \Elementor\Controls_Manager::TEXTAREA, 'default' => 'Medical-grade solutions for sustainable weight loss.']);
@@ -147,6 +261,16 @@ class AM_Home_Wellness_Widget extends \Elementor\Widget_Base
                 'library' => 'fa-solid',
             ],
         ]);
+        $this->add_control('sc3_icon_color', [
+            'label' => 'Icon Color',
+            'type' => \Elementor\Controls_Manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .sys-grid-bot .sys-card-sm:nth-child(3) .sys-icon-circle i' => 'color: {{VALUE}};',
+                '{{WRAPPER}} .sys-grid-bot .sys-card-sm:nth-child(3) .sys-icon-circle svg' => 'fill: {{VALUE}}; stroke: {{VALUE}};',
+                '{{WRAPPER}} .sys-grid-bot .sys-card-sm:nth-child(3) .sys-icon-circle' => 'color: {{VALUE}};',
+            ]
+        ]);
+        $this->add_control('sc3_icon_bg', ['label' => 'Icon BG', 'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => ['{{WRAPPER}} .sys-grid-bot .sys-card-sm:nth-child(3) .sys-icon-circle' => 'background-color: {{VALUE}};']]);
 
         $this->end_controls_section();
 
@@ -163,6 +287,26 @@ class AM_Home_Wellness_Widget extends \Elementor\Widget_Base
         $this->add_control('btn_url', ['label' => 'Button URL', 'type' => \Elementor\Controls_Manager::URL, 'default' => ['url' => '#']]);
         $this->end_controls_section();
 
+        $this->start_controls_section(
+            'section_style_icons',
+            [
+                'label' => esc_html__('Icons Style', 'amazing-meds-elementor'),
+                'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_control(
+            'arrow_color',
+            [
+                'label' => esc_html__('Arrow Color', 'amazing-meds-elementor'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .sys-arrow-down' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
     }
 
     protected function render()
@@ -172,7 +316,7 @@ class AM_Home_Wellness_Widget extends \Elementor\Widget_Base
         <div class="am-home-widget am-home-wellness">
             <section class="section am-home-container">
                 <div class="text-center">
-                    <h2 class="serif text-gold" style="color: var(--accent-gold);">
+                    <h2 class="serif text-gold">
                         <?php echo wp_kses_post($settings['top_heading']); ?>
                     </h2>
                     <div class="sys-arrow-down"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -198,9 +342,9 @@ class AM_Home_Wellness_Widget extends \Elementor\Widget_Base
                                 }
                                 ?>
                             </div>
-                            <h3 class="serif" style="margin-bottom: 8px;"><?php echo wp_kses_post($settings['lc1_title']); ?>
+                            <h3 class="serif"><?php echo wp_kses_post($settings['lc1_title']); ?>
                             </h3>
-                            <p style="color: #fff; font-size: 14px; margin: 0;">
+                            <p>
                                 <?php echo wp_kses_post($settings['lc1_desc']); ?>
                             </p>
                         </div>
@@ -218,10 +362,10 @@ class AM_Home_Wellness_Widget extends \Elementor\Widget_Base
                                 }
                                 ?>
                             </div>
-                            <h3 class="serif" style="margin-bottom: 8px; color: #fff;">
+                            <h3 class="serif">
                                 <?php echo wp_kses_post($settings['lc2_title']); ?>
                             </h3>
-                            <p style="font-size: 14px; margin: 0; color: #fff;">
+                            <p>
                                 <?php echo wp_kses_post($settings['lc2_desc']); ?>
                             </p>
                         </div>
@@ -239,7 +383,7 @@ class AM_Home_Wellness_Widget extends \Elementor\Widget_Base
                             ?>
                         </div>
                         <h3><?php echo wp_kses_post($settings['sc1_title']); ?></h3>
-                        <p style="font-size: 13px; margin: 0;"><?php echo wp_kses_post($settings['sc1_desc']); ?></p>
+                        <p><?php echo wp_kses_post($settings['sc1_desc']); ?></p>
                     </div>
                     <!-- SC2 -->
                     <div class="sys-card-sm">
@@ -251,7 +395,7 @@ class AM_Home_Wellness_Widget extends \Elementor\Widget_Base
                             ?>
                         </div>
                         <h3><?php echo wp_kses_post($settings['sc2_title']); ?></h3>
-                        <p style="font-size: 13px; margin: 0;"><?php echo wp_kses_post($settings['sc2_desc']); ?></p>
+                        <p><?php echo wp_kses_post($settings['sc2_desc']); ?></p>
                     </div>
                     <!-- SC3 -->
                     <div class="sys-card-sm">
@@ -263,7 +407,7 @@ class AM_Home_Wellness_Widget extends \Elementor\Widget_Base
                             ?>
                         </div>
                         <h3><?php echo wp_kses_post($settings['sc3_title']); ?></h3>
-                        <p style="font-size: 13px; margin: 0;"><?php echo wp_kses_post($settings['sc3_desc']); ?></p>
+                        <p><?php echo wp_kses_post($settings['sc3_desc']); ?></p>
                     </div>
                 </div>
 
