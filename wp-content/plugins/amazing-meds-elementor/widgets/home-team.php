@@ -121,35 +121,37 @@ class AM_Home_Team_Widget extends \Elementor\Widget_Base
 
                 <div class="team-top">
                     <div class="t-img-lg">
+                        <div class="t-img-bg"></div>
                         <?php if (!empty($settings['doc_img']['url'])): ?>
                             <img src="<?php echo esc_url($settings['doc_img']['url']); ?>"
                                 alt="<?php echo esc_attr($settings['doc_name']); ?>">
                         <?php endif; ?>
                     </div>
-                    <div>
+                    <div class="team-top-content">
                         <div class="sys-icon-circle"
-                            style="background: var(--bg-card-tan); color: var(--text-dark); margin-bottom: 16px;">
+                            style="background: var(--bg-card-tan); color: var(--text-dark); margin-bottom: 24px;">
                             <?php echo $settings['doc_icon']; ?>
                         </div>
-                        <h3 class="serif" style="margin-bottom: 4px;"><?php echo wp_kses_post($settings['doc_name']); ?></h3>
-                        <p style="font-size: 12px; margin-bottom: 24px;"><?php echo wp_kses_post($settings['doc_titles']); ?>
+                        <h3 class="serif" style="margin-bottom: 8px; font-size: 32px;">
+                            <?php echo wp_kses_post($settings['doc_name']); ?></h3>
+                        <p style="font-size: 14px; margin-bottom: 32px;"><?php echo wp_kses_post($settings['doc_titles']); ?>
                         </p>
 
-                        <h4 style="font-size: 16px; margin-bottom: 8px;">
+                        <h4 style="font-size: 18px; margin-bottom: 8px; font-weight: 700; font-family: var(--font-sans);">
                             <?php echo wp_kses_post($settings['doc_about_title']); ?>
                         </h4>
-                        <p style="font-size: 13px; margin-bottom: 24px;">
+                        <p style="font-size: 14px; margin-bottom: 32px;">
                             <?php echo wp_kses_post($settings['doc_about_text']); ?>
                         </p>
 
-                        <h4 style="font-size: 16px; margin-bottom: 8px;">
+                        <h4 style="font-size: 18px; margin-bottom: 8px; font-weight: 700; font-family: var(--font-sans);">
                             <?php echo wp_kses_post($settings['doc_spec_title']); ?>
                         </h4>
-                        <p style="font-size: 13px; margin-bottom: 24px;"><?php echo wp_kses_post($settings['doc_spec_text']); ?>
+                        <p style="font-size: 14px; margin-bottom: 32px;"><?php echo wp_kses_post($settings['doc_spec_text']); ?>
                         </p>
 
                         <!-- Social defaults -->
-                        <div style="display: flex; gap: 16px; color: var(--text-dark);">
+                        <div class="team-social">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                 <path
                                     d="M18.9 1.153h3.68l-8.04 9.19L24 22.846h-7.4l-5.8-7.584-6.64 7.584H.47l8.6-9.83L0 1.154h7.59l5.24 6.932ZM17.61 20.644h2.04L6.486 3.24H4.298Z" />
@@ -167,19 +169,20 @@ class AM_Home_Team_Widget extends \Elementor\Widget_Base
                         <?php foreach ($settings['team_members'] as $mem): ?>
                             <div class="t-card-sm">
                                 <div class="t-img-sm">
+                                    <div class="t-img-bg"></div>
                                     <?php if (!empty($mem['image']['url'])): ?>
                                         <img src="<?php echo esc_url($mem['image']['url']); ?>" alt="<?php echo esc_attr($mem['name']); ?>">
                                     <?php endif; ?>
                                 </div>
-                                <div>
-                                    <h3 class="serif" style="font-size: 24px; margin-bottom: 4px;">
+                                <div class="t-card-sm-content">
+                                    <h3 class="serif" style="font-size: 32px; margin-bottom: 8px;">
                                         <?php echo wp_kses_post($mem['name']); ?>
                                     </h3>
-                                    <p style="font-size: 11px; margin-bottom: 12px; line-height: 1.4;">
+                                    <p style="font-size: 14px; margin-bottom: 12px; line-height: 1.4;">
                                         <?php echo wp_kses_post($mem['title']); ?>
                                     </p>
-                                    <div style="height: 1px; background: #D6CEC3; width: 30px; margin-bottom: 12px;"></div>
-                                    <p style="font-size: 12px; margin: 0; color: var(--text-muted);">
+                                    <div class="t-card-sep"></div>
+                                    <p style="font-size: 14px; margin: 0; color: var(--text-muted); line-height: 1.6;">
                                         <?php echo wp_kses_post($mem['desc']); ?>
                                     </p>
                                 </div>

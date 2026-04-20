@@ -143,6 +143,60 @@ class AM_Home_Hero_Widget extends \Elementor\Widget_Base
             ]
         );
 
+        $this->add_control(
+            'hr_review',
+            [
+                'type' => \Elementor\Controls_Manager::DIVIDER,
+            ]
+        );
+
+        $this->add_control(
+            'review_rating',
+            [
+                'label' => esc_html__('Review Rating', 'amazing-meds-elementor'),
+                'type' => \Elementor\Controls_Manager::NUMBER,
+                'min' => 0,
+                'max' => 5,
+                'step' => 0.1,
+                'default' => 4.8,
+            ]
+        );
+
+        $this->add_control(
+            'review_text',
+            [
+                'label' => esc_html__('Review Text', 'amazing-meds-elementor'),
+                'type' => \Elementor\Controls_Manager::TEXT,
+                'default' => '12,450 Reviews',
+            ]
+        );
+
+        $av_repeater = new \Elementor\Repeater();
+        $av_repeater->add_control(
+            'av_img',
+            [
+                'label' => esc_html__('Avatar Image', 'amazing-meds-elementor'),
+                'type' => \Elementor\Controls_Manager::MEDIA,
+                'default' => [
+                    'url' => \Elementor\Utils::get_placeholder_image_src(),
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'review_avatars',
+            [
+                'label' => esc_html__('Review Avatars', 'amazing-meds-elementor'),
+                'type' => \Elementor\Controls_Manager::REPEATER,
+                'fields' => $av_repeater->get_controls(),
+                'default' => [
+                    ['av_img' => ['url' => \Elementor\Utils::get_placeholder_image_src()]],
+                    ['av_img' => ['url' => \Elementor\Utils::get_placeholder_image_src()]],
+                    ['av_img' => ['url' => \Elementor\Utils::get_placeholder_image_src()]],
+                ],
+            ]
+        );
+
         $this->end_controls_section();
 
         // Style Tab
@@ -178,10 +232,10 @@ class AM_Home_Hero_Widget extends \Elementor\Widget_Base
                 <div class="hero-grid">
                     <div>
                         <h1>
-                            <?php echo wp_kses_post($settings['title']); ?>
+                            <?php echo nl2br(wp_kses_post($settings['title'])); ?>
                         </h1>
                         <p>
-                            <?php echo wp_kses_post($settings['subtitle']); ?>
+                            <?php echo nl2br(wp_kses_post($settings['subtitle'])); ?>
                         </p>
 
                         <div class="hero-actions">
@@ -209,19 +263,36 @@ class AM_Home_Hero_Widget extends \Elementor\Widget_Base
                         <?php endif; ?>
 
                         <div class="review-badge">
-                            <div class="review-avs">
-                                <img src="<?php echo esc_url(plugins_url('assets/images/placeholder.jpg', dirname(__FILE__))); ?>"
-                                    alt="Avatar">
-                                <img src="<?php echo esc_url(plugins_url('assets/images/placeholder.jpg', dirname(__FILE__))); ?>"
-                                    alt="Avatar">
-                                <img src="<?php echo esc_url(plugins_url('assets/images/placeholder.jpg', dirname(__FILE__))); ?>"
-                                    alt="Avatar">
-                            </div>
+                            <?php if (!empty($settings['review_avatars'])): ?>
+                                <div class="review-avs">
+                                    <?php foreach ($settings['review_avatars'] as $av): ?>
+                                        <?php if (!empty($av['av_img']['url'])): ?>
+                                            <img src="<?php echo esc_url($av['av_img']['url']); ?>" alt="Avatar">
+                                        <?php endif; ?>
+                                    <?php endforeach; ?>
+                                </div>
+                            <?php endif; ?>
                             <div>
-                                <div style="font-size: 14px; font-weight: 600;"><span
-                                        style="color: var(--accent-gold);">★★★★★</span> 4.8</div>
-                                <div style="font-size: 12px; color: var(--text-muted); text-decoration: underline;">12,450
-                                    Reviews</div>
+                                <div style="font-size: 14px; font-weight: 600;">
+                                    <span style="color: var(--accent-gold);">
+                                        <?php
+                                        $rating = (float)($settings['review_rating'] ?? 5);
+                                        for ($i = 1; $i <= 5; $i++) {
+                                            if ($i <= floor($rating)) {
+                                                echo '★';
+                                            } elseif ($i - 0.5 <= $rating) {
+                                                echo '★'; // Simplified for now, or could use half star SVG
+                                            } else {
+                                                echo '☆';
+                                            }
+                                        }
+                                        ?>
+                                    </span> 
+                                    <?php echo esc_html($settings['review_rating']); ?>
+                                </div>
+                                <div style="font-size: 12px; color: var(--text-muted); text-decoration: underline;">
+                                    <?php echo esc_html($settings['review_text']); ?>
+                                </div>
                             </div>
                         </div>
                     </div>

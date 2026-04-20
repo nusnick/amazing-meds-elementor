@@ -65,6 +65,9 @@ final class Amazing_Meds_Elementor
         wp_register_style('am-home-global', plugins_url('assets/css/widgets/home-global.css', __FILE__), [], self::VERSION);
         wp_register_style('am-home-widgets', plugins_url('assets/css/widgets/home-widgets.css', __FILE__), ['am-home-global'], self::VERSION);
 
+        // Register Home Widgets JS
+        wp_register_script('am-testimonials-carousel', plugins_url('assets/js/widgets/testimonials-carousel.js', __FILE__), ['jquery', 'elementor-frontend', 'swiper'], self::VERSION, true);
+
         // Enqueue if needed or let widgets handle it via get_style_depends
         wp_enqueue_style('am-home-widgets');
     }

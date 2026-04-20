@@ -45,7 +45,7 @@ class AM_Home_Wellness_Widget extends \Elementor\Widget_Base
             'top_heading',
             [
                 'label' => esc_html__('Top Heading', 'amazing-meds-elementor'),
-                'type' => \Elementor\Controls_Manager::TEXT,
+                'type' => \Elementor\Controls_Manager::TEXTAREA,
                 'default' => esc_html__('What We Get You', 'amazing-meds-elementor'),
             ]
         );
@@ -317,15 +317,17 @@ class AM_Home_Wellness_Widget extends \Elementor\Widget_Base
             <section class="section am-home-container">
                 <div class="text-center">
                     <h2 class="serif text-gold">
-                        <?php echo wp_kses_post($settings['top_heading']); ?>
+                        <?php echo nl2br(wp_kses_post($settings['top_heading'])); ?>
                     </h2>
                     <div class="sys-arrow-down"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="1.5">
                             <line x1="12" y1="5" x2="12" y2="19"></line>
                             <polyline points="19 12 12 19 5 12"></polyline>
                         </svg></div>
-                    <h2 class="serif"><?php echo wp_kses_post($settings['main_heading']); ?></h2>
-                    <p style="max-width: 600px; margin: 0 auto 48px;"><?php echo wp_kses_post($settings['description']); ?></p>
+                    <h2 class="serif"><?php echo nl2br(wp_kses_post($settings['main_heading'])); ?></h2>
+                    <p style="max-width: 600px; margin: 0 auto 48px;">
+                        <?php echo nl2br(wp_kses_post($settings['description'])); ?>
+                    </p>
                 </div>
 
                 <div class="sys-grid-top">
@@ -342,11 +344,10 @@ class AM_Home_Wellness_Widget extends \Elementor\Widget_Base
                                 }
                                 ?>
                             </div>
-                            <h3 class="serif"><?php echo wp_kses_post($settings['lc1_title']); ?>
-                            </h3>
-                            <p>
-                                <?php echo wp_kses_post($settings['lc1_desc']); ?>
-                            </p>
+                            <h3 class="serif"><?php echo nl2br(wp_kses_post($settings['lc1_title'])); ?></h3>
+                                <p>
+                                    <?php echo nl2br(wp_kses_post($settings['lc1_desc'])); ?>
+                                </p>
                         </div>
                     </div>
                     <!-- LC2 -->
@@ -363,10 +364,10 @@ class AM_Home_Wellness_Widget extends \Elementor\Widget_Base
                                 ?>
                             </div>
                             <h3 class="serif">
-                                <?php echo wp_kses_post($settings['lc2_title']); ?>
+                                <?php echo nl2br(wp_kses_post($settings['lc2_title'])); ?>
                             </h3>
                             <p>
-                                <?php echo wp_kses_post($settings['lc2_desc']); ?>
+                                <?php echo nl2br(wp_kses_post($settings['lc2_desc'])); ?>
                             </p>
                         </div>
                     </div>

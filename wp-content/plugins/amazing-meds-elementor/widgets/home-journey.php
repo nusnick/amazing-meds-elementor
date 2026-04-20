@@ -141,23 +141,23 @@ class AM_Home_Journey_Widget extends \Elementor\Widget_Base
                         foreach ($settings['steps'] as $index => $step) {
                             $num = $index + 1;
                             $box_class = ($num % 2 === 0) ? 'how-box tan' : 'how-box';
+                            if ($num > 1) {
+                                $box_class .= ' has-arrow';
+                            }
                             ?>
                             <div class="<?php echo esc_attr($box_class); ?>">
-                                <div class="how-num"><?php echo esc_html($num); ?></div>
-                                <h3><?php echo wp_kses_post($step['title']); ?></h3>
-                                <p><?php echo wp_kses_post($step['desc']); ?></p>
-                            </div>
-
-                            <?php if ($num < $total): ?>
-                                <div class="how-arr-wrap">
+                                <?php if ($num > 1): ?>
                                     <div class="how-arr-circle">
-                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D6CEC3" stroke-width="3"
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="3"
                                             stroke-linecap="round" stroke-linejoin="round">
                                             <path d="M5 12h14M12 5l7 7-7 7" />
                                         </svg>
                                     </div>
-                                </div>
-                            <?php endif; ?>
+                                <?php endif; ?>
+                                <div class="how-num"><?php echo esc_html($num); ?></div>
+                                <h3><?php echo wp_kses_post($step['title']); ?></h3>
+                                <p><?php echo wp_kses_post($step['desc']); ?></p>
+                            </div>
                             <?php
                         }
                     }

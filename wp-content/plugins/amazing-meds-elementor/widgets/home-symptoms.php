@@ -41,12 +41,23 @@ class AM_Home_Symptoms_Widget extends \Elementor\Widget_Base
             ]
         );
 
+
         $this->add_control('title', ['label' => 'Title', 'type' => \Elementor\Controls_Manager::TEXT, 'default' => 'What can we help you improve?']);
         $this->add_control('subtitle', ['label' => 'Subtitle', 'type' => \Elementor\Controls_Manager::TEXTAREA, 'default' => 'If you\'re experiencing any of the following, a deeper look at your hormones and metabolism may help.']);
 
         $repeater = new \Elementor\Repeater();
-        $repeater->add_control('text', ['label' => 'Symptom Text', 'type' => \Elementor\Controls_Manager::TEXT]);
-        $repeater->add_control('svg', ['label' => 'Icon (SVG)', 'type' => \Elementor\Controls_Manager::WYSIWYG]);
+        $repeater->add_control('text', ['label' => 'Symptom Text', 'type' => \Elementor\Controls_Manager::TEXTAREA]);
+        $repeater->add_control(
+            'icon',
+            [
+                'label' => 'Icon',
+                'type' => \Elementor\Controls_Manager::ICONS,
+                'default' => [
+                    'value' => 'fas fa-check',
+                    'library' => 'fa-solid',
+                ],
+            ]
+        );
 
         $this->add_control(
             'symptoms',
@@ -55,13 +66,13 @@ class AM_Home_Symptoms_Widget extends \Elementor\Widget_Base
                 'type' => \Elementor\Controls_Manager::REPEATER,
                 'fields' => $repeater->get_controls(),
                 'default' => [
-                    ['text' => 'Low energy', 'svg' => '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>'],
-                    ['text' => 'Hormonal imbalance', 'svg' => '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3v18M3 10l9-7 9 7M6 10v4a6 6 0 0 0 12 0v-4"></path></svg>'],
-                    ['text' => 'Perimenopause / menopause symptoms', 'svg' => '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="10" r="6"></circle><line x1="12" y1="16" x2="12" y2="22"></line><line x1="9" y1="19" x2="15" y2="19"></line></svg>'],
-                    ['text' => 'Brain fog', 'svg' => '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3a6 6 0 0 0-6 6c0 1.5 1 3 1 5h10c0-2 1-3.5 1-5a6 6 0 0 0-6-6z"></path></svg>'],
-                    ['text' => 'Low libido', 'svg' => '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>'],
-                    ['text' => 'Weight gain or difficulty losing weight', 'svg' => '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="4" y="4" width="16" height="16" rx="2"></rect><circle cx="12" cy="14" r="3"></circle><path d="M12 4v4"></path></svg>'],
-                    ['text' => 'Testosterone-related concerns', 'svg' => '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="10" cy="14" r="6"></circle><line x1="14.24" y1="9.76" x2="21" y2="3"></line></svg>'],
+                    ['text' => 'Low energy', 'icon' => ['value' => 'fas fa-bolt', 'library' => 'fa-solid']],
+                    ['text' => 'Hormonal imbalance', 'icon' => ['value' => 'fas fa-dna', 'library' => 'fa-solid']],
+                    ['text' => 'Perimenopause / menopause symptoms', 'icon' => ['value' => 'fas fa-venus', 'library' => 'fa-solid']],
+                    ['text' => 'Brain fog', 'icon' => ['value' => 'fas fa-cloud', 'library' => 'fa-solid']],
+                    ['text' => 'Low libido', 'icon' => ['value' => 'fas fa-heart', 'library' => 'fa-solid']],
+                    ['text' => 'Weight gain or difficulty losing weight', 'icon' => ['value' => 'fas fa-weight', 'library' => 'fa-solid']],
+                    ['text' => 'Testosterone-related concerns', 'icon' => ['value' => 'fas fa-mars', 'library' => 'fa-solid']],
                 ],
                 'title_field' => '{{{ text }}}',
             ]
@@ -86,8 +97,12 @@ class AM_Home_Symptoms_Widget extends \Elementor\Widget_Base
                     <div class="symp-tags">
                         <?php foreach ($settings['symptoms'] as $pill): ?>
                             <span class="s-tag">
-                                <?php echo $pill['svg']; ?>
-                                <?php echo esc_html($pill['text']); ?>
+                                <?php
+                                if (!empty($pill['icon']['value'])) {
+                                    \Elementor\Icons_Manager::render_icon($pill['icon'], ['aria-hidden' => 'true']);
+                                }
+                                ?>
+                                <?php echo nl2br(esc_html($pill['text'])); ?>
                             </span>
                         <?php endforeach; ?>
                     </div>

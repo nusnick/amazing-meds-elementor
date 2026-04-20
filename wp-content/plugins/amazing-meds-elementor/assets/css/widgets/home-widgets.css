@@ -39,6 +39,12 @@
     object-fit: cover;
 }
 
+.am-home-testimonials .swiper {
+    padding: 0 200px;
+    width: 100%;
+    margin: 0 auto;
+}
+
 .am-home-container {
     max-width: 1440px;
     margin: 0 auto;
@@ -226,13 +232,9 @@
     margin-left: 0;
 }
 
-.hero-visual {
-    position: relative;
-    height: 600px;
-}
 
 .hero-visual-img {
-    position: absolute;
+    position: relative;
     bottom: 0;
     right: 0;
     width: 100%;
@@ -248,16 +250,13 @@
     object-fit: cover;
 }
 
-
-
-
 /* Insurance Banner */
 .ins-banner {
     background-color: var(--bg-dark);
     border-radius: 40px;
     padding: 32px 64px;
-    max-width: 1100px;
-    margin: -60px auto 100px;
+    max-width: 1440px;
+    margin: -230px auto 0;
     position: relative;
     z-index: 10;
     text-align: center;
@@ -427,13 +426,14 @@
     align-items: center;
     margin-top: 48px;
     position: relative;
+    gap: 70px;
 }
 
 .comp-left {
     background-color: var(--bg-card-light);
     padding: 48px;
     border-radius: 24px;
-    width: 400px;
+    width: 50%;
     z-index: 1;
 }
 
@@ -441,7 +441,7 @@
     background-color: var(--bg-dark);
     padding: 56px 48px;
     border-radius: 24px;
-    width: 460px;
+    width: 50%;
     position: relative;
     margin-left: -32px;
     z-index: 2;
@@ -531,42 +531,55 @@
     justify-content: center;
     align-items: center;
     margin: 48px 0;
-    gap: 16px;
+    gap: 0;
+    /* Remove gap for "tight" layout */
 }
 
 .how-box {
-    background-color: var(--bg-card-light);
+    background-color: #F7F7F7;
     border-radius: 24px;
     padding: 40px 24px;
     width: 260px;
     height: 260px;
     text-align: center;
+    position: relative;
+    /* For absolutely positioned arrows */
 }
 
 .how-box.tan {
-    background-color: var(--bg-card-tan);
+    background-color: #EBE4DB;
 }
 
-.how-arr-wrap {
-    width: 0;
-    display: flex;
-    justify-content: center;
-    z-index: 2;
-    position: relative;
+.how-box.has-arrow:after {
+    content: '';
+    position: absolute;
+    left: -20px;
+    /* Bridge the gap */
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    background-color: inherit;
+    /* Matches box color */
+    border-radius: 50%;
+    z-index: 5;
 }
 
 .how-arr-circle {
     width: 32px;
     height: 32px;
-    background-color: #fff;
+    background-color: #FFFFFF;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     position: absolute;
     top: 50%;
+    left: -16px;
     transform: translateY(-50%);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    z-index: 10;
+    /* Above the :after tab */
 }
 
 .how-num {
@@ -581,6 +594,8 @@
     align-items: center;
     justify-content: center;
     margin: 0 auto 20px;
+    position: relative;
+    z-index: 2;
 }
 
 .how-box h3 {
@@ -693,16 +708,24 @@
 .plan-right {
     display: flex;
     flex-direction: column;
-    gap: 16px;
 }
 
 .adv-card {
     background-color: #fff;
-    border-radius: 40px;
+    border-radius: 40px 40px 0 0;
     padding: 32px;
     display: flex;
     gap: 24px;
     color: var(--text-dark);
+    padding-bottom: 50px;
+}
+
+.adv-card:last-child {
+    border-radius: 40px;
+}
+
+.adv-card:not(:first-child) {
+    margin-top: -35px;
 }
 
 .adv-card.highlight {
@@ -725,6 +748,11 @@
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
+}
+
+.adv-icon svg {
+    width: 20px;
+    height: 20px;
 }
 
 .adv-list {
@@ -809,6 +837,25 @@
 }
 
 /* ================= 7. SYMPTOMS & WOMEN SECTION ================= */
+.symp-badge {
+    margin: 0 auto 24px;
+    width: 64px;
+    height: 64px;
+    background: #FFFFFF;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #BCA37F;
+    /* Tan color for icons */
+}
+
+.symp-badge svg {
+    width: 28px;
+    height: 28px;
+}
+
 .symp-tags {
     display: flex;
     flex-wrap: wrap;
@@ -854,22 +901,50 @@
 }
 
 /* ================= 8. TESTIMONIALS SECTION ================= */
-.testi-wrap {
-    display: flex;
-    gap: 24px;
-    justify-content: center;
-    margin-top: 48px;
-    padding: 0 40px;
+.am-home-testimonials .section {
+    background-color: var(--bg-card-tan);
+    border-radius: 80px 80px 0 0;
+    padding: 80px 0;
+    max-width: 100%;
+    margin: 0 auto 80px auto;
+    overflow: hidden;
+}
+
+.testi-carousel-container {
     position: relative;
+    max-width: 100%;
+    /* Clipper boundary */
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    overflow: hidden;
+}
+
+.testi-wrap {
+    margin-top: 48px;
+    padding: 0 120px;
+    /* Increased spacing for larger gap and pop-outs */
+    position: relative;
+    overflow: visible !important;
+}
+
+.am-home-testimonials .testi-item {
+    position: relative;
+    width: 340px !important;
+    height: 580px !important;
+    flex-shrink: 0 !important;
+    transition: transform 0.3s ease;
+    margin: 0;
+    /* Gap handled by Swiper spaceBetween */
 }
 
 .testi-card {
-    width: 300px;
-    height: 500px;
-    border-radius: 24px;
     position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 32px;
     overflow: hidden;
-    text-align: left;
+    background-color: #E0E4E7;
 }
 
 .testi-card img.bg-img {
@@ -884,7 +959,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.15);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.1) 100%);
 }
 
 .play-circ {
@@ -892,70 +967,107 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 48px;
-    height: 48px;
-    background: rgba(255, 255, 255, 0.9);
+    width: 44px;
+    height: 44px;
+    background: #FFFFFF;
+    color: var(--bg-dark);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     z-index: 2;
+    transition: transform 0.3s ease;
+}
+
+.play-circ:hover {
+    transform: translate(-50%, -50%) scale(1.1);
 }
 
 .view-c {
     position: absolute;
-    top: 16px;
-    right: 16px;
-    background: rgba(255, 255, 255, 0.9);
-    padding: 4px 8px;
-    border-radius: 6px;
-    font-size: 12px;
+    top: 24px;
+    right: 24px;
+    background: #FFFFFF;
+    padding: 6px 12px;
+    border-radius: 100px;
+    font-size: 13px;
     font-weight: 600;
+    color: var(--text-dark);
     z-index: 2;
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .t-content {
     position: absolute;
-    bottom: 20px;
-    left: 20px;
-    right: 20px;
-    background: #fff;
-    padding: 20px;
-    border-radius: 16px;
-    z-index: 2;
+    bottom: 40px;
+    right: -140px;
+    /* Offset further out of card to right */
+    width: 320px;
+    background: #FFFFFF;
+    padding: 32px 24px;
+    border-radius: 32px;
+    z-index: 10;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
 }
 
 .t-stars {
-    color: var(--accent-gold);
+    color: #BCA37F;
     font-size: 14px;
-    margin-bottom: 8px;
+    margin-bottom: 12px;
+    letter-spacing: 2px;
+}
+
+.t-quote {
+    font-size: 13px;
+    line-height: 1.5;
+    color: #312C21 !important;
+    margin: 0 0 16px 0 !important;
+    font-weight: 500;
+    text-align: left;
 }
 
 .t-auth {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 12px;
-    margin-top: 16px;
 }
 
-.t-auth img {
-    width: 36px;
-    height: 36px;
+.t-auth-info {
+    text-align: left;
+}
+
+.t-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+.t-title {
+    font-size: 11px;
+    color: var(--text-muted);
+}
+
+.t-auth img.t-avatar {
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
     object-fit: cover;
+    flex-shrink: 0;
 }
 
 .nav-btn {
     position: absolute;
-    top: 55%;
+    top: 50%;
     transform: translateY(-50%);
-    width: 48px;
-    height: 48px;
-    background: var(--bg-dark);
+    width: 56px;
+    height: 56px;
+    background: #2F2A25;
+    color: #FFFFFF;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -963,14 +1075,21 @@
     cursor: pointer;
     border: none;
     z-index: 10;
+    transition: all 0.3s ease;
+    padding: 0;
+}
+
+.nav-btn:hover {
+    background: #1a1711;
+    transform: translateY(-50%) scale(1.05);
 }
 
 .nav-prev {
-    left: 0;
+    left: 40px;
 }
 
 .nav-next {
-    right: 0;
+    right: 40px;
 }
 
 /* ================= 9. TRUST SECTION ================= */
@@ -1004,80 +1123,171 @@
 }
 
 /* ================= 10. TEAM SECTION ================= */
-.team-top {
+.am-home-team {
     background-color: var(--bg-card-light);
-    border-radius: 40px;
-    padding: 40px;
-    display: grid;
-    grid-template-columns: 2fr 3fr;
-    gap: 48px;
-    align-items: center;
-    margin-bottom: 24px;
-    text-align: left;
+    border-radius: 80px;
+    padding: 80px 0;
 }
 
+.team-top {
+    display: grid;
+    grid-template-columns: 48% 52%;
+    gap: 0;
+    align-items: stretch;
+    margin: 60px 0 48px;
+    background-color: transparent;
+    padding: 0;
+    border-radius: 40px;
+    overflow: visible;
+    background: #fff;
+}
+
+
+
 .t-img-lg {
-    height: 450px;
-    border-radius: 24px;
-    overflow: hidden;
+    position: relative;
+    height: 600px;
+    border-radius: 40px;
+    overflow: visible;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.t-img-lg .t-img-bg {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-card-tan);
+    border-radius: 40px;
+    z-index: 1;
 }
 
 .t-img-lg img {
-    width: 100%;
+    position: relative;
+    z-index: 2;
     height: 100%;
-    object-fit: cover;
+    width: auto;
+    max-width: 130%;
+    /* Allow image to be slightly wider if needed */
+    object-fit: contain;
+    margin-bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.team-top-content {
+    background-color: #FFFFFF;
+    padding: 64px;
+    border-radius: 0 40px 40px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.team-social {
+    display: flex;
+    gap: 16px;
+    color: var(--text-dark);
+    margin-top: 8px;
 }
 
 .team-bot {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 24px;
-    margin-bottom: 24px;
+    gap: 32px;
+    margin-bottom: 48px;
 }
 
 .t-card-sm {
-    background-color: var(--bg-card-light);
-    border-radius: 24px;
-    padding: 24px;
-    display: flex;
-    gap: 24px;
-    align-items: center;
-    text-align: left;
+    background-color: #fff;
+    border-radius: 40px;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 0;
+    align-items: stretch;
+    overflow: visible;
 }
 
 .t-img-sm {
-    width: 140px;
-    height: 140px;
-    border-radius: 24px;
-    overflow: hidden;
+    position: relative;
+    width: 200px;
+    height: 320px;
+    overflow: visible;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
     flex-shrink: 0;
 }
 
-.t-img-sm img {
+.t-img-sm .t-img-bg {
+    position: absolute;
+    bottom: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    background-color: var(--bg-card-tan);
+    border-radius: 40px;
+    z-index: 1;
+}
+
+.t-img-sm img {
+    position: relative;
+    z-index: 2;
+    height: 110%;
+    /* Head pop-out */
+    width: auto;
+    object-fit: contain;
+    margin-top: -10%;
+}
+
+.t-card-sm-content {
+    background-color: #FFFFFF;
+    padding: 32px 40px;
+    border-radius: 0 40px 40px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.t-card-sep {
+    height: 1px;
+    background: #D6CEC3;
+    width: 60px;
+    margin-bottom: 16px;
 }
 
 .stats-banner {
     background-color: var(--bg-dark);
-    border-radius: 24px;
-    padding: 48px 64px;
+    border-radius: 40px;
+    padding: 64px;
     color: #fff;
-    display: flex;
-    justify-content: space-around;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     text-align: center;
+    gap: 32px;
 }
 
 .stat h3 {
-    font-size: 56px;
+    font-size: 72px;
     color: var(--accent-gold);
     margin-bottom: 8px;
-    font-weight: 400;
+    font-weight: 500;
+    line-height: 1;
 }
 
 .stat h3 span {
-    font-size: 36px;
+    font-size: 40px;
+}
+
+.stat p {
+    font-size: 16px;
+    color: #fff;
+    margin: 0;
+    opacity: 0.8;
 }
 
 /* ================= 11. FAQ SECTION ================= */
@@ -1180,7 +1390,11 @@
     .prob-grid,
     .trust-row,
     .women-card,
-    .team-top {
+    .team-top,
+    .team-top-content,
+    .team-bot,
+    .t-card-sm,
+    .stats-banner {
         grid-template-columns: 1fr;
     }
 
@@ -1258,8 +1472,27 @@
         grid-template-columns: repeat(3, 1fr);
     }
 
+    .am-home-testimonials .section {
+        border-radius: 40px;
+        padding: 60px 0;
+    }
+
     .testi-wrap {
-        flex-wrap: wrap;
+        gap: 16px;
+        padding: 0 40px;
+        padding-right: 40px;
+    }
+
+    .testi-item {
+        width: 280px;
+        height: 480px;
+    }
+
+    .t-content {
+        bottom: 24px;
+        left: 20px;
+        width: calc(100% - 40px);
+        padding: 16px;
     }
 
     .nav-btn {
@@ -1299,17 +1532,44 @@
     }
 
     .stats-banner {
-        flex-direction: column;
-        gap: 32px;
+        grid-template-columns: 1fr;
+        gap: 48px;
+        padding: 40px 24px;
     }
 
     .price-tog {
         flex-direction: column;
     }
 
+    .team-top {
+        border-radius: 24px;
+    }
+
+    .t-img-lg {
+        height: 400px;
+    }
+
+    .team-top-content {
+        border-radius: 0 0 24px 24px;
+        padding: 40px 24px;
+    }
+
     .t-card-sm {
-        flex-direction: column;
+        grid-template-columns: 1fr;
         text-align: center;
+    }
+
+    .t-img-sm {
+        margin: 0 auto;
+    }
+
+    .t-card-sm-content {
+        border-radius: 0 0 40px 40px;
+        padding: 32px 24px;
+    }
+
+    .t-card-sep {
+        margin: 0 auto 16px;
     }
 
     .trust-row:nth-child(2) {
