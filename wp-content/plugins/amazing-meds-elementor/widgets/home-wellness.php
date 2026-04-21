@@ -332,7 +332,7 @@ class AM_Home_Wellness_Widget extends \Elementor\Widget_Base
 
                 <div class="sys-grid-top">
                     <!-- LC1 -->
-                    <div class="sys-card-lg sys-c1">
+                    <div class="sys-card-lg sys-c1 text-white">
                         <?php if (!empty($settings['lc1_img']['url'])): ?>
                             <img src="<?php echo esc_url($settings['lc1_img']['url']); ?>" alt="Card Image">
                         <?php endif; ?>
@@ -345,9 +345,9 @@ class AM_Home_Wellness_Widget extends \Elementor\Widget_Base
                                 ?>
                             </div>
                             <h3 class="serif"><?php echo nl2br(wp_kses_post($settings['lc1_title'])); ?></h3>
-                                <p>
-                                    <?php echo nl2br(wp_kses_post($settings['lc1_desc'])); ?>
-                                </p>
+                            <p>
+                                <?php echo nl2br(wp_kses_post($settings['lc1_desc'])); ?>
+                            </p>
                         </div>
                     </div>
                     <!-- LC2 -->

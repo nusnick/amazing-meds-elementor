@@ -90,6 +90,7 @@ class AM_Home_Trusted_Bar_Widget extends \Elementor\Widget_Base
                 <p style="margin-bottom: 0;">
                     <?php echo wp_kses_post($settings['title']); ?>
                 </p>
+
                 <?php if (!empty($settings['logos'])): ?>
                     <div class="ins-logos">
                         <?php foreach ($settings['logos'] as $item): ?>

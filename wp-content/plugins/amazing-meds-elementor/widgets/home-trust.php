@@ -79,6 +79,17 @@ class AM_Home_Trust_Widget extends \Elementor\Widget_Base
                 'type' => \Elementor\Controls_Manager::TEXTAREA,
             ]
         );
+        $repeater1->add_control(
+            'selected_icon',
+            [
+                'label' => esc_html__('Icon', 'amazing-meds-elementor'),
+                'type' => \Elementor\Controls_Manager::ICONS,
+                'default' => [
+                    'value' => 'fas fa-check',
+                    'library' => 'fa-solid',
+                ],
+            ]
+        );
 
         $this->add_control(
             'row1_features',
@@ -133,6 +144,17 @@ class AM_Home_Trust_Widget extends \Elementor\Widget_Base
                 'type' => \Elementor\Controls_Manager::TEXTAREA,
             ]
         );
+        $repeater2->add_control(
+            'selected_icon',
+            [
+                'label' => esc_html__('Icon', 'amazing-meds-elementor'),
+                'type' => \Elementor\Controls_Manager::ICONS,
+                'default' => [
+                    'value' => 'fas fa-check',
+                    'library' => 'fa-solid',
+                ],
+            ]
+        );
 
         $this->add_control(
             'row2_features',
@@ -172,59 +194,77 @@ class AM_Home_Trust_Widget extends \Elementor\Widget_Base
         <div class="am-home-widget am-home-trust">
             <section class="section am-home-container">
 
-                <!-- ROW 1 -->
+                <!-- ROW 1: Image Left, Content Right -->
                 <div class="trust-row">
-                    <div class="trust-img">
-                        <?php if (!empty($settings['row1_image']['url'])): ?>
-                            <img src="<?php echo esc_url($settings['row1_image']['url']); ?>"
-                                alt="<?php echo esc_attr($settings['row1_title']); ?>">
-                        <?php endif; ?>
+                    <div class="trust-visual-container">
+                        <div class="trust-visual-stack">
+                            <?php if (!empty($settings['row1_image']['url'])): ?>
+                                <img src="<?php echo esc_url($settings['row1_image']['url']); ?>"
+                                    alt="<?php echo esc_attr($settings['row1_title']); ?>">
+                            <?php endif; ?>
+                        </div>
                     </div>
-                    <div>
+                    <div class="trust-content">
                         <h2 class="serif">
                             <?php echo wp_kses_post($settings['row1_title']); ?>
                         </h2>
-                        <p>
+                        <p class="trust-desc">
                             <?php echo wp_kses_post($settings['row1_desc']); ?>
                         </p>
 
                         <?php if (!empty($settings['row1_features'])): ?>
-                            <ul class="check-list">
+                            <div class="trust-checklist">
                                 <?php foreach ($settings['row1_features'] as $item): ?>
-                                    <li>
-                                        <?php echo wp_kses_post($item['text']); ?>
-                                    </li>
+                                    <div class="trust-check-item">
+                                        <div class="trust-check-icon">
+                                            <?php
+                                            if (!empty($item['selected_icon']['value'])) {
+                                                \Elementor\Icons_Manager::render_icon($item['selected_icon'], ['aria-hidden' => 'true']);
+                                            }
+                                            ?>
+                                        </div>
+                                        <span><?php echo wp_kses_post($item['text']); ?></span>
+                                    </div>
                                 <?php endforeach; ?>
-                            </ul>
+                            </div>
                         <?php endif; ?>
                     </div>
                 </div>
 
-                <!-- ROW 2 -->
-                <div class="trust-row">
-                    <div>
+                <!-- ROW 2: Content Left, Image Right -->
+                <div class="trust-row reverse">
+                    <div class="trust-content">
                         <h2 class="serif">
                             <?php echo wp_kses_post($settings['row2_title']); ?>
                         </h2>
-                        <p>
+                        <p class="trust-desc">
                             <?php echo wp_kses_post($settings['row2_desc']); ?>
                         </p>
 
                         <?php if (!empty($settings['row2_features'])): ?>
-                            <ul class="check-list">
+                            <div class="trust-checklist">
                                 <?php foreach ($settings['row2_features'] as $item): ?>
-                                    <li>
-                                        <?php echo wp_kses_post($item['text']); ?>
-                                    </li>
+                                    <div class="trust-check-item">
+                                        <div class="trust-check-icon">
+                                            <?php
+                                            if (!empty($item['selected_icon']['value'])) {
+                                                \Elementor\Icons_Manager::render_icon($item['selected_icon'], ['aria-hidden' => 'true']);
+                                            }
+                                            ?>
+                                        </div>
+                                        <span><?php echo wp_kses_post($item['text']); ?></span>
+                                    </div>
                                 <?php endforeach; ?>
-                            </ul>
+                            </div>
                         <?php endif; ?>
                     </div>
-                    <div class="trust-img padded">
-                        <?php if (!empty($settings['row2_image']['url'])): ?>
-                            <img src="<?php echo esc_url($settings['row2_image']['url']); ?>"
-                                alt="<?php echo esc_attr($settings['row2_title']); ?>">
-                        <?php endif; ?>
+                    <div class="trust-visual-container">
+                        <div class="trust-visual-stack">
+                            <?php if (!empty($settings['row2_image']['url'])): ?>
+                                <img src="<?php echo esc_url($settings['row2_image']['url']); ?>"
+                                    alt="<?php echo esc_attr($settings['row2_title']); ?>">
+                            <?php endif; ?>
+                        </div>
                     </div>
                 </div>
 

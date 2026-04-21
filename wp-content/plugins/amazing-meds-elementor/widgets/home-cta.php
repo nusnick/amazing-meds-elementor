@@ -46,7 +46,17 @@ class AM_Home_CTA_Widget extends \Elementor\Widget_Base
 
         $repeater = new \Elementor\Repeater();
         $repeater->add_control('text', ['label' => 'Text', 'type' => \Elementor\Controls_Manager::TEXT]);
-        $repeater->add_control('svg', ['label' => 'Icon (SVG)', 'type' => \Elementor\Controls_Manager::WYSIWYG]);
+        $repeater->add_control(
+            'selected_icon',
+            [
+                'label' => esc_html__('Icon', 'amazing-meds-elementor'),
+                'type' => \Elementor\Controls_Manager::ICONS,
+                'default' => [
+                    'value' => 'fas fa-check',
+                    'library' => 'fa-solid',
+                ],
+            ]
+        );
 
         $this->add_control(
             'features',
@@ -55,9 +65,9 @@ class AM_Home_CTA_Widget extends \Elementor\Widget_Base
                 'type' => \Elementor\Controls_Manager::REPEATER,
                 'fields' => $repeater->get_controls(),
                 'default' => [
-                    ['text' => 'Provider-reviewed', 'svg' => '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>'],
-                    ['text' => 'Free discreet shipping', 'svg' => '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>'],
-                    ['text' => '4.8/5 rating', 'svg' => '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>'],
+                    ['text' => 'Provider-reviewed'],
+                    ['text' => 'Free discreet shipping'],
+                    ['text' => '4.8/5 rating'],
                 ],
                 'title_field' => '{{{ text }}}',
             ]
@@ -83,11 +93,21 @@ class AM_Home_CTA_Widget extends \Elementor\Widget_Base
 
                     <div class="cta-feats">
                         <?php if (!empty($settings['features'])): ?>
-                            <?php foreach ($settings['features'] as $feat): ?>
-                                <span>
-                                    <?php echo $feat['svg']; ?>
-                                    <?php echo esc_html($feat['text']); ?>
+                            <?php 
+                            $count = count($settings['features']);
+                            foreach ($settings['features'] as $index => $item): 
+                            ?>
+                                <span class="cta-feat-item">
+                                    <?php 
+                                    if (!empty($item['selected_icon']['value'])) {
+                                        \Elementor\Icons_Manager::render_icon($item['selected_icon'], ['aria-hidden' => 'true']);
+                                    }
+                                    ?>
+                                    <?php echo esc_html($item['text']); ?>
                                 </span>
+                                <?php if ($index < $count - 1): ?>
+                                    <div class="cta-divider"></div>
+                                <?php endif; ?>
                             <?php endforeach; ?>
                         <?php endif; ?>
                     </div>

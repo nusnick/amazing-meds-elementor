@@ -143,6 +143,37 @@ class AM_Home_Hero_Widget extends \Elementor\Widget_Base
             ]
         );
 
+        $this->add_responsive_control('hero_img_scale', [
+            'label' => 'Image Scale (px/%)',
+            'type' => \Elementor\Controls_Manager::SLIDER,
+            'size_units' => ['px', '%'],
+            'range' => [
+                '%' => ['min' => 50, 'max' => 200],
+                'px' => ['min' => 100, 'max' => 1200],
+            ],
+            'selectors' => [
+                '{{WRAPPER}} .hero-visual-img img' => 'height: {{SIZE}}{{UNIT}}; width: auto; max-width: none;',
+            ],
+        ]);
+
+        $this->add_responsive_control('hero_img_x', [
+            'label' => 'Image Offset X (px)',
+            'type' => \Elementor\Controls_Manager::SLIDER,
+            'range' => ['px' => ['min' => -500, 'max' => 500]],
+            'selectors' => [
+                '{{WRAPPER}} .hero-visual-img img' => 'left: {{SIZE}}{{UNIT}};',
+            ],
+        ]);
+
+        $this->add_responsive_control('hero_img_y', [
+            'label' => 'Image Offset Y (px)',
+            'type' => \Elementor\Controls_Manager::SLIDER,
+            'range' => ['px' => ['min' => -500, 'max' => 500]],
+            'selectors' => [
+                '{{WRAPPER}} .hero-visual-img img' => 'bottom: {{SIZE}}{{UNIT}};',
+            ],
+        ]);
+
         $this->add_control(
             'hr_review',
             [
@@ -276,7 +307,7 @@ class AM_Home_Hero_Widget extends \Elementor\Widget_Base
                                 <div style="font-size: 14px; font-weight: 600;">
                                     <span style="color: var(--accent-gold);">
                                         <?php
-                                        $rating = (float)($settings['review_rating'] ?? 5);
+                                        $rating = (float) ($settings['review_rating'] ?? 5);
                                         for ($i = 1; $i <= 5; $i++) {
                                             if ($i <= floor($rating)) {
                                                 echo '★';
@@ -287,7 +318,7 @@ class AM_Home_Hero_Widget extends \Elementor\Widget_Base
                                             }
                                         }
                                         ?>
-                                    </span> 
+                                    </span>
                                     <?php echo esc_html($settings['review_rating']); ?>
                                 </div>
                                 <div style="font-size: 12px; color: var(--text-muted); text-decoration: underline;">
@@ -298,8 +329,6 @@ class AM_Home_Hero_Widget extends \Elementor\Widget_Base
                     </div>
 
                     <div class="hero-visual">
-                        <div class="hero-bg-shape"></div>
-                        <div class="hero-pill-shape"></div>
                         <div class="hero-visual-img">
                             <?php if (!empty($settings['image']['url'])): ?>
                                 <img src="<?php echo esc_url($settings['image']['url']); ?>" alt="Hero image">

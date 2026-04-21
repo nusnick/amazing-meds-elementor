@@ -54,7 +54,57 @@ class AM_Home_Team_Widget extends \Elementor\Widget_Base
             ]
         );
         $this->add_control('doc_img', ['label' => 'Image', 'type' => \Elementor\Controls_Manager::MEDIA, 'default' => ['url' => \Elementor\Utils::get_placeholder_image_src()]]);
-        $this->add_control('doc_icon', ['label' => 'Top Icon (SVG)', 'type' => \Elementor\Controls_Manager::WYSIWYG, 'default' => '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>']);
+        $this->add_responsive_control('doc_img_scale', [
+            'label' => 'Image Scale (px/%)',
+            'type' => \Elementor\Controls_Manager::SLIDER,
+            'size_units' => ['px', '%'],
+            'range' => [
+                '%' => ['min' => 50, 'max' => 200],
+                'px' => ['min' => 100, 'max' => 1000],
+            ],
+            'selectors' => [
+                '{{WRAPPER}} .t-img-lg img' => 'height: {{SIZE}}{{UNIT}}; width: auto; max-width: none;',
+            ],
+        ]);
+        $this->add_responsive_control('doc_img_x', [
+            'label' => 'Image Offset X (px)',
+            'type' => \Elementor\Controls_Manager::SLIDER,
+            'range' => ['px' => ['min' => -300, 'max' => 300]],
+            'selectors' => [
+                '{{WRAPPER}} .t-img-lg img' => 'left: {{SIZE}}{{UNIT}};',
+            ],
+        ]);
+        $this->add_responsive_control('doc_img_y', [
+            'label' => 'Image Offset Y (px)',
+            'type' => \Elementor\Controls_Manager::SLIDER,
+            'range' => ['px' => ['min' => -300, 'max' => 300]],
+            'selectors' => [
+                '{{WRAPPER}} .t-img-lg img' => 'bottom: {{SIZE}}{{UNIT}};',
+            ],
+        ]);
+        $this->add_control('doc_icon', [
+            'label' => esc_html__('Top Icon', 'amazing-meds-elementor'),
+            'type' => \Elementor\Controls_Manager::ICONS,
+            'default' => [
+                'value' => 'fas fa-user-md',
+                'library' => 'fa-solid',
+            ],
+        ]);
+        $this->add_control('doc_icon_color', [
+            'label' => 'Icon Color',
+            'type' => \Elementor\Controls_Manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .team-top-content .sys-icon-circle i' => 'color: {{VALUE}};',
+                '{{WRAPPER}} .team-top-content .sys-icon-circle svg' => 'fill: {{VALUE}}; stroke: {{VALUE}};',
+            ]
+        ]);
+        $this->add_control('doc_icon_bg', [
+            'label' => 'Icon Background',
+            'type' => \Elementor\Controls_Manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .team-top-content .sys-icon-circle' => 'background-color: {{VALUE}};',
+            ]
+        ]);
         $this->add_control('doc_name', ['label' => 'Name', 'type' => \Elementor\Controls_Manager::TEXT, 'default' => 'Dr. Jennifer Frangos']);
         $this->add_control('doc_titles', ['label' => 'Titles (Supports HTML)', 'type' => \Elementor\Controls_Manager::TEXTAREA, 'default' => 'D.O., DABOM Board-Certified Family & Obesity Medicine Specialist<br><span style="color: var(--accent-gold);">Integrative & Functional Medicine</span>']);
         $this->add_control('doc_about_title', ['label' => 'About Title', 'type' => \Elementor\Controls_Manager::TEXT, 'default' => 'About']);
@@ -73,6 +123,34 @@ class AM_Home_Team_Widget extends \Elementor\Widget_Base
         );
         $repeater = new \Elementor\Repeater();
         $repeater->add_control('image', ['label' => 'Image', 'type' => \Elementor\Controls_Manager::MEDIA, 'default' => ['url' => \Elementor\Utils::get_placeholder_image_src()]]);
+        $repeater->add_responsive_control('image_scale', [
+            'label' => 'Image Scale (px/%)',
+            'type' => \Elementor\Controls_Manager::SLIDER,
+            'size_units' => ['px', '%'],
+            'range' => [
+                '%' => ['min' => 50, 'max' => 200],
+                'px' => ['min' => 100, 'max' => 800],
+            ],
+            'selectors' => [
+                '{{WRAPPER}} {{CURRENT_ITEM}} .t-img-sm img' => 'height: {{SIZE}}{{UNIT}}; width: auto; max-width: none;',
+            ],
+        ]);
+        $repeater->add_responsive_control('image_x', [
+            'label' => 'Image Offset X (px)',
+            'type' => \Elementor\Controls_Manager::SLIDER,
+            'range' => ['px' => ['min' => -200, 'max' => 200]],
+            'selectors' => [
+                '{{WRAPPER}} {{CURRENT_ITEM}} .t-img-sm img' => 'left: {{SIZE}}{{UNIT}};',
+            ],
+        ]);
+        $repeater->add_responsive_control('image_y', [
+            'label' => 'Image Offset Y (px)',
+            'type' => \Elementor\Controls_Manager::SLIDER,
+            'range' => ['px' => ['min' => -200, 'max' => 200]],
+            'selectors' => [
+                '{{WRAPPER}} {{CURRENT_ITEM}} .t-img-sm img' => 'bottom: {{SIZE}}{{UNIT}};',
+            ],
+        ]);
         $repeater->add_control('name', ['label' => 'Name', 'type' => \Elementor\Controls_Manager::TEXT, 'default' => 'Lynn']);
         $repeater->add_control('title', ['label' => 'Title (Supports HTML)', 'type' => \Elementor\Controls_Manager::TEXTAREA, 'default' => 'Peptide & HRT Nurse Practitioner<br><span style="color: var(--accent-gold);">Board-Certified in Internal Medicine</span>']);
         $repeater->add_control('desc', ['label' => 'Description', 'type' => \Elementor\Controls_Manager::TEXTAREA, 'default' => 'Lynn specializes in hormone replacement...']);
@@ -128,12 +206,12 @@ class AM_Home_Team_Widget extends \Elementor\Widget_Base
                         <?php endif; ?>
                     </div>
                     <div class="team-top-content">
-                        <div class="sys-icon-circle"
-                            style="background: var(--bg-card-tan); color: var(--text-dark); margin-bottom: 24px;">
-                            <?php echo $settings['doc_icon']; ?>
+                        <div class="sys-icon-circle" style="margin-bottom: 24px;">
+                            <?php \Elementor\Icons_Manager::render_icon($settings['doc_icon'], ['aria-hidden' => 'true']); ?>
                         </div>
                         <h3 class="serif" style="margin-bottom: 8px; font-size: 32px;">
-                            <?php echo wp_kses_post($settings['doc_name']); ?></h3>
+                            <?php echo wp_kses_post($settings['doc_name']); ?>
+                        </h3>
                         <p style="font-size: 14px; margin-bottom: 32px;"><?php echo wp_kses_post($settings['doc_titles']); ?>
                         </p>
 
@@ -166,8 +244,12 @@ class AM_Home_Team_Widget extends \Elementor\Widget_Base
 
                 <div class="team-bot">
                     <?php if (!empty($settings['team_members'])): ?>
-                        <?php foreach ($settings['team_members'] as $mem): ?>
-                            <div class="t-card-sm">
+                        <?php foreach ($settings['team_members'] as $index => $mem): 
+                            $repeater_setting_key = $this->get_repeater_setting_key('name', 'team_members', $index);
+                            $this->add_render_attribute($repeater_setting_key, 'class', 't-card-sm');
+                            $this->add_render_attribute($repeater_setting_key, 'class', 'elementor-repeater-item-' . $mem['_id']);
+                        ?>
+                            <div <?php echo $this->get_render_attribute_string($repeater_setting_key); ?>>
                                 <div class="t-img-sm">
                                     <div class="t-img-bg"></div>
                                     <?php if (!empty($mem['image']['url'])): ?>
