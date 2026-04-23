@@ -133,9 +133,7 @@ class AM_Home_Services_Widget extends \Elementor\Widget_Base
                 <div class="comp-wrap">
 
                     <div class="comp-left">
-                        <h3 style="font-size: 18px; font-weight: 600; margin-bottom: 24px; text-align: left;">
-                            <?php echo esc_html($settings['left_title']); ?>
-                        </h3>
+                        <h3 class="serif"><?php echo esc_html($settings['left_title']); ?></h3>
                         <?php if (!empty($settings['left_items'])): ?>
                             <ul class="comp-list-left">
                                 <?php foreach ($settings['left_items'] as $item): ?>

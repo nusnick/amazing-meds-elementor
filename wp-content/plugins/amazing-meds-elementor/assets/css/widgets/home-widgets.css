@@ -95,16 +95,21 @@
 }
 
 .am-home-widget h1 {
-    font-size: clamp(40px, 5vw, 64px);
-    line-height: 1.05;
-    letter-spacing: -1px;
+    font-size: clamp(40px, 5vw, 64px) !important;
+    line-height: 1.2 !important;
     margin-bottom: 24px;
 }
 
 .am-home-widget h2 {
-    font-size: clamp(32px, 4vw, 44px);
-    line-height: 1.1;
-    letter-spacing: -0.5px;
+    font-size: clamp(32px, 4vw, 44px) !important;
+    line-height: 1.1 !important;
+    margin-bottom: 16px;
+    margin-top: 0;
+}
+
+.am-home-widget h3 {
+    font-size: clamp(24px, 3vw, 32px) !important;
+    line-height: 1 !important;
     margin-bottom: 16px;
     margin-top: 0;
 }
@@ -117,7 +122,6 @@
 .am-home-widget p {
     font-size: 20px;
     color: var(--text-muted);
-    margin-bottom: 24px;
     line-height: 1.6;
     margin-top: 0;
 }
@@ -172,6 +176,17 @@
 /* ================= 1. HERO SECTION ================= */
 .am-home-widget .hero-sec {
     padding: 64px 0 100px;
+}
+
+.am-home-widget.am-home-hero p {
+    margin-bottom: 24px;
+}
+
+.am-home-widget.am-home-hero h1 {
+    font-size: clamp(40px, 5vw, 62px);
+    line-height: 1.05;
+    letter-spacing: -1px;
+    margin-bottom: 24px;
 }
 
 .am-home-widget .hero-grid {
@@ -238,7 +253,6 @@
 .am-home-widget .hero-visual {
     position: relative;
     z-index: 1;
-    height: 600px;
     /* Baseline desktop height */
 }
 
@@ -290,8 +304,8 @@
     align-items: center;
     margin: 0 auto;
     width: 100%;
-    flex-wrap: wrap;
     gap: 40px;
+    overflow-x: auto;
 }
 
 .am-home-widget .ins-logos img {
@@ -363,6 +377,8 @@
     position: relative;
     margin-bottom: 24px;
     height: auto;
+    overflow: visible;
+    clip-path: inset(-1000px 0px 0px 0px);
 }
 
 .am-home-widget .sys-card-lg img {
@@ -392,6 +408,17 @@
 .am-home-widget .sys-c2 {
     background-color: var(--bg-dark);
     color: #fff;
+}
+
+.am-home-widget .sys-c2 .sys-card-lg-content {
+    border-radius: 0 0 40px 40px;
+    background: linear-gradient(180deg, rgba(36, 33, 25, 0) 0%, #242119 100%);
+}
+
+
+.am-home-widget .sys-c1 .sys-card-lg-content {
+    border-radius: 0 0 40px 40px;
+    background: linear-gradient(180deg, rgba(178, 155, 129, 0) 0%, #B29B81 100%);
 }
 
 .am-home-widget .sys-icon-circle {
@@ -439,6 +466,7 @@
     font-size: 20px;
     margin-bottom: 8px;
     font-family: var(--font-sans);
+    color: var(--text-dark);
 }
 
 /* ================= 4. COMPARISON SECTION ================= */
@@ -449,6 +477,7 @@
     margin-top: 48px;
     position: relative;
     gap: 70px;
+
 }
 
 .am-home-widget .comp-left {
@@ -457,6 +486,10 @@
     border-radius: 24px;
     width: 50%;
     z-index: 1;
+}
+
+.am-home-widget .comp-left h3 {
+    color: var(--text-dark);
 }
 
 .am-home-widget .comp-right {
@@ -621,7 +654,7 @@
 }
 
 .am-home-widget .how-box h3 {
-    font-size: 16px;
+    font-size: 18px;
     margin-bottom: 12px;
     font-family: var(--font-sans);
     font-weight: 600;
@@ -631,7 +664,7 @@
 }
 
 .am-home-widget .how-box p {
-    font-size: 12px;
+    font-size: 14px;
     color: var(--text-muted);
     margin: 0;
 }
@@ -643,7 +676,7 @@
 
 .am-home-widget .plan-sec {
     background-color: var(--bg-dark);
-    border-radius: 40px;
+    border-radius: 80px 80px 0 0;
     padding: 80px 64px;
     color: #fff;
 }
@@ -665,7 +698,9 @@
 .am-home-widget .plan-left>h3 {
     font-family: var(--font-sans);
     font-weight: 400;
-    font-size: 32px;
+
+    color: var(--text-dark);
+    font-weight: 600;
 }
 
 .am-home-widget .price-tog {
@@ -695,6 +730,7 @@
     font-size: 48px;
     margin-bottom: 8px;
     font-family: var(--font-serif);
+    color: var(--text-dark);
 }
 
 .am-home-widget .price-box p {
@@ -920,7 +956,7 @@
     overflow: hidden;
 }
 
-.wc-img img {
+.am-home-widget .women-card .wc-img img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -1045,6 +1081,7 @@
     font-size: 14px;
     margin-bottom: 12px;
     letter-spacing: 2px;
+    text-align: left;
 }
 
 .am-home-widget .t-quote {
@@ -1145,7 +1182,7 @@
 .am-home-widget .trust-visual-stack img {
     width: 750px;
     height: 500px;
-    position: absolute;
+    position: relative;
     object-fit: cover;
     mix-blend-mode: multiply;
 }
@@ -1156,7 +1193,7 @@
 }
 
 .trust-row.reverse .trust-visual-stack img {
-    left: -42px;
+    left: 0px;
     top: 24px;
 }
 
@@ -1212,7 +1249,7 @@
 /* ================= 10. TEAM SECTION ================= */
 .am-home-team {
     background-color: var(--bg-card-light);
-    border-radius: 80px;
+    border-radius: 80px 80px 0 0;
     padding: 80px 0;
 }
 
@@ -1294,7 +1331,7 @@
     border-radius: 40px;
     padding: 0;
     display: grid;
-    grid-template-columns: 40% 1fr;
+    grid-template-columns: 45% 1fr;
     gap: 0;
     align-items: stretch;
     overflow: visible;
@@ -1352,7 +1389,7 @@
 .am-home-widget .stats-banner {
     background-color: var(--bg-dark);
     border-radius: 40px;
-    padding: 64px;
+    padding: 40px;
     color: #fff;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -1361,7 +1398,7 @@
 }
 
 .am-home-widget .stat h3 {
-    font-size: 72px;
+    font-size: 64px !important;
     color: var(--accent-gold);
     margin-bottom: 8px;
     font-weight: 500;
@@ -1434,7 +1471,7 @@
 /* ================= 12. BOTTOM CTA SECTION ================= */
 .am-home-widget .bottom-cta {
     background: #242119;
-    padding: 120px 80px;
+    padding: 60px;
     border-radius: 64px;
     text-align: center;
     box-shadow: 0px 56px 0px -40px #D2BE9D;
@@ -1443,7 +1480,7 @@
 
 .am-home-widget .bottom-cta h2 {
     color: #BFA568;
-    font-size: 80px;
+    font-size: 62px !important;
     margin-bottom: 24px;
     line-height: .9;
 }
@@ -1485,6 +1522,10 @@
     background: rgba(232, 222, 205, 0.24);
 }
 
+.am-home-cta .am-home-container {
+    padding-bottom: 40px;
+}
+
 /* ================= RESPONSIVE ================= */
 @media (max-width: 1024px) {
 
@@ -1505,7 +1546,6 @@
     }
 
     .am-home-widget .hero-visual {
-        height: 400px;
         margin-top: 60px;
         /* Pull images closer or add space for pop-out */
         overflow: visible;
@@ -1571,7 +1611,7 @@
 
     .am-home-widget .sys-grid-top {
         padding-top: 40px;
-        gap: 24px;
+        gap: 50px;
     }
 
     .am-home-widget .sys-card-lg {
@@ -1579,10 +1619,7 @@
         height: auto;
     }
 
-    .am-home-widget .sys-card-lg img {
-        position: relative;
-        width: 100%;
-    }
+
 
     .am-home-widget .sys-card-lg-content {
         width: 100%;
@@ -1631,6 +1668,18 @@
     .am-home-widget .cta-feats span::after {
         display: none;
     }
+
+    .am-home-widget .prob-content {
+        padding: 40px;
+    }
+
+    .am-home-widget .bottom-cta h2 {
+        font-size: 48px !important;
+    }
+
+    .am-home-widget .stat h3 {
+        font-size: 42px !important;
+    }
 }
 
 @media (max-width: 768px) {
@@ -1644,12 +1693,8 @@
         grid-template-columns: 1fr;
     }
 
-    .am-home-widget .ins-logos {
-        justify-content: center;
-    }
-
     .am-home-widget .plan-sec {
-        padding: 40px 20px;
+        padding: 40px 0px;
     }
 
     .am-home-widget .plan-left {
@@ -1708,5 +1753,30 @@
 
     .am-home-widget .ins-banner {
         padding: 32px 24px;
+    }
+
+    .am-home-widget .prob-content {
+        padding: 20px;
+    }
+
+    .am-home-widget .prob-grid {
+        gap: 20px;
+    }
+
+    .am-home-widget .how-box.has-arrow:after,
+    .am-home-widget .how-arr-circle {
+        display: none;
+    }
+
+    .am-home-widget .women-card {
+        padding: 20px;
+    }
+
+    .am-home-widget .bottom-cta h2 {
+        font-size: 32px !important;
+    }
+
+    .am-home-widget .stat h3 {
+        font-size: 28px !important;
     }
 }

@@ -244,11 +244,11 @@ class AM_Home_Team_Widget extends \Elementor\Widget_Base
 
                 <div class="team-bot">
                     <?php if (!empty($settings['team_members'])): ?>
-                        <?php foreach ($settings['team_members'] as $index => $mem): 
+                        <?php foreach ($settings['team_members'] as $index => $mem):
                             $repeater_setting_key = $this->get_repeater_setting_key('name', 'team_members', $index);
                             $this->add_render_attribute($repeater_setting_key, 'class', 't-card-sm');
                             $this->add_render_attribute($repeater_setting_key, 'class', 'elementor-repeater-item-' . $mem['_id']);
-                        ?>
+                            ?>
                             <div <?php echo $this->get_render_attribute_string($repeater_setting_key); ?>>
                                 <div class="t-img-sm">
                                     <div class="t-img-bg"></div>
