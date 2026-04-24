@@ -124,16 +124,24 @@ class AM_Home_Wellness_Widget extends \Elementor\Widget_Base
             'selectors' => ['{{WRAPPER}} .sys-c1 img' => 'height: {{SIZE}}{{UNIT}};'],
         ]);
         $this->add_responsive_control('lc1_img_x', [
-            'label' => 'Image Offset X (px)',
+            'label' => 'Image Offset X (px/%)',
             'type' => \Elementor\Controls_Manager::SLIDER,
-            'range' => ['px' => ['min' => -200, 'max' => 200]],
+            'size_units' => ['px', '%'],
+            'range' => [
+                'px' => ['min' => -200, 'max' => 200],
+                '%' => ['min' => -100, 'max' => 100],
+            ],
             'default' => ['unit' => 'px', 'size' => -80],
             'selectors' => ['{{WRAPPER}} .sys-c1 img' => 'left: {{SIZE}}{{UNIT}};'],
         ]);
         $this->add_responsive_control('lc1_img_y', [
-            'label' => 'Image Offset Y (px)',
+            'label' => 'Image Offset Y (px/%)',
             'type' => \Elementor\Controls_Manager::SLIDER,
-            'range' => ['px' => ['min' => -100, 'max' => 100]],
+            'size_units' => ['px', '%'],
+            'range' => [
+                'px' => ['min' => -100, 'max' => 100],
+                '%' => ['min' => -100, 'max' => 100],
+            ],
             'default' => ['unit' => 'px', 'size' => 0],
             'selectors' => ['{{WRAPPER}} .sys-c1 img' => 'bottom: {{SIZE}}{{UNIT}};'],
         ]);
@@ -183,16 +191,24 @@ class AM_Home_Wellness_Widget extends \Elementor\Widget_Base
             'selectors' => ['{{WRAPPER}} .sys-c2 img' => 'height: {{SIZE}}{{UNIT}};'],
         ]);
         $this->add_responsive_control('lc2_img_x', [
-            'label' => 'Image Offset X (px)',
+            'label' => 'Image Offset X (px/%)',
             'type' => \Elementor\Controls_Manager::SLIDER,
-            'range' => ['px' => ['min' => -200, 'max' => 200]],
+            'size_units' => ['px', '%'],
+            'range' => [
+                'px' => ['min' => -200, 'max' => 200],
+                '%' => ['min' => -100, 'max' => 100],
+            ],
             'default' => ['unit' => 'px', 'size' => -80],
             'selectors' => ['{{WRAPPER}} .sys-c2 img' => 'left: {{SIZE}}{{UNIT}};'],
         ]);
         $this->add_responsive_control('lc2_img_y', [
-            'label' => 'Image Offset Y (px)',
+            'label' => 'Image Offset Y (px/%)',
             'type' => \Elementor\Controls_Manager::SLIDER,
-            'range' => ['px' => ['min' => -100, 'max' => 100]],
+            'size_units' => ['px', '%'],
+            'range' => [
+                'px' => ['min' => -100, 'max' => 100],
+                '%' => ['min' => -100, 'max' => 100],
+            ],
             'default' => ['unit' => 'px', 'size' => 0],
             'selectors' => ['{{WRAPPER}} .sys-c2 img' => 'bottom: {{SIZE}}{{UNIT}};'],
         ]);

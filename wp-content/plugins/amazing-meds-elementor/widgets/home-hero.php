@@ -157,18 +157,26 @@ class AM_Home_Hero_Widget extends \Elementor\Widget_Base
         ]);
 
         $this->add_responsive_control('hero_img_x', [
-            'label' => 'Image Offset X (px)',
+            'label' => 'Image Offset X (px/%)',
             'type' => \Elementor\Controls_Manager::SLIDER,
-            'range' => ['px' => ['min' => -500, 'max' => 500]],
+            'size_units' => ['px', '%'],
+            'range' => [
+                'px' => ['min' => -500, 'max' => 500],
+                '%' => ['min' => -100, 'max' => 100],
+            ],
             'selectors' => [
                 '{{WRAPPER}} .hero-visual-img img' => 'left: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
         $this->add_responsive_control('hero_img_y', [
-            'label' => 'Image Offset Y (px)',
+            'label' => 'Image Offset Y (px/%)',
             'type' => \Elementor\Controls_Manager::SLIDER,
-            'range' => ['px' => ['min' => -500, 'max' => 500]],
+            'size_units' => ['px', '%'],
+            'range' => [
+                'px' => ['min' => -500, 'max' => 500],
+                '%' => ['min' => -100, 'max' => 100],
+            ],
             'selectors' => [
                 '{{WRAPPER}} .hero-visual-img img' => 'bottom: {{SIZE}}{{UNIT}};',
             ],

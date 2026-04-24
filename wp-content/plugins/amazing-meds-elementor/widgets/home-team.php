@@ -67,17 +67,25 @@ class AM_Home_Team_Widget extends \Elementor\Widget_Base
             ],
         ]);
         $this->add_responsive_control('doc_img_x', [
-            'label' => 'Image Offset X (px)',
+            'label' => 'Image Offset X (px/%)',
             'type' => \Elementor\Controls_Manager::SLIDER,
-            'range' => ['px' => ['min' => -300, 'max' => 300]],
+            'size_units' => ['px', '%'],
+            'range' => [
+                'px' => ['min' => -300, 'max' => 300],
+                '%' => ['min' => -100, 'max' => 100],
+            ],
             'selectors' => [
                 '{{WRAPPER}} .t-img-lg img' => 'left: {{SIZE}}{{UNIT}};',
             ],
         ]);
         $this->add_responsive_control('doc_img_y', [
-            'label' => 'Image Offset Y (px)',
+            'label' => 'Image Offset Y (px/%)',
             'type' => \Elementor\Controls_Manager::SLIDER,
-            'range' => ['px' => ['min' => -300, 'max' => 300]],
+            'size_units' => ['px', '%'],
+            'range' => [
+                'px' => ['min' => -300, 'max' => 300],
+                '%' => ['min' => -100, 'max' => 100],
+            ],
             'selectors' => [
                 '{{WRAPPER}} .t-img-lg img' => 'bottom: {{SIZE}}{{UNIT}};',
             ],
@@ -136,17 +144,25 @@ class AM_Home_Team_Widget extends \Elementor\Widget_Base
             ],
         ]);
         $repeater->add_responsive_control('image_x', [
-            'label' => 'Image Offset X (px)',
+            'label' => 'Image Offset X (px/%)',
             'type' => \Elementor\Controls_Manager::SLIDER,
-            'range' => ['px' => ['min' => -200, 'max' => 200]],
+            'size_units' => ['px', '%'],
+            'range' => [
+                'px' => ['min' => -200, 'max' => 200],
+                '%' => ['min' => -100, 'max' => 100],
+            ],
             'selectors' => [
                 '{{WRAPPER}} {{CURRENT_ITEM}} .t-img-sm img' => 'left: {{SIZE}}{{UNIT}};',
             ],
         ]);
         $repeater->add_responsive_control('image_y', [
-            'label' => 'Image Offset Y (px)',
+            'label' => 'Image Offset Y (px/%)',
             'type' => \Elementor\Controls_Manager::SLIDER,
-            'range' => ['px' => ['min' => -200, 'max' => 200]],
+            'size_units' => ['px', '%'],
+            'range' => [
+                'px' => ['min' => -200, 'max' => 200],
+                '%' => ['min' => -100, 'max' => 100],
+            ],
             'selectors' => [
                 '{{WRAPPER}} {{CURRENT_ITEM}} .t-img-sm img' => 'bottom: {{SIZE}}{{UNIT}};',
             ],
